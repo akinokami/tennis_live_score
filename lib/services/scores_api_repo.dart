@@ -23,12 +23,15 @@ class ScoresApiRepo {
 
   Future<Scores> getScores(String startDate, int sportId) async {
     try {
-      final response = await apiUtils
-          .get(url: "${ApiConstant.baseUrl}Data/Games/", queryParameters: {
-        "startdate": startDate,
-        "sports": sportId,
-        "lang": 1,
-      });
+      // final response = await apiUtils
+      //     .get(url: "${ApiConstant.baseUrl}Data/Games/", queryParameters: {
+      //   "startdate": startDate,
+      //   "sports": sportId,
+      //   "lang": 1,
+      // });
+      final response = await apiUtils.get(
+          url:
+              'http://mobileapi.365scores.com/Data/Games/?startdate=29/08/2024&enddate=&FullCurrTime=true&onlyvideos=false&sports=3&onlymajorgames=true&withExpanded=true&light=true&ShowNAOdds=true&FavoriteCompetitions=7,572&OddsFormat=1&lang=1&AppType=2&AppVersion=1365&uc=0&tz=41&theme=dark&StoreVersion=1365&athletesSupported=true&UserTestGroup=41');
       final res = response.data;
       return Scores.fromJson(res);
     } catch (e) {

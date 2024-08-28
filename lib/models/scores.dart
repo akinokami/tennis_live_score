@@ -70,7 +70,7 @@ class Countries {
     nameForURL = json['NameForURL'];
     iD = json['ID'];
     defaultLang = json['DefaultLang'];
-    gamesCount = json['GamesCount'];
+    gamesCount = json['GamesCount'] ?? 0;
     liveCount = json['LiveCount'];
     defaultLanguage = json['DefaultLanguage'];
     color = json['Color'];

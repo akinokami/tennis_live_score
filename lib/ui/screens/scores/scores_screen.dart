@@ -25,69 +25,44 @@ class ScoresScreen extends StatelessWidget {
                 )
               : Padding(
                   padding: EdgeInsets.all(10.w),
-                  child: Column(
+                  child: ListView(
                     children: [
-                      // SizedBox(
-                      //   height: 45.h,
-                      //   child: ListView.builder(
-                      //       shrinkWrap: true,
-                      //       itemCount: scoresController.stList.length,
-                      //       scrollDirection: Axis.horizontal,
-                      //       itemBuilder: (context, index) {
-                      //         return Obx(
-                      //           () => InkWell(
-                      //             onTap: () {
-                      //               scoresController.selectSport(
-                      //                   scoresController.stList[index]);
-                      //             },
-                      //             child: Padding(
-                      //               padding: EdgeInsets.only(
-                      //                   top: 5.w,
-                      //                   bottom: 5.w,
-                      //                   left: 10.w,
-                      //                   right: 10.w),
-                      //               child: Column(
-                      //                 mainAxisAlignment:
-                      //                     MainAxisAlignment.center,
-                      //                 children: [
-                      //                   Icon(
-                      //                     Icons.sports_soccer,
-                      //                     color: scoresController
-                      //                                 .selectedSport.value.id ==
-                      //                             scoresController
-                      //                                 .stList[index].id
-                      //                         ? secondaryColor
-                      //                         : Colors.white,
-                      //                   ),
-                      //                   CustomText(
-                      //                     text: scoresController
-                      //                             .stList[index].name ??
-                      //                         '',
-                      //                     color: scoresController
-                      //                                 .selectedSport.value.id ==
-                      //                             scoresController
-                      //                                 .stList[index].id
-                      //                         ? secondaryColor
-                      //                         : Colors.white,
-                      //                   ),
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         );
-                      //       }),
-                      // ),
-                      CustomCard(
-                          width: double.infinity,
-                          widget: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                text: 'League name',
+                      ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:
+                              scoresController.scores.value.countries?.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Visibility(
+                              visible: scoresController.scores.value
+                                          .countries?[index].gamesCount !=
+                                      0 ||
+                                  scoresController.scores.value
+                                          .countries?[index].gamesCount !=
+                                      null,
+                              child: Padding(
+                                padding: EdgeInsets.only(bottom: 5.h),
+                                child: CustomCard(
+                                  padding: 0,
+                                  widget: ExpansionTile(
+                                    title: CustomText(
+                                      text: scoresController.scores.value
+                                              .countries?[index].name ??
+                                          '',
+                                    ),
+                                    children: const [
+                                      ListTile(
+                                          title:
+                                              CustomText(text: 'Sub-item 1')),
+                                      ListTile(
+                                          title:
+                                              CustomText(text: 'Sub-item 2')),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              CustomText(text: 'See Standings')
-                            ],
-                          ))
+                            );
+                          }),
                     ],
                   ),
                 ),
