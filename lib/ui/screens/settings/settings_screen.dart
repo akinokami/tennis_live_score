@@ -41,14 +41,26 @@ class SettingsScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold),
               trailing: Icon(Icons.arrow_forward_ios, color: whiteColor),
             ),
-            ListTile(
-              leading: Icon(Icons.notifications, color: whiteColor),
-              title: CustomText(
-                  text: "Notification",
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CustomText(
+                  text: "General",
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
-              trailing: Icon(Icons.arrow_forward_ios, color: whiteColor),
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline, color: whiteColor),
+              title: CustomText(
+                  text: "Version",
+                  color: whiteColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold),
+              trailing: CustomText(
+                  text: "1.0.0",
+                  color: whiteColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold)
             ),
           ],
         ),
