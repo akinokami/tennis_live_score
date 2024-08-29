@@ -1,3 +1,4 @@
+import 'package:tennis_live_score/models/player_rank.dart';
 import 'package:tennis_live_score/services/api_utils.dart';
 
 import '../models/scores.dart';
@@ -35,4 +36,22 @@ class ApiRepo {
   //     throw CustomException(e.toString());
   //   }
   // }
+
+  Future<PlayerRank> getPlayerRank(int comp) async {
+    try {
+      // final response = await apiUtils
+      //     .get(url: "${ApiConstant.baseUrl}Data/Games/", queryParameters: {
+      //   "startdate": startDate,
+      //   "sports": sportId,
+      //   "lang": 1,
+      // });
+      final response = await apiUtils.get(
+          url:
+              'http://mobileapi.365scores.com/Data/Statistics/Tables/?Competition=6878&season=1&stage=1&withExpanded=true&IsTablet=false&lang=1&AppType=2&AppVersion=1365&uc=0&tz=41&theme=dark&StoreVersion=1365&athletesSupported=true&UserTestGroup=41');
+      final res = response.data;
+      return PlayerRank.fromJson(res);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
 }
