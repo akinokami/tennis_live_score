@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 
 import '../../../constants/color_const.dart';
@@ -27,6 +28,7 @@ class ScoresScreen extends StatelessWidget {
                   padding: EdgeInsets.all(10.w),
                   child: ListView(
                     children: [
+                      ///Countries
                       ListView.builder(
                           shrinkWrap: true,
                           itemCount:
@@ -35,28 +37,178 @@ class ScoresScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Visibility(
                               visible: scoresController.scores.value
-                                          .countries?[index].gamesCount !=
-                                      0 ||
-                                  scoresController.scores.value
-                                          .countries?[index].gamesCount !=
-                                      null,
+                                      .countries?[index].gamesCount !=
+                                  0,
                               child: Padding(
                                 padding: EdgeInsets.only(bottom: 5.h),
                                 child: CustomCard(
                                   padding: 0,
                                   widget: ExpansionTile(
-                                    title: CustomText(
-                                      text: scoresController.scores.value
-                                              .countries?[index].name ??
-                                          '',
+                                    childrenPadding: EdgeInsets.all(kPadding5),
+                                    title: Row(
+                                      children: [
+                                        CustomText(
+                                          text: scoresController.scores.value
+                                                  .countries?[index].name ??
+                                              '',
+                                        ),
+                                        kSizedBoxW5,
+                                        CustomText(
+                                          text:
+                                              "${scoresController.scores.value.countries?[index].gamesCount}",
+                                          fontSize: 10.sp,
+                                        )
+                                      ],
                                     ),
-                                    children: const [
-                                      ListTile(
-                                          title:
-                                              CustomText(text: 'Sub-item 1')),
-                                      ListTile(
-                                          title:
-                                              CustomText(text: 'Sub-item 2')),
+                                    children: [
+                                      ///Competitions
+                                      ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount: scoresController.scores
+                                              .value.competitions?.length,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          itemBuilder: (context, index1) {
+                                            return Visibility(
+                                              visible: scoresController
+                                                      .scores
+                                                      .value
+                                                      .countries?[index]
+                                                      .iD ==
+                                                  scoresController
+                                                      .scores
+                                                      .value
+                                                      .competitions?[index1]
+                                                      .cID,
+                                              child: Column(
+                                                children: [
+                                                  CustomText(
+                                                      text: scoresController
+                                                              .scores
+                                                              .value
+                                                              .competitions?[
+                                                                  index1]
+                                                              .name ??
+                                                          ''),
+
+                                                  ///Game
+                                                  ListView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount:
+                                                          scoresController
+                                                              .scores
+                                                              .value
+                                                              .games
+                                                              ?.length,
+                                                      physics:
+                                                          const NeverScrollableScrollPhysics(),
+                                                      itemBuilder:
+                                                          (context, index2) {
+                                                        return Visibility(
+                                                            visible: scoresController
+                                                                    .scores
+                                                                    .value
+                                                                    .competitions?[
+                                                                        index1]
+                                                                    .iD ==
+                                                                scoresController
+                                                                    .scores
+                                                                    .value
+                                                                    .games?[
+                                                                        index2]
+                                                                    .comp,
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets.all(
+                                                                      kPadding5),
+                                                              child: Column(
+                                                                children: [
+                                                                  Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width: 1.sh *
+                                                                            0.10,
+                                                                        child:
+                                                                            CustomText(
+                                                                          text: scoresController.scores.value.games?[index2].comps?[0].name ??
+                                                                              '',
+                                                                          maxLines:
+                                                                              2,
+                                                                          textAlign:
+                                                                              TextAlign.right,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width: 1.sw *
+                                                                            0.30,
+                                                                        height:
+                                                                            30.h,
+                                                                        child: GridView
+                                                                            .builder(
+                                                                          shrinkWrap:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          physics:
+                                                                              const PageScrollPhysics(),
+                                                                          gridDelegate:
+                                                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                            crossAxisCount:
+                                                                                2, // number of items in each row
+                                                                            mainAxisSpacing:
+                                                                                0.0, // spacing between rows
+                                                                            crossAxisSpacing:
+                                                                                0.0, // spacing between columns
+                                                                          ),
+                                                                          // padding around the grid
+                                                                          itemCount: scoresController
+                                                                              .scores
+                                                                              .value
+                                                                              .games?[index2]
+                                                                              .scrs
+                                                                              ?.length, // total number of items
+                                                                          itemBuilder:
+                                                                              (context, index3) {
+                                                                            return Container(
+                                                                                padding: EdgeInsets.all(0.w),
+                                                                                alignment: Alignment.center,
+                                                                                color: Colors.grey, // color of grid items
+                                                                                child: CustomText(
+                                                                                  text: scoresController.scores.value.games?[index2].scrs?[index3] == -1.0 ? "-" : "${scoresController.scores.value.games?[index2].scrs?[index3].toStringAsFixed(0)}",
+                                                                                ));
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        width: 1.sh *
+                                                                            0.10,
+                                                                        child:
+                                                                            CustomText(
+                                                                          text: scoresController.scores.value.games?[index2].comps?[1].name ??
+                                                                              '',
+                                                                          maxLines:
+                                                                              2,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ));
+                                                      })
+                                                ],
+                                              ),
+                                            );
+                                          })
+                                      // ListTile(
+                                      //     title:
+                                      //         CustomText(text: 'Sub-item 1')),
+                                      // ListTile(
+                                      //     title:
+                                      //         CustomText(text: 'Sub-item 2')),
                                     ],
                                   ),
                                 ),

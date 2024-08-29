@@ -4,7 +4,6 @@ import 'package:get/instance_manager.dart';
 
 import '../../../constants/color_const.dart';
 import '../../../constants/dimen_const.dart';
-import '../../../constants/images_const.dart';
 import '../../../controller/splash_screen_controller.dart';
 import '../../custom_widgets/custom_loading.dart';
 import '../../custom_widgets/custom_text.dart';
@@ -14,7 +13,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final splashScreenController = Get.put(SplashScreenController());
+    Get.put(SplashScreenController());
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -23,10 +22,8 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              logoImg,
-              width: 200.w,
-              height: 200.h,
+            FlutterLogo(
+              size: 80.h,
             ),
             kSizedBoxH30,
             kSizedBoxH30,

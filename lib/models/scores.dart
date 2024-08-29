@@ -113,7 +113,7 @@ class Games {
   String? eTime;
   int? showInGameCountdown;
   List<Comps>? comps;
-  List<int>? scrs;
+  List<num>? scrs;
   int? round;
   bool? onTV;
   bool? hasBets;
@@ -212,7 +212,7 @@ class Games {
         comps!.add(Comps.fromJson(v));
       });
     }
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'].cast<num>();
     round = json['Round'];
     onTV = json['OnTV'];
     hasBets = json['HasBets'];

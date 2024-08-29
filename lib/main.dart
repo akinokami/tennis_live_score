@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/ui/screens/splash/splash_screen.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
+            primaryColor: secondaryColor,
           ),
           home: const SplashScreen(),
         );
