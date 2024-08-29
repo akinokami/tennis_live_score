@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
+import 'package:tennis_live_score/ui/screens/player_detail/player_detail_screen.dart';
 
 import '../../../constants/color_const.dart';
 import '../../../controller/scores_controller.dart';
@@ -44,7 +45,7 @@ class ScoresScreen extends StatelessWidget {
                                 child: CustomCard(
                                   padding: 0,
                                   widget: ExpansionTile(
-                                    childrenPadding: EdgeInsets.all(kPadding5),
+                                    // /childrenPadding: EdgeInsets.all(kPadding5),
                                     title: Row(
                                       children: [
                                         CustomText(
@@ -52,7 +53,7 @@ class ScoresScreen extends StatelessWidget {
                                                   .countries?[index].name ??
                                               '',
                                         ),
-                                        kSizedBoxW5,
+                                        kSizedBoxW10,
                                         CustomText(
                                           text:
                                               "${scoresController.scores.value.countries?[index].gamesCount}",
@@ -117,85 +118,86 @@ class ScoresScreen extends StatelessWidget {
                                                                     .games?[
                                                                         index2]
                                                                     .comp,
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets.all(
-                                                                      kPadding5),
-                                                              child: Column(
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    children: [
-                                                                      SizedBox(
-                                                                        width: 1.sh *
-                                                                            0.10,
-                                                                        child:
-                                                                            CustomText(
-                                                                          text: scoresController.scores.value.games?[index2].comps?[0].name ??
-                                                                              '',
-                                                                          maxLines:
-                                                                              2,
-                                                                          textAlign:
-                                                                              TextAlign.right,
-                                                                        ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        width: 1.sw *
-                                                                            0.30,
-                                                                        height:
-                                                                            30.h,
-                                                                        child: GridView
-                                                                            .builder(
-                                                                          shrinkWrap:
-                                                                              true,
-                                                                          scrollDirection:
-                                                                              Axis.horizontal,
-                                                                          physics:
-                                                                              const PageScrollPhysics(),
-                                                                          gridDelegate:
-                                                                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                            crossAxisCount:
-                                                                                2, // number of items in each row
-                                                                            mainAxisSpacing:
-                                                                                0.0, // spacing between rows
-                                                                            crossAxisSpacing:
-                                                                                0.0, // spacing between columns
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                Get.to(() =>
+                                                                    const PlayerDetailScreen());
+                                                              },
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets.all(
+                                                                        kPadding5),
+                                                                child: Column(
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceBetween,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          width:
+                                                                              1.sh * 0.10,
+                                                                          child:
+                                                                              CustomText(
+                                                                            text:
+                                                                                scoresController.scores.value.games?[index2].comps?[0].name ?? '',
+                                                                            maxLines:
+                                                                                2,
+                                                                            textAlign:
+                                                                                TextAlign.right,
                                                                           ),
-                                                                          // padding around the grid
-                                                                          itemCount: scoresController
-                                                                              .scores
-                                                                              .value
-                                                                              .games?[index2]
-                                                                              .scrs
-                                                                              ?.length, // total number of items
-                                                                          itemBuilder:
-                                                                              (context, index3) {
-                                                                            return Container(
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              1.sw * 0.30,
+                                                                          height:
+                                                                              30.h,
+                                                                          child:
+                                                                              GridView.builder(
+                                                                            shrinkWrap:
+                                                                                true,
+                                                                            scrollDirection:
+                                                                                Axis.horizontal,
+                                                                            physics:
+                                                                                const PageScrollPhysics(),
+                                                                            gridDelegate:
+                                                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                              crossAxisCount: 2, // number of items in each row
+                                                                              mainAxisSpacing: 0.0, // spacing between rows
+                                                                              crossAxisSpacing: 0.0, // spacing between columns
+                                                                            ),
+                                                                            // padding around the grid
+                                                                            itemCount:
+                                                                                scoresController.scores.value.games?[index2].scrs?.length, // total number of items
+                                                                            itemBuilder:
+                                                                                (context, index3) {
+                                                                              return Container(
                                                                                 padding: EdgeInsets.all(0.w),
                                                                                 alignment: Alignment.center,
                                                                                 color: Colors.grey, // color of grid items
                                                                                 child: CustomText(
                                                                                   text: scoresController.scores.value.games?[index2].scrs?[index3] == -1.0 ? "-" : "${scoresController.scores.value.games?[index2].scrs?[index3].toStringAsFixed(0)}",
-                                                                                ));
-                                                                          },
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      SizedBox(
-                                                                        width: 1.sh *
-                                                                            0.10,
-                                                                        child:
-                                                                            CustomText(
-                                                                          text: scoresController.scores.value.games?[index2].comps?[1].name ??
-                                                                              '',
-                                                                          maxLines:
-                                                                              2,
+                                                                        SizedBox(
+                                                                          width:
+                                                                              1.sh * 0.10,
+                                                                          child:
+                                                                              CustomText(
+                                                                            text:
+                                                                                scoresController.scores.value.games?[index2].comps?[1].name ?? '',
+                                                                            maxLines:
+                                                                                2,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  )
-                                                                ],
+                                                                      ],
+                                                                    )
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ));
                                                       })
