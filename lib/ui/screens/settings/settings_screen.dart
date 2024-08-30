@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../constants/color_const.dart';
 import '../../custom_widgets/custom_text.dart';
 
@@ -25,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: CustomText(
                   text: "Settings",
                   color: whiteColor,
@@ -42,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
               trailing: Icon(Icons.arrow_forward_ios, color: whiteColor),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: CustomText(
                   text: "General",
                   color: whiteColor,
