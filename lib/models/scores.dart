@@ -895,7 +895,7 @@ class Game {
   int? season;
   int? stage;
   int? group;
-  List<Comps>? comps;
+  List<CompComps>? comps;
   int? sTID;
   List<int>? scrs;
   int? winner;
@@ -930,9 +930,9 @@ class Game {
     stage = json['Stage'];
     group = json['Group'];
     if (json['Comps'] != null) {
-      comps = <Comps>[];
+      comps = <CompComps>[];
       json['Comps'].forEach((v) {
-        comps!.add(Comps.fromJson(v));
+        comps!.add(CompComps.fromJson(v));
       });
     }
     sTID = json['STID'];
