@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/controller/standing_table_controller.dart';
 import 'package:tennis_live_score/ui/screens/player_detail/player_rank_widget.dart';
@@ -27,9 +28,12 @@ class StandingTableScreen extends StatelessWidget {
                 ? Center(
                     child: CustomText(text: 'no_data_found'.tr),
                   )
-                : PlayerRankingWidget(
-                    tableRanks:
-                        standingTableController.playerRank.value.tableRows,
+                : Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: PlayerRankingWidget(
+                      tableRanks:
+                          standingTableController.playerRank.value.tableRows,
+                    ),
                   ),
       ),
     );
