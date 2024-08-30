@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tennis_live_score/controller/standing_controller%20copy.dart';
+import 'package:tennis_live_score/controller/standing_table_controller.dart';
 import 'package:tennis_live_score/ui/screens/player_detail/player_rank_widget.dart';
 
 import '../../../constants/color_const.dart';
@@ -12,20 +12,25 @@ class StandingTableScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final standingController = Get.put(StandingController());
+    final standingTableController = Get.put(StandingTableController());
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        title: CustomText(text: standingController.title.value),
+        title: CustomText(text: standingTableController.title.value),
         backgroundColor: primaryColor,
       ),
       body: Obx(
-        () => standingController.isLoading.value
+        () => standingTableController.isLoading.value
             ? const Center(child: CustomCircleLoading())
-            : PlayerRankingWidget(
-                tableRanks: standingController.playerRank.value.tableRows,
-              ),
+            : (standingTableController.playerRank.value.tableRows ?? []).isEmpty
+                ? Center(
+                    child: CustomText(text: 'no_data_found'.tr),
+                  )
+                : PlayerRankingWidget(
+                    tableRanks:
+                        standingTableController.playerRank.value.tableRows,
+                  ),
       ),
     );
   }

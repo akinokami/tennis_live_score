@@ -90,12 +90,7 @@ class BottomNavigationMenu extends StatelessWidget {
                 controller: TextEditingController(),
                 hintText: "Menu 2",
               )),
-              Center(
-                  child: CustomTextField(
-                controller: TextEditingController(),
-                hintText: "Menu 2",
-              )),
-              //  const StandingScreen(),
+              const StandingScreen(),
               const SettingsScreen()
             ],
           )),
