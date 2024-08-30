@@ -40,15 +40,15 @@ class BottomNavigationMenu extends StatelessWidget {
                   Icons.scoreboard_outlined,
                   size: 18.w,
                 ),
-                label: 'Scores',
+                label: 'score'.tr,
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.library_books,
+                  Icons.search,
                   size: 18.w,
                 ),
-                label: 'News',
+                label: 'search'.tr,
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
@@ -56,7 +56,7 @@ class BottomNavigationMenu extends StatelessWidget {
                   Icons.star,
                   size: 18.w,
                 ),
-                label: 'Following',
+                label: 'following'.tr,
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
@@ -64,7 +64,7 @@ class BottomNavigationMenu extends StatelessWidget {
                   Icons.settings,
                   size: 18.w,
                 ),
-                label: 'Settings',
+                label: 'settings'.tr,
                 backgroundColor: primaryColor,
               ),
             ],

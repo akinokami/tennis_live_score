@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../constants/color_const.dart';
 import '../../custom_widgets/custom_text.dart';
+import 'change_language_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -14,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         centerTitle: true,
         title: CustomText(
-            text: "Settings",
+            text: "settings".tr,
             color: whiteColor,
             fontSize: 20.sp,
             fontWeight: FontWeight.bold),
@@ -26,15 +28,18 @@ class SettingsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomText(
-                  text: "Settings",
+                  text: "settings".tr,
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
             ),
             ListTile(
+              onTap: () {
+                 Get.to(() =>const ChangeLanguageScreen());
+              },
               leading: Icon(Icons.language, color: whiteColor),
               title: CustomText(
-                  text: "Language",
+                  text: "language".tr,
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
@@ -43,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomText(
-                  text: "General",
+                  text: "general".tr,
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
@@ -51,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.info_outline, color: whiteColor),
               title: CustomText(
-                  text: "Version",
+                  text: "version".tr,
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
