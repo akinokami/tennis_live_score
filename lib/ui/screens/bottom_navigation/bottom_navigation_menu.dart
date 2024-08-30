@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/controller/bottom_nav_controller.dart';
-import 'package:tennis_live_score/ui/custom_widgets/custom_text_button.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text_field.dart';
 import 'package:tennis_live_score/ui/screens/scores/scores_screen.dart';
 import 'package:tennis_live_score/ui/screens/settings/settings_screen.dart';
 import '../../../constants/color_const.dart';
+import '../standing/standing_screen.dart';
 
 class BottomNavigationMenu extends StatelessWidget {
   BottomNavigationMenu({super.key});
@@ -56,7 +56,7 @@ class BottomNavigationMenu extends StatelessWidget {
                   Icons.star,
                   size: 18.w,
                 ),
-                label: 'following'.tr,
+                label: 'standing'.tr,
                 backgroundColor: primaryColor,
               ),
               BottomNavigationBarItem(
@@ -90,11 +90,7 @@ class BottomNavigationMenu extends StatelessWidget {
                 controller: TextEditingController(),
                 hintText: "Menu 2",
               )),
-              Center(
-                  child: CustomTextButton(
-                text: "Menu 3",
-                onPressed: () {},
-              )),
+              const StandingScreen(),
               const SettingsScreen()
             ],
           )),

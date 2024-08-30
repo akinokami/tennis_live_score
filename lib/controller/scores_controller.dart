@@ -20,7 +20,7 @@ class ScoresController extends GetxController {
   Future<void> getScores() async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getScores("29/08/2024", 3);
+      final result = await ApiRepo().getScores("30/08/2024", 3);
       scores.value = result;
       countries.value = scores.value.countries!
           .where((element) => element.gamesCount != 0)

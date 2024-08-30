@@ -598,9 +598,9 @@ class Stages {
   String? name;
   bool? useName;
   bool? hasTbl;
+  List<Groups>? groups;
   bool? isFinal;
-  int? gamesCount;
-  int? liveCount;
+  bool? connectedToNextStage;
   int? stageType;
   bool? filterDivision;
 
@@ -609,9 +609,9 @@ class Stages {
       this.name,
       this.useName,
       this.hasTbl,
+      this.groups,
       this.isFinal,
-      this.gamesCount,
-      this.liveCount,
+      this.connectedToNextStage,
       this.stageType,
       this.filterDivision});
 
@@ -620,9 +620,14 @@ class Stages {
     name = json['Name'];
     useName = json['UseName'];
     hasTbl = json['HasTbl'];
+    if (json['Groups'] != null) {
+      groups = <Groups>[];
+      json['Groups'].forEach((v) {
+        groups!.add(Groups.fromJson(v));
+      });
+    }
     isFinal = json['IsFinal'];
-    gamesCount = json['GamesCount'];
-    liveCount = json['LiveCount'];
+    connectedToNextStage = json['ConnectedToNextStage'];
     stageType = json['StageType'];
     filterDivision = json['FilterDivision'];
   }
@@ -633,11 +638,465 @@ class Stages {
     data['Name'] = name;
     data['UseName'] = useName;
     data['HasTbl'] = hasTbl;
+    if (groups != null) {
+      data['Groups'] = groups!.map((v) => v.toJson()).toList();
+    }
     data['IsFinal'] = isFinal;
-    data['GamesCount'] = gamesCount;
-    data['LiveCount'] = liveCount;
+    data['ConnectedToNextStage'] = connectedToNextStage;
     data['StageType'] = stageType;
     data['FilterDivision'] = filterDivision;
+    return data;
+  }
+}
+
+class Groups {
+  int? num;
+  String? name;
+  bool? useName;
+  bool? hasTbl;
+  List<Participants>? participants;
+  List<CompGames>? games;
+  int? destStage;
+  int? destGroup;
+  bool? groupBy;
+  int? gamesCount;
+  int? liveCount;
+  List<int>? score;
+  int? toQualify;
+  bool? isFinal;
+  int? homeAwayTeamOrder;
+
+  Groups(
+      {this.num,
+      this.name,
+      this.useName,
+      this.hasTbl,
+      this.participants,
+      this.games,
+      this.destStage,
+      this.destGroup,
+      this.groupBy,
+      this.gamesCount,
+      this.liveCount,
+      this.score,
+      this.toQualify,
+      this.isFinal,
+      this.homeAwayTeamOrder});
+
+  Groups.fromJson(Map<String, dynamic> json) {
+    num = json['Num'];
+    name = json['Name'];
+    useName = json['UseName'];
+    hasTbl = json['HasTbl'];
+    if (json['Participants'] != null) {
+      participants = <Participants>[];
+      json['Participants'].forEach((v) {
+        participants!.add(Participants.fromJson(v));
+      });
+    }
+    if (json['Games'] != null) {
+      games = <CompGames>[];
+      json['Games'].forEach((v) {
+        games!.add(CompGames.fromJson(v));
+      });
+    }
+    destStage = json['DestStage'];
+    destGroup = json['DestGroup'];
+    groupBy = json['GroupBy'];
+    gamesCount = json['GamesCount'];
+    liveCount = json['LiveCount'];
+    score = json['Score'].cast<int>();
+    toQualify = json['ToQualify'];
+    isFinal = json['IsFinal'];
+    homeAwayTeamOrder = json['HomeAwayTeamOrder'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Num'] = num;
+    data['Name'] = name;
+    data['UseName'] = useName;
+    data['HasTbl'] = hasTbl;
+    if (participants != null) {
+      data['Participants'] = participants!.map((v) => v.toJson()).toList();
+    }
+    if (games != null) {
+      data['Games'] = games!.map((v) => v.toJson()).toList();
+    }
+    data['DestStage'] = destStage;
+    data['DestGroup'] = destGroup;
+    data['GroupBy'] = groupBy;
+    data['GamesCount'] = gamesCount;
+    data['LiveCount'] = liveCount;
+    data['Score'] = score;
+    data['ToQualify'] = toQualify;
+    data['IsFinal'] = isFinal;
+    data['HomeAwayTeamOrder'] = homeAwayTeamOrder;
+    return data;
+  }
+}
+
+class Participants {
+  int? num;
+  String? name;
+  bool? useName;
+  int? originStage;
+  int? originGroup;
+  int? originPosition;
+  int? competitorID;
+  String? symbolicName;
+  String? seed;
+  String? shortName;
+
+  Participants(
+      {this.num,
+      this.name,
+      this.useName,
+      this.originStage,
+      this.originGroup,
+      this.originPosition,
+      this.competitorID,
+      this.symbolicName,
+      this.seed,
+      this.shortName});
+
+  Participants.fromJson(Map<String, dynamic> json) {
+    num = json['Num'];
+    name = json['Name'];
+    useName = json['UseName'];
+    originStage = json['OriginStage'];
+    originGroup = json['OriginGroup'];
+    originPosition = json['OriginPosition'];
+    competitorID = json['CompetitorID'];
+    symbolicName = json['SymbolicName'];
+    seed = json['Seed'];
+    shortName = json['ShortName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Num'] = num;
+    data['Name'] = name;
+    data['UseName'] = useName;
+    data['OriginStage'] = originStage;
+    data['OriginGroup'] = originGroup;
+    data['OriginPosition'] = originPosition;
+    data['CompetitorID'] = competitorID;
+    data['SymbolicName'] = symbolicName;
+    data['Seed'] = seed;
+    data['ShortName'] = shortName;
+    return data;
+  }
+}
+
+class CompGames {
+  String? startTimeUTC;
+  int? num;
+  bool? useName;
+  String? startTime;
+  int? gameID;
+  Venue? venue;
+  Game? game;
+  int? sportTypeID;
+  int? competitionID;
+  int? seasonNum;
+  int? stageNum;
+  int? groupNum;
+  List<Competitors>? competitors;
+
+  CompGames(
+      {this.startTimeUTC,
+      this.num,
+      this.useName,
+      this.startTime,
+      this.gameID,
+      this.venue,
+      this.game,
+      this.sportTypeID,
+      this.competitionID,
+      this.seasonNum,
+      this.stageNum,
+      this.groupNum,
+      this.competitors});
+
+  CompGames.fromJson(Map<String, dynamic> json) {
+    startTimeUTC = json['StartTimeUTC'];
+    num = json['Num'];
+    useName = json['UseName'];
+    startTime = json['StartTime'];
+    gameID = json['GameID'];
+    venue = json['Venue'] != null ? Venue.fromJson(json['Venue']) : null;
+    game = json['Game'] != null ? Game.fromJson(json['Game']) : null;
+    sportTypeID = json['SportTypeID'];
+    competitionID = json['CompetitionID'];
+    seasonNum = json['SeasonNum'];
+    stageNum = json['StageNum'];
+    groupNum = json['GroupNum'];
+    if (json['Competitors'] != null) {
+      competitors = <Competitors>[];
+      json['Competitors'].forEach((v) {
+        competitors!.add(Competitors.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['StartTimeUTC'] = startTimeUTC;
+    data['Num'] = num;
+    data['UseName'] = useName;
+    data['StartTime'] = startTime;
+    data['GameID'] = gameID;
+    if (venue != null) {
+      data['Venue'] = venue!.toJson();
+    }
+    if (game != null) {
+      data['Game'] = game!.toJson();
+    }
+    data['SportTypeID'] = sportTypeID;
+    data['CompetitionID'] = competitionID;
+    data['SeasonNum'] = seasonNum;
+    data['StageNum'] = stageNum;
+    data['GroupNum'] = groupNum;
+    if (competitors != null) {
+      data['Competitors'] = competitors!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Venue {
+  int? iD;
+  String? name;
+  String? sName;
+
+  Venue({this.iD, this.name, this.sName});
+
+  Venue.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    sName = json['SName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['SName'] = sName;
+    return data;
+  }
+}
+
+class Game {
+  int? sID;
+  int? iD;
+  int? comp;
+  String? sTime;
+  int? season;
+  int? stage;
+  int? group;
+  List<Comps>? comps;
+  int? sTID;
+  List<int>? scrs;
+  int? winner;
+  bool? neutralVenue;
+  int? toQualify;
+  int? homeAwayTeamOrder;
+  int? surface;
+
+  Game(
+      {this.sID,
+      this.iD,
+      this.comp,
+      this.sTime,
+      this.season,
+      this.stage,
+      this.group,
+      this.comps,
+      this.sTID,
+      this.scrs,
+      this.winner,
+      this.neutralVenue,
+      this.toQualify,
+      this.homeAwayTeamOrder,
+      this.surface});
+
+  Game.fromJson(Map<String, dynamic> json) {
+    sID = json['SID'];
+    iD = json['ID'];
+    comp = json['Comp'];
+    sTime = json['STime'];
+    season = json['Season'];
+    stage = json['Stage'];
+    group = json['Group'];
+    if (json['Comps'] != null) {
+      comps = <Comps>[];
+      json['Comps'].forEach((v) {
+        comps!.add(Comps.fromJson(v));
+      });
+    }
+    sTID = json['STID'];
+    scrs = json['Scrs'].cast<int>();
+    winner = json['Winner'];
+    neutralVenue = json['NeutralVenue'];
+    toQualify = json['ToQualify'];
+    homeAwayTeamOrder = json['HomeAwayTeamOrder'];
+    surface = json['Surface'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['SID'] = sID;
+    data['ID'] = iD;
+    data['Comp'] = comp;
+    data['STime'] = sTime;
+    data['Season'] = season;
+    data['Stage'] = stage;
+    data['Group'] = group;
+    if (comps != null) {
+      data['Comps'] = comps!.map((v) => v.toJson()).toList();
+    }
+    data['STID'] = sTID;
+    data['Scrs'] = scrs;
+    data['Winner'] = winner;
+    data['NeutralVenue'] = neutralVenue;
+    data['ToQualify'] = toQualify;
+    data['HomeAwayTeamOrder'] = homeAwayTeamOrder;
+    data['Surface'] = surface;
+    return data;
+  }
+}
+
+class CompComps {
+  int? iD;
+  String? name;
+  String? symbolicName;
+  String? nameForURL;
+  int? cID;
+  int? sID;
+  String? color;
+  String? textColor;
+  int? mainComp;
+  bool? competitionHasTexture;
+  int? type;
+  int? popularityRank;
+  int? imgVer;
+  String? sName;
+
+  CompComps(
+      {this.iD,
+      this.name,
+      this.symbolicName,
+      this.nameForURL,
+      this.cID,
+      this.sID,
+      this.color,
+      this.textColor,
+      this.mainComp,
+      this.competitionHasTexture,
+      this.type,
+      this.popularityRank,
+      this.imgVer,
+      this.sName});
+
+  CompComps.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    symbolicName = json['SymbolicName'];
+    nameForURL = json['NameForURL'];
+    cID = json['CID'];
+    sID = json['SID'];
+    color = json['Color'];
+    textColor = json['TextColor'];
+    mainComp = json['MainComp'];
+    competitionHasTexture = json['CompetitionHasTexture'];
+    type = json['Type'];
+    popularityRank = json['PopularityRank'];
+    imgVer = json['ImgVer'];
+    sName = json['SName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['SymbolicName'] = symbolicName;
+    data['NameForURL'] = nameForURL;
+    data['CID'] = cID;
+    data['SID'] = sID;
+    data['Color'] = color;
+    data['TextColor'] = textColor;
+    data['MainComp'] = mainComp;
+    data['CompetitionHasTexture'] = competitionHasTexture;
+    data['Type'] = type;
+    data['PopularityRank'] = popularityRank;
+    data['ImgVer'] = imgVer;
+    data['SName'] = sName;
+    return data;
+  }
+}
+
+class Competitors {
+  int? iD;
+  String? name;
+  String? symbolicName;
+  String? nameForURL;
+  int? cID;
+  int? sID;
+  String? color;
+  String? textColor;
+  int? mainComp;
+  bool? competitionHasTexture;
+  int? type;
+  int? popularityRank;
+  int? imgVer;
+
+  Competitors(
+      {this.iD,
+      this.name,
+      this.symbolicName,
+      this.nameForURL,
+      this.cID,
+      this.sID,
+      this.color,
+      this.textColor,
+      this.mainComp,
+      this.competitionHasTexture,
+      this.type,
+      this.popularityRank,
+      this.imgVer});
+
+  Competitors.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    symbolicName = json['SymbolicName'];
+    nameForURL = json['NameForURL'];
+    cID = json['CID'];
+    sID = json['SID'];
+    color = json['Color'];
+    textColor = json['TextColor'];
+    mainComp = json['MainComp'];
+    competitionHasTexture = json['CompetitionHasTexture'];
+    type = json['Type'];
+    popularityRank = json['PopularityRank'];
+    imgVer = json['ImgVer'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['SymbolicName'] = symbolicName;
+    data['NameForURL'] = nameForURL;
+    data['CID'] = cID;
+    data['SID'] = sID;
+    data['Color'] = color;
+    data['TextColor'] = textColor;
+    data['MainComp'] = mainComp;
+    data['CompetitionHasTexture'] = competitionHasTexture;
+    data['Type'] = type;
+    data['PopularityRank'] = popularityRank;
+    data['ImgVer'] = imgVer;
     return data;
   }
 }

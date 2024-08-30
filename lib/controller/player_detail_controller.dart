@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:tennis_live_score/models/player_match.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
 
