@@ -268,17 +268,17 @@ class Games {
   bool? active;
   int? sTID;
   int? statusSequence;
-  int? gT;
-  int? preciseGT;
+  double? gT;
+  double? preciseGT;
   bool? autoProgressGT;
-  int? completion;
-  int? regularTimeCompletion;
+  double? completion;
+  double? regularTimeCompletion;
   String? gTD;
   String? sTime;
   String? eTime;
   int? showInGameCountdown;
   List<Comps>? comps;
-  List<int>? scrs;
+  List<num>? scrs;
   Scoreboard? scoreboard;
   bool? showScoreboard;
   int? toQualify;
@@ -395,7 +395,7 @@ class Games {
         comps!.add(Comps.fromJson(v));
       });
     }
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'] != null ? json['Scrs'].cast<num>() : [];
     scoreboard = json['Scoreboard'] != null
         ? Scoreboard.fromJson(json['Scoreboard'])
         : null;
@@ -574,7 +574,7 @@ class Comps {
     textColor = json['TextColor'];
     mainComp = json['MainComp'];
     competitionHasTexture = json['CompetitionHasTexture'];
-    trend = json['Trend'].cast<int>();
+    trend = json['Trend'] != null ? json['Trend'].cast<int>() : [];
     type = json['Type'];
     popularityRank = json['PopularityRank'];
     if (json['Rankings'] != null) {
@@ -685,11 +685,12 @@ class Columns {
     stageId = json['StageId'];
     name = json['Name'];
     sName = json['SName'];
-    scores = json['Scores'].cast<String>();
+    scores = json['Scores'] != null ? json['Scores'].cast<String>() : [];
     winner = json['Winner'];
     time = json['Time'];
     main = json['Main'];
-    extraScores = json['ExtraScores'].cast<int>();
+    extraScores =
+        json['ExtraScores'] != null ? json['ExtraScores'].cast<int>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -746,7 +747,7 @@ class WhoWillWinReults {
 
 class StageTimes {
   int? stageID;
-  int? minutes;
+  double? minutes;
   String? time;
 
   StageTimes({this.stageID, this.minutes, this.time});
@@ -768,13 +769,13 @@ class StageTimes {
 
 class ExtraScores {
   int? stageID;
-  List<int>? scores;
+  List<num>? scores;
 
   ExtraScores({this.stageID, this.scores});
 
   ExtraScores.fromJson(Map<String, dynamic> json) {
     stageID = json['StageID'];
-    scores = json['Scores'].cast<int>();
+    scores = json['Scores'] != null ? json['Scores'].cast<num>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -1156,7 +1157,7 @@ class Groups {
     groupBy = json['GroupBy'];
     gamesCount = json['GamesCount'];
     liveCount = json['LiveCount'];
-    score = json['Score'].cast<int>();
+    score = json['Score'] != null ? json['Score'].cast<int>() : [];
     toQualify = json['ToQualify'];
     isFinal = json['IsFinal'];
     homeAwayTeamOrder = json['HomeAwayTeamOrder'];
@@ -1350,7 +1351,7 @@ class Game {
   int? group;
   List<CompComps>? comps;
   int? sTID;
-  List<int>? scrs;
+  List<num>? scrs;
   int? winner;
   bool? neutralVenue;
   int? toQualify;
@@ -1391,7 +1392,7 @@ class Game {
       });
     }
     sTID = json['STID'];
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'] != null ? json['Scrs'].cast<num>() : [];
     winner = json['Winner'];
     neutralVenue = json['NeutralVenue'];
     toQualify = json['ToQualify'];

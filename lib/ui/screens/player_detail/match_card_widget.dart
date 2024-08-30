@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 
 import '../../../models/player_match.dart';
@@ -8,7 +9,11 @@ import '../../custom_widgets/custom_card.dart';
 
 class MatchCardWidget extends StatelessWidget {
   final Sections? sections;
-  const MatchCardWidget({super.key, this.sections});
+
+  const MatchCardWidget({
+    super.key,
+    this.sections,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,42 +26,89 @@ class MatchCardWidget extends StatelessWidget {
             child: CustomCard(
                 widget: Column(
               children: [
-                CustomText(
-                  text: 'league'.tr,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      text: 'league'.tr,
+                    ),
+                    CustomText(
+                        text: subStringBeforeSpace(
+                            sections?.data?.games?[index].sTime ?? ''))
+                  ],
                 ),
                 Divider(
                   thickness: 1.h,
                   color: Colors.grey,
                 ),
+                kSizedBoxH10,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 1.sw * 0.10,
+                      width: 1.sw * 0.30,
                       child: CustomText(
-                        // ignore: prefer_is_empty
                         text: ((sections?.data?.games?[index].comps ?? [])
-                                    .length >
-                                0)
+                                .isNotEmpty)
                             ? (sections?.data?.games?[index].comps?[0].name ??
                                 '')
                             : '',
                         maxLines: 2,
+                        textAlign: TextAlign.right,
                       ),
                     ),
-                    const CustomText(text: '0 - 2'),
+                    sections?.data?.games?[index].winner == -1
+                        ? CustomText(
+                            text: subStringAfterSpace(
+                                sections?.data?.games?[index].sTime ?? ''))
+                        : Row(
+                            children: [
+                              CustomText(
+                                text: ((sections?.data?.games?[index].scrs ??
+                                            [])
+                                        .isNotEmpty)
+                                    ? "${sections?.data?.games?[index].scrs?[0].toStringAsFixed(0) ?? 0}"
+                                    : '',
+                              ),
+                              const CustomText(text: ' - '),
+                              CustomText(
+                                text: ((sections?.data?.games?[index].scrs ??
+                                                [])
+                                            .length >
+                                        1)
+                                    ? "${sections?.data?.games?[index].scrs?[1].toStringAsFixed(0) ?? 0}"
+                                    : '',
+                              )
+                            ],
+                          ),
                     SizedBox(
-                      width: 1.sw * 0.10,
+                      width: 1.sw * 0.30,
                       child: CustomText(
-                        text: 'player name'.tr,
+                        text: ((sections?.data?.games?[index].comps ?? [])
+                                    .length >
+                                1)
+                            ? (sections?.data?.games?[index].comps?[1].name ??
+                                '')
+                            : '',
                         maxLines: 2,
                       ),
                     )
                   ],
-                )
+                ),
+                kSizedBoxH10,
               ],
             )),
           );
         });
   }
+}
+
+String subStringAfterSpace(String text) {
+  int index = text.indexOf(' ');
+  return text.substring(index, text.length);
+}
+
+String subStringBeforeSpace(String text) {
+  int index = text.indexOf(' ');
+  return text.substring(0, index);
 }
