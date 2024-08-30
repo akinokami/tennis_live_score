@@ -36,7 +36,7 @@ class SplashScreen extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold),
                 kSizedBoxW5,
-                CustomCircleLoading()
+                const CustomCircleLoading()
               ],
             ),
           ],

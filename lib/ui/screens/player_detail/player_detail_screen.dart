@@ -8,6 +8,7 @@ import 'package:tennis_live_score/ui/screens/player_detail/match_card_widget.dar
 import 'package:tennis_live_score/ui/screens/player_detail/player_rank_widget.dart';
 
 import '../../../constants/color_const.dart';
+import '../../custom_widgets/custom_loading.dart';
 
 class PlayerDetailScreen extends StatefulWidget {
   const PlayerDetailScreen({super.key});
@@ -65,7 +66,7 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
                   controller: tabController,
                   onTap: (value) {
                     if (value == 0) {
-                      // matchDetailController.getOverview();
+                      playerDetailController.getPlayerMatches();
                     } else if (value == 1) {
                       playerDetailController.getPlayerRank();
                     }
@@ -99,12 +100,16 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    const MatchCardWidget(),
                     Obx(
                       () => playerDetailController.isLoading.value
-                          ? const Center(
-                              child: CircularProgressIndicator(),
-                            )
+                          ? const Center(child: CustomCircleLoading())
+                          : MatchCardWidget(
+                              sections: playerDetailController.sections.value,
+                            ),
+                    ),
+                    Obx(
+                      () => playerDetailController.isLoading.value
+                          ? const Center(child: CustomCircleLoading())
                           : PlayerRankingWidget(
                               tableRanks: playerDetailController
                                   .playerRank.value.tableRows,

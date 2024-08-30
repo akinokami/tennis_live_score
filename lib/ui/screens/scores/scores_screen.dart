@@ -8,6 +8,7 @@ import 'package:tennis_live_score/ui/screens/player_detail/player_detail_screen.
 import '../../../constants/color_const.dart';
 import '../../../controller/scores_controller.dart';
 import '../../custom_widgets/custom_card.dart';
+import '../../custom_widgets/custom_loading.dart';
 
 class ScoresScreen extends StatelessWidget {
   const ScoresScreen({super.key});
@@ -22,9 +23,7 @@ class ScoresScreen extends StatelessWidget {
         ),
         body: Obx(
           () => scoresController.isLoading.value == true
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? const Center(child: CustomCircleLoading())
               : Padding(
                   padding: EdgeInsets.all(10.w),
                   child: ListView(
@@ -45,7 +44,6 @@ class ScoresScreen extends StatelessWidget {
                                 child: CustomCard(
                                   padding: 0,
                                   widget: ExpansionTile(
-                                    // /childrenPadding: EdgeInsets.all(kPadding5),
                                     title: Row(
                                       children: [
                                         CustomText(
@@ -163,19 +161,18 @@ class ScoresScreen extends StatelessWidget {
                                                                                 const PageScrollPhysics(),
                                                                             gridDelegate:
                                                                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                              crossAxisCount: 2, // number of items in each row
-                                                                              mainAxisSpacing: 0.0, // spacing between rows
-                                                                              crossAxisSpacing: 0.0, // spacing between columns
+                                                                              crossAxisCount: 2,
+                                                                              mainAxisSpacing: 0.0,
+                                                                              crossAxisSpacing: 0.0,
                                                                             ),
-                                                                            // padding around the grid
                                                                             itemCount:
-                                                                                scoresController.scores.value.games?[index2].scrs?.length, // total number of items
+                                                                                scoresController.scores.value.games?[index2].scrs?.length,
                                                                             itemBuilder:
                                                                                 (context, index3) {
                                                                               return Container(
                                                                                 padding: EdgeInsets.all(0.w),
                                                                                 alignment: Alignment.center,
-                                                                                color: Colors.grey, // color of grid items
+                                                                                color: Colors.grey,
                                                                                 child: CustomText(
                                                                                   text: scoresController.scores.value.games?[index2].scrs?[index3] == -1.0 ? "-" : "${scoresController.scores.value.games?[index2].scrs?[index3].toStringAsFixed(0)}",
                                                                                 ),
@@ -205,12 +202,6 @@ class ScoresScreen extends StatelessWidget {
                                               ),
                                             );
                                           })
-                                      // ListTile(
-                                      //     title:
-                                      //         CustomText(text: 'Sub-item 1')),
-                                      // ListTile(
-                                      //     title:
-                                      //         CustomText(text: 'Sub-item 2')),
                                     ],
                                   ),
                                 ),
