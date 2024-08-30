@@ -1,6 +1,8 @@
 import 'package:tennis_live_score/models/player_match.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
+import 'package:tennis_live_score/models/point_by_point.dart';
 import 'package:tennis_live_score/models/standing.dart';
+import 'package:tennis_live_score/models/stats.dart';
 import 'package:tennis_live_score/services/api_constant.dart';
 import 'package:tennis_live_score/services/api_utils.dart';
 
@@ -147,6 +149,53 @@ class ApiRepo {
           });
       final res = response.data;
       return PlayerRank.fromJson(res);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  ///MatchDetail
+  Future<Stats> getStats(int gameId) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseUrl}Data/Games/GameCenter/Statistics/All/",
+          queryParameters: {
+            "uid": 4899473126,
+            "GameID": 4212433,
+            "AppVersion": 1365,
+            "tz": 41,
+            "StoreVersion": 1365,
+            "theme": "dark",
+            "lang": 1,
+            "athletesSupported": true,
+            "AppType": 2,
+            "uc": 0
+          });
+      final res = response.data;
+      return Stats.fromJson(res);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  Future<PointByPoint> getPointByPoint(int gameId) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseUrl}Data/Games/GameCenter/PointByPoint",
+          queryParameters: {
+            "GameID": 4212433,
+            "lang": 1,
+            "AppType": 2,
+            "AppVersion": 1365,
+            "uc": 0,
+            "tz": 41,
+            "theme": "dark",
+            "StoreVersion": 1365,
+            "athletesSupported": true,
+            "UserTestGroup": 41
+          });
+      final res = response.data;
+      return PointByPoint.fromJson(res);
     } catch (e) {
       throw CustomException(e.toString());
     }
