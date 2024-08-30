@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 
@@ -21,6 +20,43 @@ class MatchCardWidget extends StatelessWidget {
         shrinkWrap: true,
         itemCount: sections?.data?.games?.length,
         itemBuilder: (context, index) {
+          Competitions? competition;
+          Seasons? season;
+          Stages? stage;
+          if ((sections?.data?.competitions ?? [])
+              .where(
+                  (element) => element.iD == sections?.data?.games?[index].comp)
+              .toList()
+              .isNotEmpty) {
+            competition = (sections?.data?.competitions ?? [])
+                .where((element) =>
+                    element.iD == sections?.data?.games?[index].comp)
+                .toList()
+                .first;
+            if ((competition.seasons ?? [])
+                .where((element) =>
+                    element.num == sections?.data?.games?[index].season)
+                .toList()
+                .isNotEmpty) {
+              season = (competition.seasons ?? [])
+                  .where((element) =>
+                      element.num == sections?.data?.games?[index].season)
+                  .toList()
+                  .first;
+              if ((season.stages ?? [])
+                  .where((element) =>
+                      element.num == sections?.data?.games?[index].stage)
+                  .toList()
+                  .isNotEmpty) {
+                stage = (season.stages ?? [])
+                    .where((element) =>
+                        element.num == sections?.data?.games?[index].stage)
+                    .toList()
+                    .first;
+              }
+            }
+          }
+
           return Padding(
             padding: EdgeInsets.only(bottom: 5.h),
             child: CustomCard(
@@ -29,8 +65,16 @@ class MatchCardWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(
-                      text: 'league'.tr,
+                    Row(
+                      children: [
+                        CustomText(
+                          text: competition?.name ?? '',
+                        ),
+                        kSizedBoxW5,
+                        CustomText(
+                          text: "(${stage?.name ?? ''})",
+                        ),
+                      ],
                     ),
                     CustomText(
                         text: subStringBeforeSpace(
