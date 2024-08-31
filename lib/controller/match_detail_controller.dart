@@ -12,6 +12,7 @@ class MatchDetailController extends GetxController {
 
   RxInt selectedIndex = 0.obs;
 
+  RxInt selectedStatIndex = 0.obs;
   Rx<MatchDetail> matchDetail = MatchDetail().obs;
   Rx<Stats> stats = Stats().obs;
   Rx<PointByPoint> pointByPoint = PointByPoint().obs;
@@ -26,6 +27,10 @@ class MatchDetailController extends GetxController {
 
   void changeIndex(int index) {
     selectedIndex.value = index;
+  }
+
+  void changeStatIndex(int index) {
+    selectedStatIndex.value = index;
   }
 
   Future<void> getMatchDetail() async {
