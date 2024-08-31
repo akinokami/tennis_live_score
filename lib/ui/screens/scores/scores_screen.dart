@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
+import 'package:tennis_live_score/ui/screens/scores/match_detail_screen.dart';
 
 import '../../../constants/color_const.dart';
 import '../../../controller/scores_controller.dart';
@@ -97,7 +98,17 @@ class ScoresScreen extends StatelessWidget {
                                             itemBuilder: (context, index1) {
                                               return GestureDetector(
                                                 onTap: () {
-                                                  //
+                                                  Get.to(
+                                                      () =>
+                                                          const MatchDetailScreen(),
+                                                      arguments: {
+                                                        'gameId':
+                                                            scoresController
+                                                                .gameGroups[
+                                                                    index]
+                                                                .games?[index1]
+                                                                .iD
+                                                      });
                                                 },
                                                 child: Column(
                                                   children: [

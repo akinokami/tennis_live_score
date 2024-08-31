@@ -5,7 +5,6 @@ import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 
 import '../../../controller/match_detail_controller.dart';
-import '../../../controller/scores_controller.dart';
 import '../../custom_widgets/custom_text.dart';
 
 class MatchDetailScreen extends StatefulWidget {
@@ -95,21 +94,28 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return
-                          Obx(()=> GestureDetector(
-                            onTap: (){
-                              matchDetailController.changeIndex(index);
-                            },
-                            child: Container(
-
-                                decoration: BoxDecoration(
-                                    border: Border.all(color:matchDetailController.selectedIndex.value==index? secondaryColor: primaryColor),
-                                    borderRadius: BorderRadius.circular(50.r)),
-                                margin: EdgeInsets.symmetric(horizontal:15.w,vertical: 5.h),
-                                padding: EdgeInsets.symmetric(horizontal:10.w,vertical: 5.h),
-                                child: Center(child: CustomText(text: matchDetailList[index]))),
-
-                        ));
+                        return Obx(() => GestureDetector(
+                              onTap: () {
+                                matchDetailController.changeIndex(index);
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: matchDetailController
+                                                      .selectedIndex.value ==
+                                                  index
+                                              ? secondaryColor
+                                              : primaryColor),
+                                      borderRadius:
+                                          BorderRadius.circular(50.r)),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 15.w, vertical: 5.h),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10.w, vertical: 5.h),
+                                  child: Center(
+                                      child: CustomText(
+                                          text: matchDetailList[index]))),
+                            ));
                       },
                       itemCount: matchDetailList.length,
                       shrinkWrap: true,
@@ -129,69 +135,89 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             SizedBox(
-                              width: 20.w,
-                                child: Center(child: CustomText(text: "S1",color: greyColor,))),
+                                width: 20.w,
+                                child: Center(
+                                    child: CustomText(
+                                  text: "S1",
+                                  color: greyColor,
+                                ))),
                             kSizedBoxW10,
-                            SizedBox(width: 20.w,child: Center(child: CustomText(text: "S2",color: greyColor))),
+                            SizedBox(
+                                width: 20.w,
+                                child: Center(
+                                    child: CustomText(
+                                        text: "S2", color: greyColor))),
                             kSizedBoxW10,
-                            SizedBox(width: 20.w,child: Center(child: CustomText(text: "S3",color: greyColor))),
+                            SizedBox(
+                                width: 20.w,
+                                child: Center(
+                                    child: CustomText(
+                                        text: "S3", color: greyColor))),
                             kSizedBoxW10,
-                            SizedBox(width: 50.w,child: Center(child: CustomText(text: "Sets",color: greyColor))),
+                            SizedBox(
+                                width: 50.w,
+                                child: Center(
+                                    child: CustomText(
+                                        text: "Sets", color: greyColor))),
                             kSizedBoxW10,
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-
                             Center(child: CustomText(text: "Novak Djoashdfk")),
-
-                          Row(
-                            children: [
-                              SizedBox(
-                                  width: 20.w,
-                                  child: Center(child: CustomText(text: "6"))),
-                              kSizedBoxW10,
-                              SizedBox(
-                                  width: 20.w,
-                                  child: Center(child: CustomText(text: "6"))),
-                              kSizedBoxW10,
-                              SizedBox(
-                                  width: 20.w,
-                                  child: Center(child: CustomText(text: "6"))),
-                              kSizedBoxW10,
-                              SizedBox(
-                                  width: 50.w,
-                                  child: Center(child: CustomText(text: "6"))),
-                              kSizedBoxW10,
-                            ],
-                          )
+                            Row(
+                              children: [
+                                SizedBox(
+                                    width: 20.w,
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
+                                kSizedBoxW10,
+                                SizedBox(
+                                    width: 20.w,
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
+                                kSizedBoxW10,
+                                SizedBox(
+                                    width: 20.w,
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
+                                kSizedBoxW10,
+                                SizedBox(
+                                    width: 50.w,
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
+                                kSizedBoxW10,
+                              ],
+                            )
                           ],
                         ),
                         kSizedBoxH5,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-
                             Center(child: CustomText(text: "Rafael Nadal")),
-
                             Row(
                               children: [
                                 SizedBox(
                                     width: 20.w,
-                                    child: Center(child: CustomText(text: "6"))),
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
                                 kSizedBoxW10,
                                 SizedBox(
                                     width: 20.w,
-                                    child: Center(child: CustomText(text: "6"))),
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
                                 kSizedBoxW10,
                                 SizedBox(
                                     width: 20.w,
-                                    child: Center(child: CustomText(text: "6"))),
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
                                 kSizedBoxW10,
                                 SizedBox(
                                     width: 50.w,
-                                    child: Center(child: CustomText(text: "6"))),
+                                    child:
+                                        Center(child: CustomText(text: "6"))),
                                 kSizedBoxW10,
                               ],
                             )
