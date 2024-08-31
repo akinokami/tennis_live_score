@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 import 'package:tennis_live_score/ui/screens/player_detail/player_detail_screen.dart';
+import 'package:tennis_live_score/ui/screens/scores/match_detail_screen.dart';
 
 import '../../../constants/color_const.dart';
 import '../../../controller/scores_controller.dart';
@@ -120,7 +121,7 @@ class ScoresScreen extends StatelessWidget {
                                                                 GestureDetector(
                                                               onTap: () {
                                                                 Get.to(() =>
-                                                                    const PlayerDetailScreen());
+                                                                    const MatchDetailScreen());
                                                               },
                                                               child: Padding(
                                                                 padding:
