@@ -42,7 +42,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                           width: 20.w,
                           height: 20.h,
                         ),
-                        title: CustomText(
+                        title: const CustomText(
                           text: "English",
                           //color: lightWhiteColor,
                         ),
@@ -100,7 +100,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                           width: 20.w,
                           height: 20.h,
                         ),
-                        title: CustomText(
+                        title: const CustomText(
                           text: "हिन्दी",
                           //color: lightWhiteColor,
                         ),

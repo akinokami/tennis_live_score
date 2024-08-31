@@ -10,6 +10,7 @@ class MatchDetailController extends GetxController {
   final isLoading = false.obs;
   Rx<Stats> stats = Stats().obs;
   RxInt selectedIndex = 0.obs;
+  RxInt selectedStatIndex = 0.obs;
   Rx<MatchDetail> matchDetail = MatchDetail().obs;
   final gameId = 0.obs;
 
@@ -22,6 +23,11 @@ class MatchDetailController extends GetxController {
   void changeIndex(int index) {
     selectedIndex.value = index;
   }
+
+  void changeStatIndex(int index) {
+    selectedStatIndex.value = index;
+  }
+
 
   Future<void> getMatchDetail() async {
     isLoading.value = true;
