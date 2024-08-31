@@ -1,3 +1,4 @@
+import 'package:tennis_live_score/models/match_detail.dart';
 import 'package:tennis_live_score/models/player_match.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
 import 'package:tennis_live_score/models/point_by_point.dart';
@@ -155,6 +156,35 @@ class ApiRepo {
   }
 
   ///MatchDetail
+  Future<MatchDetail> getMatchDetail(int gameId) async {
+    try {
+      final response = await apiUtils.get(
+          url: "${ApiConstant.baseUrl}Data/Games/GameCenter/",
+          queryParameters: {
+            "game": gameId,
+            "ShowNAOdds": true,
+            "withExpanded": true,
+            "WithNews": true,
+            "withexpandedstats": true,
+            "OddsFormat": 1,
+            "withstats": false,
+            "lang": 1,
+            "AppType": 2,
+            "AppVersion": 1365,
+            "uc": 0,
+            "tz": 41,
+            "theme": "dark",
+            "StoreVersion": 1365,
+            "athletesSupported": true,
+            "UserTestGroup": 41
+          });
+      final res = response.data;
+      return MatchDetail.fromJson(res);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
   Future<Stats> getStats(int gameId) async {
     try {
       final response = await apiUtils.get(
