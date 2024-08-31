@@ -97,7 +97,7 @@ class ScoresScreen extends StatelessWidget {
                                             itemBuilder: (context, index1) {
                                               return GestureDetector(
                                                 onTap: () {
-                                                  print('a');
+                                                  //
                                                 },
                                                 child: Column(
                                                   children: [
