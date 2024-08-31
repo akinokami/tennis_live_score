@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
+import 'package:tennis_live_score/ui/screens/scores/h_2_h_screen.dart';
 
 import '../../../controller/match_detail_controller.dart';
 import '../../custom_widgets/custom_text.dart';
@@ -1006,7 +1007,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                               )
                           ],
                         )),
-                    const CustomText(text: "Match Details")
+                    H2HScreen()
                   ]);
                 },
               ),
