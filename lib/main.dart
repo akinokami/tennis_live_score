@@ -1,3 +1,4 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -8,9 +9,9 @@ import 'package:tennis_live_score/utils/global.dart';
 
 import 'language/language.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  GetStorage.init();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 

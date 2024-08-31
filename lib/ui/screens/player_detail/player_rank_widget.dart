@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
+import 'package:tennis_live_score/utils/function.dart';
 import '../../../constants/dimen_const.dart';
 import '../../custom_widgets/custom_card.dart';
 
@@ -43,6 +44,31 @@ class PlayerRankingWidget extends StatelessWidget {
                           SizedBox(
                               width: 40.w,
                               child: CustomText(text: "${index + 1}.")),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(100.r),
+                            child: Image.network(
+                              imageUrl(
+                                  "Competitors:default${tableRanks?[index].competitor?.iD}.png",
+                                  "Competitors",
+                                  tableRanks?[index].competitor?.iD ?? 0),
+                              fit: BoxFit.cover,
+                              width: 17.w,
+                              height: 17.w,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(100.r)),
+                                child: Icon(
+                                  Icons.person,
+                                  size: 15.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5.w,
+                          ),
                           Expanded(
                               child: CustomText(
                                   text: tableRanks?[index].competitor?.name ??

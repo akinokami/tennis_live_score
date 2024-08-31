@@ -124,6 +124,51 @@ class SearchScreen extends StatelessWidget {
                                                                 TextAlign.right,
                                                           ),
                                                         ),
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.r),
+                                                          child: Image.network(
+                                                            (scoresController
+                                                                            .gameGroups[
+                                                                                index]
+                                                                            .games?[
+                                                                                index1]
+                                                                            .comps ??
+                                                                        [])
+                                                                    .isNotEmpty
+                                                                ? imageUrl(
+                                                                    "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[0].iD}.png",
+                                                                    "Competitors",
+                                                                    scoresController
+                                                                            .gameGroups[index]
+                                                                            .games?[index1]
+                                                                            .comps?[0]
+                                                                            .iD ??
+                                                                        0)
+                                                                : "",
+                                                            fit: BoxFit.cover,
+                                                            width: 17.w,
+                                                            height: 17.w,
+                                                            errorBuilder: (context,
+                                                                    error,
+                                                                    stackTrace) =>
+                                                                Container(
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              100.r)),
+                                                              child: Icon(
+                                                                Icons.person,
+                                                                size: 15.sp,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
                                                         SizedBox(
                                                           height: 35.h,
                                                           width: 103.w,
@@ -363,6 +408,47 @@ class SearchScreen extends StatelessWidget {
                                                                     ),
                                                                   ],
                                                                 ),
+                                                        ),
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.r),
+                                                          child: Image.network(
+                                                            (scoresController.gameGroups[index].games?[index1].comps ??
+                                                                            [])
+                                                                        .length >
+                                                                    1
+                                                                ? imageUrl(
+                                                                    "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[1].iD}.png",
+                                                                    "Competitors",
+                                                                    scoresController
+                                                                            .gameGroups[index]
+                                                                            .games?[index1]
+                                                                            .comps?[1]
+                                                                            .iD ??
+                                                                        0)
+                                                                : "",
+                                                            fit: BoxFit.cover,
+                                                            width: 17.w,
+                                                            height: 17.w,
+                                                            errorBuilder: (context,
+                                                                    error,
+                                                                    stackTrace) =>
+                                                                Container(
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              100.r)),
+                                                              child: Icon(
+                                                                Icons.person,
+                                                                size: 15.sp,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                         SizedBox(
                                                           width: 1.sh * 0.10,
