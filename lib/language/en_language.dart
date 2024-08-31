@@ -15,5 +15,6 @@ class EnLanguage {
     'general': 'General',
     'following': 'Following',
     'score': 'Score',
+    'matches': 'Matches',
   };
 }

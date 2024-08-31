@@ -15,5 +15,6 @@ class HindiLanguage {
     'general': 'सामान्य',
     'following': 'निम्नलिखित',
     'score': 'स्कोर',
+    'matches': 'मैच',
   };
 }
