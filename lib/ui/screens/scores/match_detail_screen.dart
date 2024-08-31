@@ -326,18 +326,18 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
-                                            width: 50.w,
+                                            width: 80.w,
                                             child: const Center(
                                                 child: CustomText(text: "9"))),
                                         SizedBox(
-                                            width: 200.w,
+                                            width: 150.w,
                                             child: Center(
                                                 child: CustomText(
                                                   text: "Aces",
                                                   fontSize: 10.sp,
                                                 ))),
                                         SizedBox(
-                                            width: 50.w,
+                                            width: 80.w,
                                             child: const Center(
                                                 child: CustomText(text: "1"))),
                                       ],
@@ -348,18 +348,18 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
-                                            width: 50.w,
+                                            width: 80.w,
                                             child: const Center(
                                                 child: CustomText(text: "1"))),
                                         SizedBox(
-                                            width: 200.w,
+                                            width: 150.w,
                                             child: Center(
                                                 child: CustomText(
                                                   text: "Break Points Won",
                                                   fontSize: 10.sp,
                                                 ))),
                                         SizedBox(
-                                            width: 50.w,
+                                            width: 80.w,
                                             child: const Center(
                                                 child: CustomText(text: "1"))),
                                       ],
@@ -400,7 +400,12 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                     Divider(
                                       color: secondaryColor,
                                     ),
-                                    Center(child: CustomText(text: "See All",fontSize: 10.sp,))
+                                   Center(child: GestureDetector(
+                                        onTap: (){
+                                          matchDetailController.changeIndex(1);
+
+                                        },
+                                        child: CustomText(text: "See All",fontSize: 10.sp,)))
                                   ],
                                 ),
                               ),
