@@ -21,6 +21,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
   List<String> matchDetailList = ["Details", "Stats", "Point by Point"];
+  List<String> statsDetailList = ["Match", "Set 1", "Set 2"];
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
@@ -46,7 +47,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
         children: [
           Padding(
             padding: EdgeInsets.all(8.w),
-            child: const Row(
+            child:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomText(
@@ -60,8 +61,15 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                     CustomText(
                       text: "2 - 1",
                     ),
-                    CustomText(
-                      text: "Ended",
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 3.h),
+                      decoration: BoxDecoration(
+                          color: secondaryColor,
+                          borderRadius: BorderRadius.circular(20.r)
+                      ),
+                      child: CustomText(
+                        text: "Ended",
+                      ),
                     ),
                   ],
                 ),
@@ -87,7 +95,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
           ),
           Expanded(
             child: TabBarView(controller: tabController, children: [
-              Column(
+             Obx(()=> Column(
                 children: [
                   kSizedBoxH10,
                   SizedBox(
@@ -116,7 +124,8 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                       physics: NeverScrollableScrollPhysics(),
                     ),
                   ),
-                  Container(
+                 if(matchDetailController.selectedIndex.value==0)
+                   Container(
                     padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
                         color: cardColor,
@@ -199,9 +208,37 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  if(matchDetailController.selectedIndex.value==1)
+                    SizedBox(
+                      height: 35.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return
+                            Obx(()=> GestureDetector(
+                              onTap: (){
+                                matchDetailController.changeIndex(index);
+                              },
+                              child: Container(
+
+                                  decoration: BoxDecoration(
+                                    color:matchDetailController.selectedIndex.value==index? secondaryColor: primaryColor,
+                                      border: Border.all(color:matchDetailController.selectedIndex.value==index? secondaryColor: primaryColor),
+                                      borderRadius: BorderRadius.circular(50.r)),
+                                  margin: EdgeInsets.symmetric(horizontal:15.w,vertical: 5.h),
+                                  padding: EdgeInsets.symmetric(horizontal:10.w,vertical: 5.h),
+                                  child: Center(child: CustomText(text: statsDetailList[index]))),
+
+                            ));
+                        },
+                        itemCount: statsDetailList.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                      ),
+                    ),
                 ],
-              ),
+              )),
               CustomText(text: "Match Details")
             ]),
           )
