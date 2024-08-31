@@ -9,6 +9,7 @@ import '../utils/constants.dart';
 import '../utils/function.dart';
 
 class ScoresController extends GetxController {
+  final searchTxtController = TextEditingController();
   final isLoading = false.obs;
 
   Rx<Scores> scores = Scores().obs;
@@ -16,6 +17,7 @@ class ScoresController extends GetxController {
 
   List<Games> gameList = <Games>[].obs;
   List<GameGroup> gameGroups = <GameGroup>[].obs;
+  List<GameGroup> gameFilterList = <GameGroup>[].obs;
   var selectedDate = DateTime.now().obs;
   final formattedDate = ''.obs;
 
@@ -38,6 +40,7 @@ class ScoresController extends GetxController {
     try {
       gameList.clear();
       gameGroups.clear();
+      gameFilterList.clear();
       final result = await ApiRepo().getScores(date, 3);
       scores.value = result;
       gameList = scores.value.games ?? [];
@@ -52,5 +55,27 @@ class ScoresController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void searchGame() async {
+    isLoading.value = true;
+    gameFilterList.clear();
+    if (searchTxtController.text.isNotEmpty) {
+      List<Games> gList = gameList
+          .where((element) =>
+              (element.comps?[0].name ?? '')
+                  .toLowerCase()
+                  .contains(searchTxtController.text.toLowerCase()) ||
+              (element.comps?[1].name ?? '')
+                  .toLowerCase()
+                  .contains(searchTxtController.text.toLowerCase()))
+          .toList();
+
+      var groupedItems = groupBy(gList, (Games item) => item.comp);
+      groupedItems.forEach((key, value) {
+        gameFilterList.add(GameGroup(compId: key, games: value));
+      });
+    }
+    isLoading.value = false;
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/controller/bottom_nav_controller.dart';
-import 'package:tennis_live_score/ui/custom_widgets/custom_text_field.dart';
 import 'package:tennis_live_score/ui/screens/scores/scores_screen.dart';
+import 'package:tennis_live_score/ui/screens/scores/search_screen.dart';
 import 'package:tennis_live_score/ui/screens/settings/settings_screen.dart';
 import '../../../constants/color_const.dart';
 import '../standing/standing_screen.dart';
@@ -83,15 +83,11 @@ class BottomNavigationMenu extends StatelessWidget {
           buildBottomNavigationMenu(context, bottomNavController),
       body: Obx(() => IndexedStack(
             index: bottomNavController.tabIndex.value,
-            children: [
-              const ScoresScreen(),
-              Center(
-                  child: CustomTextField(
-                controller: TextEditingController(),
-                hintText: "Menu 2",
-              )),
-              const StandingScreen(),
-              const SettingsScreen()
+            children: const [
+              ScoresScreen(),
+              SearchScreen(),
+              StandingScreen(),
+              SettingsScreen()
             ],
           )),
     ));

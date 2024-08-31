@@ -1,3 +1,4 @@
+import 'package:tennis_live_score/models/app_setting.dart';
 import 'package:tennis_live_score/models/match_detail.dart';
 import 'package:tennis_live_score/models/player_match.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
@@ -13,6 +14,30 @@ import '../utils/exception.dart';
 class ApiRepo {
   final ApiUtils apiUtils = ApiUtils();
 
+  ///AppSettings
+  Future<AppSetting> getAppSetting() async {
+    try {
+      final response = await apiUtils
+          .get(url: "${ApiConstant.baseUrl}Data/Init/", queryParameters: {
+        "category": "MOBILE_APP",
+        "SupportWebp": true,
+        "lang": 1,
+        "AppType": 2,
+        "AppVersion": 1365,
+        "uc": 0,
+        "tz": 41,
+        "theme": "dark",
+        "StoreVersion": 1365,
+        "athletesSupported": true
+      });
+      final res = response.data;
+      return AppSetting.fromJson(res);
+    } catch (e) {
+      throw CustomException(e.toString());
+    }
+  }
+
+  ///Score
   Future<Scores> getScores(String startDate, int sportId) async {
     try {
       final response = await apiUtils
@@ -44,18 +69,6 @@ class ApiRepo {
       throw CustomException(e.toString());
     }
   }
-
-  // Future<List<MatchModel>> getUpcomingList() async {
-  //   try {
-  //     final response =
-  //         await apiUtils.post(url: "${ApiConstant.baseUrl}upcoming/0");
-  //     print("response >>>>>$response");
-  //     final matches = response.data as List;
-  //     return matches.map((item) => MatchModel.fromJson(item)).toList();
-  //   } catch (e) {
-  //     throw CustomException(e.toString());
-  //   }
-  // }
 
   ///Standing
   Future<Standing> getStanding(String startDate, int sportId) async {
@@ -190,7 +203,6 @@ class ApiRepo {
       final response = await apiUtils.get(
           url: "${ApiConstant.baseUrl}Data/Games/GameCenter/Statistics/All/",
           queryParameters: {
-            "uid": 4899473126,
             "GameID": 4212433,
             "AppVersion": 1365,
             "tz": 41,

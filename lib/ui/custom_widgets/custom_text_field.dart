@@ -34,6 +34,7 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged ?? (value) {},
         onSubmitted: onSubmitted ?? (value) {},
         onEditingComplete: onEditingComplete ?? () {},
+        style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
           hintText: hintText ?? '',
           fillColor: fillColor ?? Colors.white,
