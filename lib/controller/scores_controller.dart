@@ -1,9 +1,12 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tennis_live_score/models/game_group.dart';
 
 import '../models/scores.dart';
 import '../services/api_repo.dart';
 import '../utils/constants.dart';
+import '../utils/function.dart';
 
 class ScoresController extends GetxController {
   final isLoading = false.obs;
@@ -11,20 +14,38 @@ class ScoresController extends GetxController {
   Rx<Scores> scores = Scores().obs;
   RxList<Countries> countries = <Countries>[].obs;
 
+  List<Games> gameList = <Games>[].obs;
+  List<GameGroup> gameGroups = <GameGroup>[].obs;
+  var selectedDate = DateTime.now().obs;
+  final formattedDate = ''.obs;
+
   @override
   void onInit() {
-    getScores();
+    formattedDate.value = formatDate(DateTime.now());
+    getScores(formattedDate.value);
+
     super.onInit();
   }
 
-  Future<void> getScores() async {
+  void updateSelectedDate(DateTime newDate) {
+    selectedDate.value = newDate;
+    formattedDate.value = formatDate(newDate);
+    getScores(formattedDate.value);
+  }
+
+  Future<void> getScores(String date) async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getScores("30/08/2024", 3);
+      gameList.clear();
+      gameGroups.clear();
+      final result = await ApiRepo().getScores(date, 3);
       scores.value = result;
-      countries.value = scores.value.countries!
-          .where((element) => element.gamesCount != 0)
-          .toList();
+      gameList = scores.value.games ?? [];
+
+      var groupedItems = groupBy(gameList, (Games item) => item.comp);
+      groupedItems.forEach((key, value) {
+        gameGroups.add(GameGroup(compId: key, games: value));
+      });
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
