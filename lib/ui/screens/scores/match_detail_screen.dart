@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
+import 'package:tennis_live_score/ui/screens/scores/h_2_h_screen.dart';
 
 import '../../../controller/match_detail_controller.dart';
 import '../../custom_widgets/custom_text.dart';
@@ -286,7 +287,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Stats"),
+                                    const CustomText(text: "Stats"),
                                     kSizedBoxH15,
                                     Row(
                                       mainAxisAlignment:
@@ -304,7 +305,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           animationDuration: 1200,
                                           lineWidth: 5.0,
                                           percent: 0.4,
-                                          center: CustomText(
+                                          center: const CustomText(
                                             text: "Points Won",
                                           ),
                                           circularStrokeCap:
@@ -723,7 +724,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Points"),
+                                    const CustomText(text: "Points"),
                                     kSizedBoxH15,
                                     Row(
                                       mainAxisAlignment:
@@ -741,7 +742,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           animationDuration: 1200,
                                           lineWidth: 5.0,
                                           percent: 0.4,
-                                          center: CustomText(
+                                          center: const CustomText(
                                             text: "Points Won",
                                           ),
                                           circularStrokeCap:
@@ -909,7 +910,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Games"),
+                                    const CustomText(text: "Games"),
                                     kSizedBoxH15,
 
                                     Row(
@@ -1006,7 +1007,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                               )
                           ],
                         )),
-                    const CustomText(text: "Match Details")
+                    H2HScreen()
                   ]);
                 },
               ),
