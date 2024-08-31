@@ -286,7 +286,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Stats"),
+                                    const CustomText(text: "Stats"),
                                     kSizedBoxH15,
                                     Row(
                                       mainAxisAlignment:
@@ -304,7 +304,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           animationDuration: 1200,
                                           lineWidth: 5.0,
                                           percent: 0.4,
-                                          center: CustomText(
+                                          center: const CustomText(
                                             text: "Points Won",
                                           ),
                                           circularStrokeCap:
@@ -723,7 +723,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Points"),
+                                    const CustomText(text: "Points"),
                                     kSizedBoxH15,
                                     Row(
                                       mainAxisAlignment:
@@ -741,7 +741,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           animationDuration: 1200,
                                           lineWidth: 5.0,
                                           percent: 0.4,
-                                          center: CustomText(
+                                          center: const CustomText(
                                             text: "Points Won",
                                           ),
                                           circularStrokeCap:
@@ -909,7 +909,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(text: "Games"),
+                                    const CustomText(text: "Games"),
                                     kSizedBoxH15,
 
                                     Row(
