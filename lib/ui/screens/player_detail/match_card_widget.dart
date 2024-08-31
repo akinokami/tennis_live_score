@@ -4,6 +4,7 @@ import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 
 import '../../../models/player_match.dart';
+import '../../../utils/function.dart';
 import '../../custom_widgets/custom_card.dart';
 
 class MatchCardWidget extends StatelessWidget {
@@ -145,14 +146,4 @@ class MatchCardWidget extends StatelessWidget {
           );
         });
   }
-}
-
-String subStringAfterSpace(String text) {
-  int index = text.indexOf(' ');
-  return text.substring(index, text.length);
-}
-
-String subStringBeforeSpace(String text) {
-  int index = text.indexOf(' ');
-  return text.substring(0, index);
 }

@@ -42,17 +42,83 @@ class StandingScreen extends StatelessWidget {
                                 .toList()
                                 .firstOrNull;
                         if (competition != null) {
+                          if ((competition.seasons ?? []).isNotEmpty) {
+                            if ((competition.seasons?[0].stages ?? []).length >
+                                1) {
+                              if ((competition.seasons?[0].stages?[1].groups ??
+                                      [])
+                                  .isNotEmpty) {
+                                if ((competition.seasons?[0].stages?[1]
+                                            .groups?[0].games ??
+                                        [])
+                                    .isNotEmpty) {
+                                  if ((competition
+                                              .seasons?[0]
+                                              .stages?[1]
+                                              .groups?[0]
+                                              .games?[0]
+                                              .game
+                                              ?.comps ??
+                                          [])
+                                      .isNotEmpty) {
+                                    Get.to(() => const StandingTableScreen(),
+                                        arguments: {
+                                          'title': standingController
+                                              .countries[index].name,
+                                          'compId': competition
+                                                  .seasons?[0]
+                                                  .stages?[1]
+                                                  .groups?[0]
+                                                  .games?[0]
+                                                  .game
+                                                  ?.comps?[0]
+                                                  .mainComp ??
+                                              0
+                                        });
+                                  } else {
+                                    Get.to(() => const StandingTableScreen(),
+                                        arguments: {
+                                          'title': standingController
+                                              .countries[index].name,
+                                          'compId': 0
+                                        });
+                                  }
+                                } else {
+                                  Get.to(() => const StandingTableScreen(),
+                                      arguments: {
+                                        'title': standingController
+                                            .countries[index].name,
+                                        'compId': 0
+                                      });
+                                }
+                              } else {
+                                Get.to(() => const StandingTableScreen(),
+                                    arguments: {
+                                      'title': standingController
+                                          .countries[index].name,
+                                      'compId': 0
+                                    });
+                              }
+                            } else {
+                              Get.to(() => const StandingTableScreen(),
+                                  arguments: {
+                                    'title': standingController
+                                        .countries[index].name,
+                                    'compId': 0
+                                  });
+                            }
+                          } else {
+                            Get.to(() => const StandingTableScreen(),
+                                arguments: {
+                                  'title':
+                                      standingController.countries[index].name,
+                                  'compId': 0
+                                });
+                          }
+                        } else {
                           Get.to(() => const StandingTableScreen(), arguments: {
                             'title': standingController.countries[index].name,
-                            'compId': competition
-                                    .seasons?[0]
-                                    .stages?[1]
-                                    .groups?[0]
-                                    .games?[0]
-                                    .game
-                                    ?.comps?[0]
-                                    .mainComp ??
-                                0
+                            'compId': 0
                           });
                         }
                       },
