@@ -31,8 +31,6 @@ class DetailWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-
-                  Row(children: [Column(children: [CustomText(text: text)],)],)
                   SizedBox(
                       width: 20.w,
                       child: Center(
