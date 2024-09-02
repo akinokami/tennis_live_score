@@ -1,5 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../../constants/color_const.dart';
@@ -31,7 +32,7 @@ class SplashScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomText(
-                    text: 'Please wait',
+                    text: 'please_wait'.tr,
                     color: Colors.white,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold),
