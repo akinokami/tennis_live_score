@@ -5,6 +5,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import '../../../constants/color_const.dart';
 import '../../../constants/dimen_const.dart';
 import '../../../models/match_detail.dart';
+import '../../../utils/function.dart';
 import '../../custom_widgets/custom_text.dart';
 
 class DetailWidget extends StatelessWidget {
@@ -124,12 +125,10 @@ class DetailWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return games?.statistics?[index].type != 23
                         ? Padding(
-                            padding: EdgeInsets.only(bottom: 15.h),
+                            padding: EdgeInsets.only(bottom: 10.h),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  width: 80.w,
+                                Expanded(
                                   child: Center(
                                     child: CustomText(
                                       text: (games?.statistics?[index].vals ??
@@ -140,15 +139,14 @@ class DetailWidget extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                    width: 150.w,
+                                Expanded(
                                     child: Center(
                                         child: CustomText(
-                                      text: "Aces",
-                                      fontSize: 10.sp,
-                                    ))),
-                                SizedBox(
-                                  width: 80.w,
+                                  text: findStatsType(
+                                      games?.statistics?[index].type ?? 0),
+                                  fontSize: 10.sp,
+                                ))),
+                                Expanded(
                                   child: Center(
                                     child: CustomText(
                                       text: (games?.statistics?[index].vals ??
@@ -164,7 +162,7 @@ class DetailWidget extends StatelessWidget {
                             ),
                           )
                         : Padding(
-                            padding: EdgeInsets.only(bottom: 15.h),
+                            padding: EdgeInsets.only(bottom: 10.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -205,7 +203,6 @@ class DetailWidget extends StatelessWidget {
                           );
                   },
                 ),
-                kSizedBoxH15,
                 Divider(
                   color: secondaryColor,
                 ),

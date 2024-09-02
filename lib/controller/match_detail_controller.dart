@@ -9,13 +9,14 @@ import '../utils/constants.dart';
 
 class MatchDetailController extends GetxController {
   final isLoading = false.obs;
-
+  final isLoadingOne = false.obs;
   RxInt selectedIndex = 0.obs;
 
-  RxInt selectedStatIndex = 0.obs;
   RxInt selectedPBPIndex = 0.obs;
   Rx<MatchDetail> matchDetail = MatchDetail().obs;
   Rx<Stats> stats = Stats().obs;
+  Rx<StatisticsFilters?> selectedStats = StatisticsFilters().obs;
+  Rx<Statics?> selectedStatics = Statics().obs;
   Rx<PointByPoint> pointByPoint = PointByPoint().obs;
   final gameId = 0.obs;
 
@@ -33,11 +34,20 @@ class MatchDetailController extends GetxController {
     //   getPointByPoint();
     // }
   }
-void changePBPIndex(int index) {
+
+  void changePBPIndex(int index) {
     selectedPBPIndex.value = index;
   }
-  void changeStatIndex(int index) {
-    selectedStatIndex.value = index;
+
+  void selectStats(StatisticsFilters? s) {
+    isLoadingOne.value == true;
+    selectedStats.value = s;
+    if ((stats.value.statistics ?? []).isNotEmpty) {
+      selectedStatics.value = stats.value.statistics!
+          .where((element) => element.filterId == selectedStats.value?.iD)
+          .firstOrNull;
+    }
+    isLoadingOne.value == false;
   }
 
   Future<void> getMatchDetail() async {
@@ -58,6 +68,15 @@ void changePBPIndex(int index) {
     try {
       final result = await ApiRepo().getStats(gameId.value);
       stats.value = result;
+
+      if ((stats.value.statisticsFilters ?? []).isNotEmpty) {
+        selectedStats.value = stats.value.statisticsFilters?.firstOrNull;
+        if ((stats.value.statistics ?? []).isNotEmpty) {
+          selectedStatics.value = stats.value.statistics!
+              .where((element) => element.filterId == selectedStats.value?.iD)
+              .firstOrNull;
+        }
+      }
     } catch (e) {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);

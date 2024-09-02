@@ -2,7 +2,7 @@ class Stats {
   int? lastUpdateID;
   int? gameID;
   List<StatisticsFilters>? statisticsFilters;
-  List<Statistics>? statistics;
+  List<Statics>? statistics;
   int? tTL;
   String? cacheTTL;
 
@@ -24,9 +24,9 @@ class Stats {
       });
     }
     if (json['Statistics'] != null) {
-      statistics = <Statistics>[];
+      statistics = <Statics>[];
       json['Statistics'].forEach((v) {
-        statistics!.add(Statistics.fromJson(v));
+        statistics!.add(Statics.fromJson(v));
       });
     }
     tTL = json['TTL'];
@@ -75,13 +75,13 @@ class StatisticsFilters {
   }
 }
 
-class Statistics {
+class Statics {
   int? filterId;
   List<StatisticsOne>? statistics;
 
-  Statistics({this.filterId, this.statistics});
+  Statics({this.filterId, this.statistics});
 
-  Statistics.fromJson(Map<String, dynamic> json) {
+  Statics.fromJson(Map<String, dynamic> json) {
     filterId = json['FilterId'];
     if (json['Statistics'] != null) {
       statistics = <StatisticsOne>[];
