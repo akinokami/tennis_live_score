@@ -285,6 +285,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           .matchDetail.value.games?[0],
                                       onTap: () {
                                         matchDetailController.changeIndex(1);
+                                        matchDetailController.getStats();
                                       },
                                     ),
 

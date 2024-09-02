@@ -176,12 +176,19 @@ class SearchScreen extends StatelessWidget {
                                                           height: 40.h,
                                                           width: 103.w,
                                                           child: scoresController
-                                                                      .gameFilterList[
-                                                                          index]
-                                                                      .games?[
-                                                                          index1]
-                                                                      .winner ==
-                                                                  -1
+                                                                          .gameFilterList[
+                                                                              index]
+                                                                          .games?[
+                                                                              index1]
+                                                                          .winner ==
+                                                                      -1 &&
+                                                                  scoresController
+                                                                          .gameFilterList[
+                                                                              index]
+                                                                          .games?[
+                                                                              index1]
+                                                                          .active ==
+                                                                      false
                                                               ? Center(
                                                                   child:
                                                                       CustomText(
