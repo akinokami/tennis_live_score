@@ -5,6 +5,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/screens/scores/h_2_h_screen.dart';
+import 'package:tennis_live_score/utils/function.dart';
 
 import '../../../controller/match_detail_controller.dart';
 import '../../custom_widgets/custom_loading.dart';
@@ -64,22 +65,78 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  CustomText(
-                                    text: matchDetailController.matchDetail
-                                            .value.games?[0].comps?[0].name ??
-                                        '',
+                                  SizedBox(
+                                    width: 1.sw * 0.25,
+                                    child: CustomText(
+                                      text: ((matchDetailController.matchDetail
+                                                      .value.games?[0].comps ??
+                                                  [])
+                                              .isNotEmpty)
+                                          ? (matchDetailController
+                                                  .matchDetail
+                                                  .value
+                                                  .games?[0]
+                                                  .comps?[0]
+                                                  .name ??
+                                              '')
+                                          : '',
+                                      maxLines: 2,
+                                      textAlign: TextAlign.right,
+                                    ),
                                   ),
                                   Column(
                                     children: [
-                                      const CustomText(
-                                        text: "08/30",
+                                      CustomText(
+                                        text: subStringBeforeSpace(
+                                            matchDetailController.matchDetail
+                                                    .value.games?[0].sTime ??
+                                                ''),
                                       ),
-                                      const CustomText(
-                                        text: "2 - 1",
+                                      Row(
+                                        children: [
+                                          CustomText(
+                                              text: ((matchDetailController
+                                                              .matchDetail
+                                                              .value
+                                                              .games?[0]
+                                                              .scrs ??
+                                                          [])
+                                                      .isNotEmpty)
+                                                  ? (matchDetailController
+                                                              .matchDetail
+                                                              .value
+                                                              .games?[0]
+                                                              .scrs?[0]) !=
+                                                          -1.0
+                                                      ? "${matchDetailController.matchDetail.value.games?[0].scrs?[0].toStringAsFixed(0)}"
+                                                      : '-'
+                                                  : '-'),
+                                          const CustomText(
+                                            text: " - ",
+                                          ),
+                                          CustomText(
+                                              text: ((matchDetailController
+                                                                  .matchDetail
+                                                                  .value
+                                                                  .games?[0]
+                                                                  .scrs ??
+                                                              [])
+                                                          .length >
+                                                      1)
+                                                  ? (matchDetailController
+                                                              .matchDetail
+                                                              .value
+                                                              .games?[0]
+                                                              .scrs?[1]) !=
+                                                          -1.0
+                                                      ? "${matchDetailController.matchDetail.value.games?[0].scrs?[1].toStringAsFixed(0)}"
+                                                      : '-'
+                                                  : '-'),
+                                        ],
                                       ),
                                       Container(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 10.w, vertical: 3.h),
+                                            horizontal: 10.w, vertical: 1.h),
                                         decoration: BoxDecoration(
                                             color: secondaryColor,
                                             borderRadius:
@@ -90,8 +147,27 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       ),
                                     ],
                                   ),
-                                  const CustomText(
-                                    text: "Player 2",
+                                  SizedBox(
+                                    width: 1.sw * 0.25,
+                                    child: CustomText(
+                                      text: ((matchDetailController
+                                                          .matchDetail
+                                                          .value
+                                                          .games?[0]
+                                                          .comps ??
+                                                      [])
+                                                  .length >
+                                              1)
+                                          ? (matchDetailController
+                                                  .matchDetail
+                                                  .value
+                                                  .games?[0]
+                                                  .comps?[1]
+                                                  .name ??
+                                              '')
+                                          : '',
+                                      maxLines: 2,
+                                    ),
                                   ),
                                 ],
                               ),
