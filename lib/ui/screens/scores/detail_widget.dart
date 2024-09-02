@@ -28,210 +28,196 @@ class DetailWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomText(text: "Scoreboard"),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                      width: 20.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "S1",
-                        color: greyColor,
-                      ))),
-                  kSizedBoxW10,
-                  SizedBox(
-                      width: 20.w,
-                      child: Center(
-                          child: CustomText(text: "S2", color: greyColor))),
-                  kSizedBoxW10,
-                  SizedBox(
-                      width: 20.w,
-                      child: Center(
-                          child: CustomText(text: "S3", color: greyColor))),
-                  kSizedBoxW10,
-                  SizedBox(
-                      width: 50.w,
-                      child: Center(
-                          child: CustomText(text: "Sets", color: greyColor))),
-                  kSizedBoxW10,
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Center(child: CustomText(text: "Novak Djoashdfk")),
-                  Row(
-                    children: [
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 50.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                    ],
-                  )
-                ],
-              ),
-              kSizedBoxH5,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Center(child: CustomText(text: "Rafael Nadal")),
-                  Row(
-                    children: [
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 20.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                      SizedBox(
-                          width: 50.w,
-                          child: const Center(child: CustomText(text: "6"))),
-                      kSizedBoxW10,
-                    ],
-                  )
-                ],
+              SizedBox(
+                height: 70.h,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const CustomText(
+                            text: '',
+                          ),
+                          CustomText(
+                            text: ((games?.comps ?? []).isNotEmpty)
+                                ? (games?.comps?[0].name ?? '')
+                                : '',
+                          ),
+                          CustomText(
+                            text: ((games?.comps ?? []).length > 1)
+                                ? (games?.comps?[1].name ?? '')
+                                : '',
+                          ),
+                        ],
+                      ),
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: games?.scoreboard?.columns?.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.only(right: 7.w),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                    text: games?.scoreboard?.columns?[index]
+                                            .sName ??
+                                        ''),
+                                CustomText(
+                                  text: (games?.scoreboard?.columns?[index]
+                                                  .scores ??
+                                              [])
+                                          .isNotEmpty
+                                      ? "${games?.scoreboard?.columns?[index].scores?[0] ?? 0}"
+                                      : '',
+                                  color: games?.scoreboard?.columns?[index]
+                                              .winner ==
+                                          1
+                                      ? secondaryColor
+                                      : Colors.white,
+                                ),
+                                CustomText(
+                                  text: (games?.scoreboard?.columns?[index]
+                                                      .scores ??
+                                                  [])
+                                              .length >
+                                          1
+                                      ? "${games?.scoreboard?.columns?[index].scores?[1] ?? 0}"
+                                      : '',
+                                  color: games?.scoreboard?.columns?[index]
+                                              .winner ==
+                                          2
+                                      ? secondaryColor
+                                      : Colors.white,
+                                ),
+                              ],
+                            ),
+                          );
+                        })
+                  ],
+                ),
               ),
             ],
           ),
         ),
         kSizedBoxH20,
-        Container(
-          padding: EdgeInsets.all(10.w),
-          decoration: BoxDecoration(
-              color: cardColor, borderRadius: BorderRadius.circular(10.r)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomText(text: "Stats"),
-              kSizedBoxH15,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomText(
-                    text: "66",
-                    color: secondaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
-                  ),
-                  CircularPercentIndicator(
-                    radius: 50.0,
-                    animation: true,
-                    animationDuration: 1200,
-                    lineWidth: 5.0,
-                    percent: 0.4,
-                    center: const CustomText(
-                      text: "Points Won",
-                    ),
-                    circularStrokeCap: CircularStrokeCap.butt,
-                    backgroundColor: secondaryColor,
-                    progressColor: Colors.green,
-                  ),
-                  CustomText(
-                    text: "43",
-                    color: Colors.green,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.sp,
-                  )
-                ],
-              ),
-              kSizedBoxH15,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                      width: 80.w,
-                      child: const Center(child: CustomText(text: "9"))),
-                  SizedBox(
-                      width: 150.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "Aces",
-                        fontSize: 10.sp,
-                      ))),
-                  SizedBox(
-                      width: 80.w,
-                      child: const Center(child: CustomText(text: "1"))),
-                ],
-              ),
-              kSizedBoxH15,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                      width: 80.w,
-                      child: const Center(child: CustomText(text: "1"))),
-                  SizedBox(
-                      width: 150.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "Break Points Won",
-                        fontSize: 10.sp,
-                      ))),
-                  SizedBox(
-                      width: 80.w,
-                      child: const Center(child: CustomText(text: "1"))),
-                ],
-              ),
-              kSizedBoxH15,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                      width: 80.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "1",
-                        fontSize: 10.sp,
-                        maxLines: 2,
-                      ))),
-                  SizedBox(
-                      width: 150.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "Double Faults",
-                        fontSize: 10.sp,
-                        maxLines: 2,
-                      ))),
-                  SizedBox(
-                      width: 80.w,
-                      child: Center(
-                          child: CustomText(
-                        text: "1",
-                        fontSize: 10.sp,
-                        maxLines: 2,
-                      ))),
-                ],
-              ),
-              kSizedBoxH15,
-              Divider(
-                color: secondaryColor,
-              ),
-              Center(
-                  child: GestureDetector(
-                      onTap: onTap,
-                      child: CustomText(
-                        text: "See All",
-                        fontSize: 10.sp,
-                      )))
-            ],
+        Visibility(
+          visible: games?.winner != -1,
+          child: Container(
+            padding: EdgeInsets.all(10.w),
+            decoration: BoxDecoration(
+                color: cardColor, borderRadius: BorderRadius.circular(10.r)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomText(text: "Stats"),
+                kSizedBoxH15,
+                ListView.builder(
+                  shrinkWrap: true,
+                  reverse: true,
+                  itemCount: games?.statistics?.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return games?.statistics?[index].type != 23
+                        ? Padding(
+                            padding: EdgeInsets.only(bottom: 15.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 80.w,
+                                  child: Center(
+                                    child: CustomText(
+                                      text: (games?.statistics?[index].vals ??
+                                                  [])
+                                              .isNotEmpty
+                                          ? "${games?.statistics?[index].vals?[0] ?? 0}"
+                                          : "0",
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                    width: 150.w,
+                                    child: Center(
+                                        child: CustomText(
+                                      text: "Aces",
+                                      fontSize: 10.sp,
+                                    ))),
+                                SizedBox(
+                                  width: 80.w,
+                                  child: Center(
+                                    child: CustomText(
+                                      text: (games?.statistics?[index].vals ??
+                                                      [])
+                                                  .length >
+                                              1
+                                          ? "${games?.statistics?[index].vals?[1] ?? 0}"
+                                          : "0",
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.only(bottom: 15.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CustomText(
+                                  text: (games?.statistics?[index].vals ?? [])
+                                          .isNotEmpty
+                                      ? "${games?.statistics?[index].vals?[0] ?? 0}"
+                                      : "0",
+                                  color: secondaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.sp,
+                                ),
+                                CircularPercentIndicator(
+                                  radius: 50.0,
+                                  animation: true,
+                                  animationDuration: 1200,
+                                  lineWidth: 5.0,
+                                  percent: 0.4,
+                                  center: const CustomText(
+                                    text: "Points Won",
+                                  ),
+                                  circularStrokeCap: CircularStrokeCap.butt,
+                                  backgroundColor: secondaryColor,
+                                  progressColor: Colors.green,
+                                ),
+                                CustomText(
+                                  text: (games?.statistics?[index].vals ?? [])
+                                              .length >
+                                          1
+                                      ? "${games?.statistics?[index].vals?[1] ?? 0}"
+                                      : "0",
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.sp,
+                                )
+                              ],
+                            ),
+                          );
+                  },
+                ),
+                kSizedBoxH15,
+                Divider(
+                  color: secondaryColor,
+                ),
+                Center(
+                    child: GestureDetector(
+                        onTap: onTap,
+                        child: CustomText(
+                          text: "See All",
+                          fontSize: 10.sp,
+                        )))
+              ],
+            ),
           ),
         ),
       ],
