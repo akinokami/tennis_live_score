@@ -5,7 +5,8 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/ui/screens/scores/detail_widget.dart';
-import 'package:tennis_live_score/ui/screens/scores/h_2_h_screen.dart';
+import 'package:tennis_live_score/ui/screens/scores/h_2_h_widget.dart';
+import 'package:tennis_live_score/ui/screens/scores/point_by_point_widget.dart';
 import 'package:tennis_live_score/utils/function.dart';
 
 import '../../../controller/match_detail_controller.dart';
@@ -24,8 +25,8 @@ class MatchDetailScreen extends StatefulWidget {
 class _MatchDetailScreenState extends State<MatchDetailScreen>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
-  List<String> matchDetailList = ["Details", "Stats", "Point by Point"];
-  List<String> statsDetailList = ["Match", "Set 1", "Set 2"];
+  List<String> matchDetailList = ["details".tr, "stats".tr, "point_by_point".tr];
+  List<String> statsDetailList = ["match".tr, "set1".tr, "set2".tr];
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
@@ -285,7 +286,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                       .changeIndex(1);
                                                 },
                                               ),
-
+///stats
                                             if (matchDetailController
                                                     .selectedIndex.value ==
                                                 1)
@@ -560,7 +561,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                   ],
                                                 ),
                                               ),
-                                            kSizedBoxH20,
+                                            if (matchDetailController
+                                                .selectedIndex.value ==
+                                                1) kSizedBoxH20,
                                             if (matchDetailController
                                                     .selectedIndex.value ==
                                                 1)
@@ -656,7 +659,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                   ],
                                                 ),
                                               ),
-                                            kSizedBoxH20,
+                                            if (matchDetailController
+                                                .selectedIndex.value ==
+                                                1) kSizedBoxH20,
                                             if (matchDetailController
                                                         .selectedStatIndex
                                                         .value ==
@@ -892,7 +897,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                   ],
                                                 ),
                                               ),
-                                            kSizedBoxH20,
+                                            if (matchDetailController
+                                                .selectedStatIndex
+                                                .value ==
+                                                0 &&
+                                                matchDetailController
+                                                    .selectedIndex.value ==
+                                                    1) kSizedBoxH20,
                                             if (matchDetailController
                                                     .selectedIndex.value ==
                                                 1)
@@ -1028,7 +1039,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                     kSizedBoxH15,
                                                   ],
                                                 ),
-                                              )
+                                              ),
+                                            if(matchDetailController.selectedIndex.value==2)
+                                              PointByPointWidget(pointByPoint: matchDetailController.pointByPoint.value,)
                                           ],
                                         )),
                                     H2HScreen(
