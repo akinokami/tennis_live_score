@@ -1037,6 +1037,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                           .value
                                           .games?[0]
                                           .lastMatches,
+                                      competitions: matchDetailController
+                                          .matchDetail
+                                          .value
+                                          .competitions,
+                                      countries: matchDetailController
+                                          .matchDetail
+                                          .value
+                                          .countries,
                                     )
                                   ]);
                             },
