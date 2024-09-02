@@ -6,6 +6,7 @@ class AppSetting {
   List<Languages>? languages;
   List<TimeZones>? timeZones;
   List<Terms>? terms;
+  List<SportTypes>? sportTypes;
   LogoSources? logoSources;
   ImageSources? imageSources;
   CurrTime? currTime;
@@ -19,6 +20,7 @@ class AppSetting {
       this.languages,
       this.timeZones,
       this.terms,
+      this.sportTypes,
       this.logoSources,
       this.imageSources,
       this.currTime,
@@ -45,6 +47,12 @@ class AppSetting {
       terms = <Terms>[];
       json['Terms'].forEach((v) {
         terms!.add(Terms.fromJson(v));
+      });
+    }
+    if (json['SportTypes'] != null) {
+      sportTypes = <SportTypes>[];
+      json['SportTypes'].forEach((v) {
+        sportTypes!.add(SportTypes.fromJson(v));
       });
     }
 
@@ -74,6 +82,9 @@ class AppSetting {
     }
     if (terms != null) {
       data['Terms'] = terms!.map((v) => v.toJson()).toList();
+    }
+    if (sportTypes != null) {
+      data['SportTypes'] = sportTypes!.map((v) => v.toJson()).toList();
     }
 
     if (logoSources != null) {
@@ -178,6 +189,238 @@ class Terms {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['AliasName'] = aliasName;
     data['Name'] = name;
+    return data;
+  }
+}
+
+class SportTypes {
+  int? iD;
+  String? name;
+  String? shortName;
+  String? nameForURL;
+  String? willNotPlayTitle;
+  String? doubtfulTitle;
+  List<Statuses>? statuses;
+  List<Stages>? stages;
+  int? currResultStage;
+  List<EventTypes>? eventTypes;
+  // List<VarEventTypes>? varEventTypes;
+  List<StatisticTypes>? statisticTypes;
+  List<StatisticCategories>? statisticCategories;
+  List<AthletsStatisticTypes>? athletsStatisticTypes;
+  List<CompetitorStatisticTypes>? competitorStatisticTypes;
+  List<AthletsStatisticCategories>? athletsStatisticCategories;
+  List<Positions>? positions;
+  List<FormationPositions>? formationPositions;
+  int? clockDirection;
+  int? orderLevel;
+  int? eventsCategories;
+  bool? tieSupported;
+  bool? hasInternationalClubs;
+  bool? hasInternationalNations;
+  double? gameTimeTolerance;
+  int? imgVer;
+  int? defaultCompetitorType;
+  // List<SurfaceTypes>? surfaceTypes;
+  bool? showEventsOrderFromBottom;
+  //List<CricketPlayingStatuses>? cricketPlayingStatuses;
+
+  SportTypes({
+    this.iD,
+    this.name,
+    this.shortName,
+    this.nameForURL,
+    this.willNotPlayTitle,
+    this.doubtfulTitle,
+    this.statuses,
+    this.stages,
+    this.currResultStage,
+    this.eventTypes,
+    // this.varEventTypes,
+    this.statisticTypes,
+    this.statisticCategories,
+    this.athletsStatisticTypes,
+    this.competitorStatisticTypes,
+    this.athletsStatisticCategories,
+    this.positions,
+    this.formationPositions,
+    this.clockDirection,
+    this.orderLevel,
+    this.eventsCategories,
+    this.tieSupported,
+    this.hasInternationalClubs,
+    this.hasInternationalNations,
+    this.gameTimeTolerance,
+    this.imgVer,
+    this.defaultCompetitorType,
+    // this.surfaceTypes,
+    this.showEventsOrderFromBottom,
+    // this.cricketPlayingStatuses
+  });
+
+  SportTypes.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    shortName = json['ShortName'];
+    nameForURL = json['NameForURL'];
+    willNotPlayTitle = json['WillNotPlayTitle'];
+    doubtfulTitle = json['DoubtfulTitle'];
+    if (json['Statuses'] != null) {
+      statuses = <Statuses>[];
+      json['Statuses'].forEach((v) {
+        statuses!.add(Statuses.fromJson(v));
+      });
+    }
+    if (json['Stages'] != null) {
+      stages = <Stages>[];
+      json['Stages'].forEach((v) {
+        stages!.add(Stages.fromJson(v));
+      });
+    }
+    currResultStage = json['CurrResultStage'];
+    if (json['EventTypes'] != null) {
+      eventTypes = <EventTypes>[];
+      json['EventTypes'].forEach((v) {
+        eventTypes!.add(EventTypes.fromJson(v));
+      });
+    }
+    // if (json['VarEventTypes'] != null) {
+    //   varEventTypes = <VarEventTypes>[];
+    //   json['VarEventTypes'].forEach((v) {
+    //     varEventTypes!.add(VarEventTypes.fromJson(v));
+    //   });
+    // }
+    if (json['StatisticTypes'] != null) {
+      statisticTypes = <StatisticTypes>[];
+      json['StatisticTypes'].forEach((v) {
+        statisticTypes!.add(StatisticTypes.fromJson(v));
+      });
+    }
+    if (json['StatisticCategories'] != null) {
+      statisticCategories = <StatisticCategories>[];
+      json['StatisticCategories'].forEach((v) {
+        statisticCategories!.add(StatisticCategories.fromJson(v));
+      });
+    }
+    if (json['AthletsStatisticTypes'] != null) {
+      athletsStatisticTypes = <AthletsStatisticTypes>[];
+      json['AthletsStatisticTypes'].forEach((v) {
+        athletsStatisticTypes!.add(AthletsStatisticTypes.fromJson(v));
+      });
+    }
+    if (json['CompetitorStatisticTypes'] != null) {
+      competitorStatisticTypes = <CompetitorStatisticTypes>[];
+      json['CompetitorStatisticTypes'].forEach((v) {
+        competitorStatisticTypes!.add(CompetitorStatisticTypes.fromJson(v));
+      });
+    }
+    if (json['AthletsStatisticCategories'] != null) {
+      athletsStatisticCategories = <AthletsStatisticCategories>[];
+      json['AthletsStatisticCategories'].forEach((v) {
+        athletsStatisticCategories!.add(AthletsStatisticCategories.fromJson(v));
+      });
+    }
+    if (json['Positions'] != null) {
+      positions = <Positions>[];
+      json['Positions'].forEach((v) {
+        positions!.add(Positions.fromJson(v));
+      });
+    }
+    if (json['FormationPositions'] != null) {
+      formationPositions = <FormationPositions>[];
+      json['FormationPositions'].forEach((v) {
+        formationPositions!.add(FormationPositions.fromJson(v));
+      });
+    }
+    clockDirection = json['ClockDirection'];
+    orderLevel = json['OrderLevel'];
+    eventsCategories = json['EventsCategories'];
+    tieSupported = json['TieSupported'];
+    hasInternationalClubs = json['HasInternationalClubs'];
+    hasInternationalNations = json['HasInternationalNations'];
+    gameTimeTolerance = json['GameTimeTolerance'];
+    imgVer = json['ImgVer'];
+    defaultCompetitorType = json['DefaultCompetitorType'];
+    // if (json['SurfaceTypes'] != null) {
+    //   surfaceTypes = <SurfaceTypes>[];
+    //   json['SurfaceTypes'].forEach((v) {
+    //     surfaceTypes!.add(SurfaceTypes.fromJson(v));
+    //   });
+    // }
+    showEventsOrderFromBottom = json['ShowEventsOrderFromBottom'];
+    // if (json['CricketPlayingStatuses'] != null) {
+    //   cricketPlayingStatuses = <CricketPlayingStatuses>[];
+    //   json['CricketPlayingStatuses'].forEach((v) {
+    //     cricketPlayingStatuses!.add(CricketPlayingStatuses.fromJson(v));
+    //   });
+    // }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['ShortName'] = shortName;
+    data['NameForURL'] = nameForURL;
+    data['WillNotPlayTitle'] = willNotPlayTitle;
+    data['DoubtfulTitle'] = doubtfulTitle;
+    if (statuses != null) {
+      data['Statuses'] = statuses!.map((v) => v.toJson()).toList();
+    }
+    if (stages != null) {
+      data['Stages'] = stages!.map((v) => v.toJson()).toList();
+    }
+    data['CurrResultStage'] = currResultStage;
+    if (eventTypes != null) {
+      data['EventTypes'] = eventTypes!.map((v) => v.toJson()).toList();
+    }
+    // if (varEventTypes != null) {
+    //   data['VarEventTypes'] =
+    //       varEventTypes!.map((v) => v.toJson()).toList();
+    // }
+    if (statisticTypes != null) {
+      data['StatisticTypes'] = statisticTypes!.map((v) => v.toJson()).toList();
+    }
+    if (statisticCategories != null) {
+      data['StatisticCategories'] =
+          statisticCategories!.map((v) => v.toJson()).toList();
+    }
+    if (athletsStatisticTypes != null) {
+      data['AthletsStatisticTypes'] =
+          athletsStatisticTypes!.map((v) => v.toJson()).toList();
+    }
+    if (competitorStatisticTypes != null) {
+      data['CompetitorStatisticTypes'] =
+          competitorStatisticTypes!.map((v) => v.toJson()).toList();
+    }
+    if (athletsStatisticCategories != null) {
+      data['AthletsStatisticCategories'] =
+          athletsStatisticCategories!.map((v) => v.toJson()).toList();
+    }
+    if (positions != null) {
+      data['Positions'] = positions!.map((v) => v.toJson()).toList();
+    }
+    if (formationPositions != null) {
+      data['FormationPositions'] =
+          formationPositions!.map((v) => v.toJson()).toList();
+    }
+    data['ClockDirection'] = clockDirection;
+    data['OrderLevel'] = orderLevel;
+    data['EventsCategories'] = eventsCategories;
+    data['TieSupported'] = tieSupported;
+    data['HasInternationalClubs'] = hasInternationalClubs;
+    data['HasInternationalNations'] = hasInternationalNations;
+    data['GameTimeTolerance'] = gameTimeTolerance;
+    data['ImgVer'] = imgVer;
+    data['DefaultCompetitorType'] = defaultCompetitorType;
+    // if (surfaceTypes != null) {
+    //   data['SurfaceTypes'] = surfaceTypes!.map((v) => v.toJson()).toList();
+    // }
+    data['ShowEventsOrderFromBottom'] = showEventsOrderFromBottom;
+    // if (cricketPlayingStatuses != null) {
+    //   data['CricketPlayingStatuses'] =
+    //       cricketPlayingStatuses!.map((v) => v.toJson()).toList();
+    // }
     return data;
   }
 }
@@ -623,6 +866,62 @@ class PossibleValues {
     data['ID'] = iD;
     data['Value'] = value;
     data['Name'] = name;
+    return data;
+  }
+}
+
+class StatisticCategories {
+  int? iD;
+  String? name;
+  int? orderLevel;
+  List<OrderByPosition>? orderByPosition;
+  //List<SubCategories>? subCategories;
+  String? subject;
+  String? sName;
+
+  StatisticCategories(
+      {this.iD,
+      this.name,
+      this.orderLevel,
+      this.orderByPosition,
+      // this.subCategories,
+      this.subject,
+      this.sName});
+
+  StatisticCategories.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    orderLevel = json['OrderLevel'];
+    if (json['OrderByPosition'] != null) {
+      orderByPosition = <OrderByPosition>[];
+      json['OrderByPosition'].forEach((v) {
+        orderByPosition!.add(OrderByPosition.fromJson(v));
+      });
+    }
+    // if (json['SubCategories'] != null) {
+    //   subCategories = <SubCategories>[];
+    //   json['SubCategories'].forEach((v) {
+    //     subCategories!.add(SubCategories.fromJson(v));
+    //   });
+    // }
+    subject = json['Subject'];
+    sName = json['SName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['OrderLevel'] = orderLevel;
+    if (orderByPosition != null) {
+      data['OrderByPosition'] =
+          orderByPosition!.map((v) => v.toJson()).toList();
+    }
+    // if (subCategories != null) {
+    //   data['SubCategories'] = subCategories!.map((v) => v.toJson()).toList();
+    // }
+    data['Subject'] = subject;
+    data['SName'] = sName;
     return data;
   }
 }

@@ -23,6 +23,11 @@ class SplashScreenController extends GetxController {
       final result = await ApiRepo().getAppSetting();
       appSetting.value = result;
       Global.appSetting = appSetting.value;
+      if ((Global.appSetting?.sportTypes ?? []).isNotEmpty) {
+        Global.sportType = Global.appSetting?.sportTypes
+            ?.where((element) => element.iD == 3)
+            .first;
+      }
       Future.delayed(const Duration(seconds: 1), () {
         Get.offAll(() => BottomNavigationMenu());
       });

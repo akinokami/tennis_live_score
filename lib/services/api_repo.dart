@@ -203,7 +203,7 @@ class ApiRepo {
       final response = await apiUtils.get(
           url: "${ApiConstant.baseUrl}Data/Games/GameCenter/Statistics/All/",
           queryParameters: {
-            "GameID": 4212433,
+            "GameID": gameId,
             "AppVersion": 1365,
             "tz": 41,
             "StoreVersion": 1365,
