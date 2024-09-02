@@ -166,7 +166,29 @@ class StatsWidget extends StatelessWidget {
                                             animation: true,
                                             animationDuration: 1200,
                                             lineWidth: 5.0,
-                                            percent: 0.4,
+                                            percent: (matchDetailController
+                                                                .selectedStatics
+                                                                .value
+                                                                ?.statistics?[
+                                                                    index]
+                                                                .vals ??
+                                                            [])
+                                                        .isNotEmpty &&
+                                                    (matchDetailController
+                                                                    .selectedStatics
+                                                                    .value
+                                                                    ?.statistics?[
+                                                                        index]
+                                                                    .vals ??
+                                                                [])
+                                                            .length >
+                                                        1
+                                                ? (int.parse(
+                                                            "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}") +
+                                                        int.parse(
+                                                            "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}")) /
+                                                    500
+                                                : 0.5,
                                             center: const CustomText(
                                               text: "Points Won",
                                             ),
