@@ -26,7 +26,7 @@ class StandingTableScreen extends StatelessWidget {
             ? const Center(child: CustomCircleLoading())
             : (standingTableController.playerRank.value.tableRows ?? []).isEmpty
                 ? Center(
-                    child: CustomText(text: 'no_data_found'.tr),
+                    child: CustomText(text: 'no_data'.tr),
                   )
                 : Padding(
                     padding: EdgeInsets.all(10.w),
