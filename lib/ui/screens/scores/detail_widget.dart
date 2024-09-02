@@ -39,18 +39,21 @@ class DetailWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const CustomText(
+                            CustomText(
                               text: '',
+                              fontSize: 10.sp,
                             ),
                             CustomText(
                               text: ((games?.comps ?? []).isNotEmpty)
                                   ? (games?.comps?[0].name ?? '')
                                   : '',
+                              fontSize: 10.sp,
                             ),
                             CustomText(
                               text: ((games?.comps ?? []).length > 1)
                                   ? (games?.comps?[1].name ?? '')
                                   : '',
+                              fontSize: 10.sp,
                             ),
                           ],
                         ),
@@ -67,9 +70,11 @@ class DetailWidget extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomText(
-                                      text: games?.scoreboard?.columns?[index]
-                                              .sName ??
-                                          ''),
+                                    text: games?.scoreboard?.columns?[index]
+                                            .sName ??
+                                        '',
+                                    fontSize: 10.sp,
+                                  ),
                                   CustomText(
                                     text: (games?.scoreboard?.columns?[index]
                                                     .scores ??
@@ -82,6 +87,7 @@ class DetailWidget extends StatelessWidget {
                                             1
                                         ? secondaryColor
                                         : Colors.white,
+                                    fontSize: 10.sp,
                                   ),
                                   CustomText(
                                     text: (games?.scoreboard?.columns?[index]
@@ -96,6 +102,7 @@ class DetailWidget extends StatelessWidget {
                                             2
                                         ? secondaryColor
                                         : Colors.white,
+                                    fontSize: 10.sp,
                                   ),
                                 ],
                               ),
@@ -138,6 +145,7 @@ class DetailWidget extends StatelessWidget {
                                                 .isNotEmpty
                                             ? "${games?.statistics?[index].vals?[0] ?? 0}"
                                             : "0",
+                                        fontSize: 10.sp,
                                       ),
                                     ),
                                   ),
@@ -157,6 +165,7 @@ class DetailWidget extends StatelessWidget {
                                                 1
                                             ? "${games?.statistics?[index].vals?[1] ?? 0}"
                                             : "0",
+                                        fontSize: 10.sp,
                                       ),
                                     ),
                                   ),
@@ -176,7 +185,7 @@ class DetailWidget extends StatelessWidget {
                                         : "0",
                                     color: secondaryColor,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20.sp,
+                                    fontSize: 18.sp,
                                   ),
                                   CircularPercentIndicator(
                                     radius: 50.0,
@@ -199,7 +208,7 @@ class DetailWidget extends StatelessWidget {
                                         : "0",
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20.sp,
+                                    fontSize: 18.sp,
                                   )
                                 ],
                               ),

@@ -98,16 +98,20 @@ class StatsWidget extends StatelessWidget {
                                               .isNotEmpty
                                           ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}"
                                           : "0",
+                                      fontSize: 10.sp,
                                     ))),
                                     Expanded(
                                         child: Center(
                                             child: CustomText(
-                                      text: findStatsType(matchDetailController
-                                              .selectedStatics
-                                              .value
-                                              ?.statistics?[index]
-                                              .type ??
-                                          0),
+                                      text: findStatsType(
+                                        matchDetailController
+                                                .selectedStatics
+                                                .value
+                                                ?.statistics?[index]
+                                                .type ??
+                                            0,
+                                      ),
+                                      fontSize: 10.sp,
                                     ))),
                                     Expanded(
                                         child: Center(
@@ -122,6 +126,7 @@ class StatsWidget extends StatelessWidget {
                                                 1
                                             ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}"
                                             : "0",
+                                        fontSize: 10.sp,
                                       ),
                                     )),
                                   ],
@@ -145,7 +150,7 @@ class StatsWidget extends StatelessWidget {
                                           : "0",
                                       color: secondaryColor,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20.sp,
+                                      fontSize: 18.sp,
                                     ),
                                     CircularPercentIndicator(
                                       radius: 50.0,
@@ -173,7 +178,7 @@ class StatsWidget extends StatelessWidget {
                                           : "0",
                                       color: Colors.green,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20.sp,
+                                      fontSize: 18.sp,
                                     )
                                   ],
                                 ),

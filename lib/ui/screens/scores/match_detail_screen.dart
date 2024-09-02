@@ -238,6 +238,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                                   if (index == 1) {
                                                     matchDetailController
                                                         .getStats();
+                                                  } else if (index == 2) {
+                                                    matchDetailController
+                                                        .getPointByPoint();
                                                   }
                                                 },
                                                 child: Container(
@@ -288,18 +291,26 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   if (matchDetailController
                                           .selectedIndex.value ==
                                       1)
-                                    StatsWidget(
-                                        matchDetailController:
-                                            matchDetailController,
-                                        stats:
-                                            matchDetailController.stats.value),
+                                    matchDetailController.isLoadingOne.value
+                                        ? const Center(
+                                            child: CustomCircleLoading(),
+                                          )
+                                        : StatsWidget(
+                                            matchDetailController:
+                                                matchDetailController,
+                                            stats: matchDetailController
+                                                .stats.value),
                                   if (matchDetailController
                                           .selectedIndex.value ==
                                       2)
-                                    PointByPointWidget(
-                                      pointByPoint: matchDetailController
-                                          .pointByPoint.value,
-                                    )
+                                    matchDetailController.isLoadingOne.value
+                                        ? const Center(
+                                            child: CustomCircleLoading(),
+                                          )
+                                        : PointByPointWidget(
+                                            pointByPoint: matchDetailController
+                                                .pointByPoint.value,
+                                          )
                                 ],
                               )),
                           H2HScreen(

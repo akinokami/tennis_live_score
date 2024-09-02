@@ -72,17 +72,20 @@ class ScoresScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         CustomText(
-                                            text: (scoresController.scores.value
-                                                            .competitions ??
-                                                        [])
-                                                    .where((element) =>
-                                                        element.iD ==
-                                                        scoresController
-                                                            .gameGroups[index]
-                                                            .compId)
-                                                    .isNotEmpty
-                                                ? "${(scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameGroups[index].compId).first.name ?? ''} (${(scoresController.scores.value.countries ?? []).where((element) => element.iD == (scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameGroups[index].compId).first.cID).first.name ?? ''})"
-                                                : ''),
+                                          text: (scoresController.scores.value
+                                                          .competitions ??
+                                                      [])
+                                                  .where((element) =>
+                                                      element.iD ==
+                                                      scoresController
+                                                          .gameGroups[index]
+                                                          .compId)
+                                                  .isNotEmpty
+                                              ? "${(scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameGroups[index].compId).first.name ?? ''} (${(scoresController.scores.value.countries ?? []).where((element) => element.iD == (scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameGroups[index].compId).first.cID).first.name ?? ''})"
+                                              : '',
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                         Divider(
                                           thickness: 1.h,
                                           color: Colors.grey,
@@ -141,6 +144,7 @@ class ScoresScreen extends StatelessWidget {
                                                             maxLines: 2,
                                                             textAlign:
                                                                 TextAlign.right,
+                                                            fontSize: 10.sp,
                                                           ),
                                                         ),
                                                         ClipRRect(
@@ -199,12 +203,19 @@ class ScoresScreen extends StatelessWidget {
                                                                       .winner ==
                                                                   -1
                                                               ? Center(
-                                                                  child: CustomText(
-                                                                      text: subStringAfterSpace(scoresController
+                                                                  child:
+                                                                      CustomText(
+                                                                    text:
+                                                                        subStringAfterSpace(
+                                                                      scoresController
                                                                               .gameGroups[index]
                                                                               .games?[index1]
                                                                               .sTime ??
-                                                                          '')),
+                                                                          '',
+                                                                    ),
+                                                                    fontSize:
+                                                                        10.sp,
+                                                                  ),
                                                                 )
                                                               : Column(
                                                                   crossAxisAlignment:
@@ -224,12 +235,16 @@ class ScoresScreen extends StatelessWidget {
                                                                           color: scoresController.gameGroups[index].games?[index1].winner == 1
                                                                               ? secondaryColor
                                                                               : Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).isNotEmpty)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[0]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[0].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).isNotEmpty)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[0]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[0].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -241,12 +256,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 4)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[4]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[4].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 4)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[4]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[4].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -258,12 +277,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 6)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[6]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[6].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 6)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[6]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[6].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -275,12 +298,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 8)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[8]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[8].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 8)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[8]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[8].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -292,12 +319,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 10)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[10]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[10].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 10)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[10]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[10].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -309,12 +340,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 12)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[12]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[12].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 12)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[12]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[12].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -331,12 +366,16 @@ class ScoresScreen extends StatelessWidget {
                                                                           color: scoresController.gameGroups[index].games?[index1].winner == 2
                                                                               ? secondaryColor
                                                                               : Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 1)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[1]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[1].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 1)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[1]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[1].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -348,12 +387,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 5)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[5]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[5].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 5)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[5]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[5].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -365,12 +408,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 7)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[7]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[7].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 7)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[7]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[7].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -382,12 +429,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 9)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[9]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[9].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 9)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[9]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[9].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -399,12 +450,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 11)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[11]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[11].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 11)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[11]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[11].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -416,12 +471,16 @@ class ScoresScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 13)
-                                                                                  ? (scoresController.gameGroups[index].games?[index1].scrs?[13]) != -1.0
-                                                                                      ? "${scoresController.gameGroups[index].games?[index1].scrs?[13].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameGroups[index].games?[index1].scrs ?? []).length > 13)
+                                                                                ? (scoresController.gameGroups[index].games?[index1].scrs?[13]) != -1.0
+                                                                                    ? "${scoresController.gameGroups[index].games?[index1].scrs?[13].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -487,6 +546,7 @@ class ScoresScreen extends StatelessWidget {
                                                                     '')
                                                                 : '',
                                                             maxLines: 2,
+                                                            fontSize: 10.sp,
                                                           ),
                                                         ),
                                                       ],

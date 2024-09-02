@@ -24,15 +24,11 @@ class MatchDetailController extends GetxController {
   void onInit() {
     gameId.value = Get.arguments['gameId'];
     getMatchDetail();
-    getPointByPoint();
     super.onInit();
   }
 
   void changeIndex(int index) {
     selectedIndex.value = index;
-    // if(index==2){
-    //   getPointByPoint();
-    // }
   }
 
   void changePBPIndex(int index) {
@@ -64,7 +60,7 @@ class MatchDetailController extends GetxController {
   }
 
   Future<void> getStats() async {
-    isLoading.value = true;
+    isLoadingOne.value = true;
     try {
       final result = await ApiRepo().getStats(gameId.value);
       stats.value = result;
@@ -81,12 +77,12 @@ class MatchDetailController extends GetxController {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
-      isLoading.value = false;
+      isLoadingOne.value = false;
     }
   }
 
   Future<void> getPointByPoint() async {
-    isLoading.value = true;
+    isLoadingOne.value = true;
     try {
       final result = await ApiRepo().getPointByPoint(gameId.value);
       pointByPoint.value = result;
@@ -94,7 +90,7 @@ class MatchDetailController extends GetxController {
       constants.showSnackBar(
           title: 'Error', msg: e.toString(), textColor: Colors.red);
     } finally {
-      isLoading.value = false;
+      isLoadingOne.value = false;
     }
   }
 }
