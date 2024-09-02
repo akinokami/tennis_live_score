@@ -54,31 +54,32 @@ class SettingsScreen extends StatelessWidget {
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold),
             ),
-            ListTile(
-              leading: Icon(Icons.info_outline, color: whiteColor),
-              title: CustomText(
-                  text: "version".tr,
-                  color: whiteColor,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold),
-              trailing: CustomText(
-                  text: "1.0.0",
-                  color: whiteColor,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold)
-            ),
+
             ListTile(
               onTap: (){
                  Get.to(() =>const PrivacyPolicyScreen());
 
               },
-                leading: Icon(Icons.info_outline, color: whiteColor),
+                leading: Icon(Icons.privacy_tip_outlined, color: whiteColor),
                 title: CustomText(
                     text: 'policy'.tr,
                     color: whiteColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold),
-                trailing: Icon(Icons.privacy_tip, color: whiteColor)
+                trailing: Icon(Icons.arrow_forward_ios_rounded, color: whiteColor)
+            ),
+            ListTile(
+                leading: Icon(Icons.info_outline, color: whiteColor),
+                title: CustomText(
+                    text: "version".tr,
+                    color: whiteColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold),
+                trailing: CustomText(
+                    text: "1.0.0",
+                    color: whiteColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold)
             ),
           ],
         ),
