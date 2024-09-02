@@ -135,12 +135,12 @@ class DetailWidget extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       int progressValue = int.parse(
-                          "${games?.statistics?[index].vals?[1] ?? 0}".replaceAll(RegExp(r'[^0-9]'), ''));
+                          "${games?.statistics?[index].vals?[1] ?? 0}"
+                              .replaceAll(RegExp(r'[^0-9]'), ''));
                       int backgroundValue = int.parse(
-                          "${games?.statistics?[index].vals?[0] ?? 0}".replaceAll(RegExp(r'[^0-9]'), ''));
+                          "${games?.statistics?[index].vals?[0] ?? 0}"
+                              .replaceAll(RegExp(r'[^0-9]'), ''));
 
-
-// Calculate percentage
                       double percentage = (backgroundValue + progressValue) != 0
                           ? progressValue / (backgroundValue + progressValue)
                           : 0.0;
