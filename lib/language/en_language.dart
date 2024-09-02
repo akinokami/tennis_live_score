@@ -17,7 +17,7 @@ class EnLanguage {
     'score': 'Score',
     'matches': 'Matches',
     'please_wait': 'Please wait',
-    'no_data': 'No data available',
+    'no_data': 'No data found',
     'h2h': 'Head to Head',
     'match': 'Match',
     'details': 'Details',

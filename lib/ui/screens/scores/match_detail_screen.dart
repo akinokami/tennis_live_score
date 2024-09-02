@@ -65,7 +65,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
         () => matchDetailController.isLoading.value
             ? const Center(child: CustomCircleLoading())
             : (matchDetailController.matchDetail.value.games ?? []).isEmpty
-                ? const Center(child: CustomText(text: 'No data found.'))
+                ?  Center(child: CustomText(text: 'no_data'.tr))
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -209,9 +209,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   unselectedLabelColor: whiteColor,
                                   labelColor: secondaryColor,
                                   indicatorColor: secondaryColor,
-                                  tabs: const [
-                                    Tab(text: "Match"),
-                                    Tab(text: "H2H"),
+                                  tabs:  [
+                                    Tab(text: "match".tr),
+                                    Tab(text: "h2h".tr
+                                    ),
                                   ]),
                             ),
                           ],

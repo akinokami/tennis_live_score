@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-
+import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 import 'package:tennis_live_score/utils/function.dart';
@@ -70,7 +69,7 @@ class StatsWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomText(text: "Stats"),
+                 CustomText(text: "stats".tr),
                 kSizedBoxH15,
                 Obx(
                   () => ListView.builder(
@@ -133,53 +132,65 @@ class StatsWidget extends StatelessWidget {
                                 ),
                               )
                             : Padding(
-                                padding: EdgeInsets.only(bottom: 10.h),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                padding: EdgeInsets.only(bottom: 10.h,top: 10.h),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    CustomText(
-                                      text: (matchDetailController
-                                                      .selectedStatics
-                                                      .value
-                                                      ?.statistics?[index]
-                                                      .vals ??
-                                                  [])
-                                              .isNotEmpty
-                                          ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}"
-                                          : "0",
+                                    Divider(
                                       color: secondaryColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18.sp,
+                                      thickness: 1,
                                     ),
-                                    CircularPercentIndicator(
-                                      radius: 50.0,
-                                      animation: true,
-                                      animationDuration: 1200,
-                                      lineWidth: 5.0,
-                                      percent: 0.4,
-                                      center: const CustomText(
-                                        text: "Points Won",
-                                      ),
-                                      circularStrokeCap: CircularStrokeCap.butt,
-                                      backgroundColor: secondaryColor,
-                                      progressColor: Colors.green,
-                                    ),
-                                    CustomText(
-                                      text: (matchDetailController
+                                    kSizedBoxH10,
+                                    CustomText(text: 'points'.tr),
+                                    kSizedBoxH10,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CustomText(
+                                          text: (matchDetailController
                                                           .selectedStatics
                                                           .value
                                                           ?.statistics?[index]
                                                           .vals ??
                                                       [])
-                                                  .length >
-                                              1
-                                          ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}"
-                                          : "0",
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18.sp,
-                                    )
+                                                  .isNotEmpty
+                                              ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}"
+                                              : "0",
+                                          color: secondaryColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18.sp,
+                                        ),
+                                        CircularPercentIndicator(
+                                          radius: 50.0,
+                                          animation: true,
+                                          animationDuration: 1200,
+                                          lineWidth: 5.0,
+                                          percent: 0.4,
+                                          center: const CustomText(
+                                            text: "Points Won",
+                                          ),
+                                          circularStrokeCap: CircularStrokeCap.butt,
+                                          backgroundColor: secondaryColor,
+                                          progressColor: Colors.green,
+                                        ),
+                                        CustomText(
+                                          text: (matchDetailController
+                                                              .selectedStatics
+                                                              .value
+                                                              ?.statistics?[index]
+                                                              .vals ??
+                                                          [])
+                                                      .length >
+                                                  1
+                                              ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}"
+                                              : "0",
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18.sp,
+                                        )
+                                      ],
+                                    ),
                                   ],
                                 ),
                               );

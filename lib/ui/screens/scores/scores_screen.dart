@@ -58,8 +58,8 @@ class ScoresScreen extends StatelessWidget {
                       kSizedBoxH10,
                       Expanded(
                         child: scoresController.gameGroups.isEmpty
-                            ? const Center(
-                                child: CustomText(text: 'No data found.'))
+                            ?  Center(
+                                child: CustomText(text: 'no_data'.tr))
                             : ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: scoresController.gameGroups.length,

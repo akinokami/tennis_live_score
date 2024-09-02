@@ -27,8 +27,11 @@ class PointByPointWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: pointByPoint.sets?.length,
                   itemBuilder: (context, index) {
+                    print("xxxxx ${pointByPoint.sets?[index].name} ");
                     return Obx(
-                      () => GestureDetector(
+                      () => (pointByPoint.sets?[index].name?.isEmpty==true)?
+                      CustomText(text: "no_data".tr):
+                      GestureDetector(
                         onTap: () {
                           controller.changePBPIndex(index);
                         },
