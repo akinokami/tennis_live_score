@@ -23,10 +23,14 @@ class ScoresController extends GetxController {
 
   @override
   void onInit() {
-    formattedDate.value = formatDate(DateTime.now());
-    getScores(formattedDate.value);
+    startScore();
 
     super.onInit();
+  }
+
+  void startScore() {
+    formattedDate.value = formatDate(DateTime.now());
+    getScores(formattedDate.value);
   }
 
   void updateSelectedDate(DateTime newDate) {

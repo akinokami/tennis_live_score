@@ -97,7 +97,9 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
                     if (value == 0) {
                       playerDetailController.getPlayerMatches();
                     } else if (value == 1) {
-                      playerDetailController.getPlayerRank();
+                      if (playerDetailController.mainCompId.value != 0) {
+                        playerDetailController.getPlayerRank();
+                      }
                     }
                   },
                   padding: EdgeInsets.all(5.w),
@@ -139,10 +141,12 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
                     Obx(
                       () => playerDetailController.isLoading.value
                           ? const Center(child: CustomCircleLoading())
-                          : PlayerRankingWidget(
-                              tableRanks: playerDetailController
-                                  .playerRank.value.tableRows,
-                            ),
+                          : playerDetailController.mainCompId.value != 0
+                              ? PlayerRankingWidget(
+                                  tableRanks: playerDetailController
+                                      .playerRank.value.tableRows,
+                                )
+                              : Center(child: CustomText(text: 'no_data'.tr)),
                     ),
                   ],
                 ),
