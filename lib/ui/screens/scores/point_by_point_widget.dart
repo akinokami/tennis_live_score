@@ -35,7 +35,7 @@ class PointByPointWidget extends StatelessWidget {
                       child: Container(
                         margin: EdgeInsets.only(right: 10.w),
                         padding: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 5.h),
+                            horizontal: 20.w, ),
                         decoration: BoxDecoration(
                           color: controller.selectedPBPIndex.value == index
                               ? secondaryColor
@@ -44,7 +44,7 @@ class PointByPointWidget extends StatelessWidget {
                         ),
                         child: Center(
                             child: CustomText(
-                                text: pointByPoint.sets?[index].name ?? "")),
+                                text: pointByPoint.sets?[index].name ?? "",fontSize: 8.sp,)),
                       ),
                     ),
                   );
@@ -63,7 +63,7 @@ class PointByPointWidget extends StatelessWidget {
                 color: secondaryColor,
                 fontWeight: FontWeight.bold,
               ),
-              
+
               Obx(
                 () => SingleChildScrollView(
                   child: Padding(
