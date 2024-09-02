@@ -1,16 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:tennis_live_score/controller/bottom_nav_controller.dart';
 import 'package:tennis_live_score/ui/screens/scores/scores_screen.dart';
 import 'package:tennis_live_score/ui/screens/scores/search_screen.dart';
 import 'package:tennis_live_score/ui/screens/settings/settings_screen.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../../constants/color_const.dart';
+import '../../../utils/global.dart';
+import '../../custom_widgets/custom_text.dart';
 import '../standing/standing_screen.dart';
 
-class BottomNavigationMenu extends StatelessWidget {
-  BottomNavigationMenu({super.key});
+class BottomNavigationMenu extends StatefulWidget {
+  const BottomNavigationMenu({super.key});
 
+  @override
+  State<BottomNavigationMenu> createState() => _BottomNavigationMenuState();
+}
+
+class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
+
+  bool isAccepted = false;
+  bool isChecked = false;
+  String first = '';
+  @override
+  void initState() {
+    super.initState();
+    final box = GetStorage();
+    first = box.read('first') ?? '';
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      try {
+        if (first == '') {
+          if (context.mounted) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (ctx) => Builder(builder: (context) {
+                return StatefulBuilder(
+                  builder: (context, StateSetter setState) {
+                    return AlertDialog(
+                      surfaceTintColor: whiteColor,
+                      backgroundColor: whiteColor,
+                      content: SizedBox(
+                        height: 1.sh * 0.80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SingleChildScrollView(
+                              child: SizedBox(
+                                  height: 1.sh * 0.65,
+                                  width: double.infinity,
+                                  child: WebViewWidget(
+                                      controller: WebViewController()
+                                        ..loadHtmlString(Global.language!="hi"?Global.policyEn:Global.policyIndia))),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Checkbox(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6)),
+                                  activeColor: secondaryColor,
+                                  side: BorderSide(
+                                    width: 1.5,
+                                    color: isChecked ? secondaryColor : Colors.black,
+                                  ),
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value!;
+                                      if (isChecked) {
+                                        isAccepted = true;
+                                      } else {
+                                        isAccepted = false;
+                                      }
+                                    });
+                                  },
+                                ),
+                                 CustomText(
+                                  text: 'agree'.tr,
+                                   color: secondaryColor,
+                                ),
+                              ],
+                            ),
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateColor.resolveWith((states) =>
+                                  isAccepted ? secondaryColor : greyColor)),
+                              // ignore: sort_child_properties_last
+                              child: CustomText(
+                                text: "accept".tr,
+                                color: whiteColor,
+                              ),
+                              onPressed: isAccepted
+                                  ? () async {
+                                final box = GetStorage();
+                                box.write('first', 'notfirst');
+                                Navigator.pop(context);
+                              }
+                                  : null,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
+            );
+          }
+        }
+      } catch (e) {
+        // print("Error fetching SharedPreferences: $e");
+      }
+    });
+  }
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
@@ -53,7 +160,7 @@ class BottomNavigationMenu extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.star,
+                  Icons.table_chart,
                   size: 18.w,
                 ),
                 label: 'standing'.tr,

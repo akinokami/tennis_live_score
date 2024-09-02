@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:tennis_live_score/ui/screens/settings/privacy_policy_screen.dart';
 import '../../../constants/color_const.dart';
 import '../../custom_widgets/custom_text.dart';
 import 'change_language_screen.dart';
@@ -65,6 +66,19 @@ class SettingsScreen extends StatelessWidget {
                   color: whiteColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold)
+            ),
+            ListTile(
+              onTap: (){
+                 Get.to(() =>const PrivacyPolicyScreen());
+
+              },
+                leading: Icon(Icons.info_outline, color: whiteColor),
+                title: CustomText(
+                    text: 'policy'.tr,
+                    color: whiteColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold),
+                trailing: Icon(Icons.privacy_tip, color: whiteColor)
             ),
           ],
         ),
