@@ -54,6 +54,17 @@ class PlayerRankingWidget extends StatelessWidget {
                               fit: BoxFit.cover,
                               width: 17.w,
                               height: 17.w,
+                              // loadingBuilder:
+                              //     (context, child, loadingProgress) =>
+                              //         Container(
+                              //   decoration: BoxDecoration(
+                              //       color: Colors.white,
+                              //       borderRadius: BorderRadius.circular(100.r)),
+                              //   child: Icon(
+                              //     Icons.person,
+                              //     size: 15.sp,
+                              //   ),
+                              // ),
                               errorBuilder: (context, error, stackTrace) =>
                                   Container(
                                 decoration: BoxDecoration(
