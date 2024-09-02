@@ -8,7 +8,6 @@ import 'package:tennis_live_score/ui/screens/player_detail/match_card_widget.dar
 import 'package:tennis_live_score/ui/screens/player_detail/player_rank_widget.dart';
 
 import '../../../constants/color_const.dart';
-import '../../../utils/function.dart';
 import '../../custom_widgets/custom_loading.dart';
 
 class PlayerDetailScreen extends StatefulWidget {
@@ -51,21 +50,26 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
               Obx(
                 () => Column(
                   children: [
-                  if((playerDetailController
-                      .playerMatch.value.header?.entity?.name??"").isNotEmpty)  Container(
-                      width: 40.w,
-                      height: 40.w,
-                      decoration: BoxDecoration(
-                        color: whiteColor,
-                        borderRadius: BorderRadius.circular(100.r),
-                      ),
-                      child:Center(
-                        child: CustomText(text:"${(playerDetailController
-                            .playerMatch.value.header?.entity?.name ??
-                            '').split("")[0]}" ,fontSize: 14.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
-                      )
-
-                    ),
+                    if ((playerDetailController
+                                .playerMatch.value.header?.entity?.name ??
+                            "")
+                        .isNotEmpty)
+                      Container(
+                          width: 40.w,
+                          height: 40.w,
+                          decoration: BoxDecoration(
+                            color: whiteColor,
+                            borderRadius: BorderRadius.circular(100.r),
+                          ),
+                          child: Center(
+                            child: CustomText(
+                              text:
+                                  "${(playerDetailController.playerMatch.value.header?.entity?.name ?? '').split("")[0]}",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold,
+                              color: secondaryColor,
+                            ),
+                          )),
                     // child: Image.network(
                     //   imageUrl(
                     //       "Competitors:default${playerDetailController.playerMatch.value.header?.entity?.iD}.png",

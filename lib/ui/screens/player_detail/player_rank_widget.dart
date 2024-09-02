@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 import 'package:tennis_live_score/models/player_rank.dart';
-import 'package:tennis_live_score/utils/function.dart';
 import '../../../constants/color_const.dart';
 import '../../../constants/dimen_const.dart';
 import '../../custom_widgets/custom_card.dart';
@@ -85,12 +84,16 @@ class PlayerRankingWidget extends StatelessWidget {
                                 color: whiteColor,
                                 borderRadius: BorderRadius.circular(100.r),
                               ),
-                              child:Center(
-                                child: CustomText(text:(tableRanks?[index].competitor?.name ??
-                                    '').split("")[0] ,fontSize: 12.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
-                              )
-
-                          ),
+                              child: Center(
+                                child: CustomText(
+                                  text: (tableRanks?[index].competitor?.name ??
+                                          '')
+                                      .split("")[0],
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: secondaryColor,
+                                ),
+                              )),
                           SizedBox(
                             width: 5.w,
                           ),
