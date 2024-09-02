@@ -36,6 +36,8 @@ class CustomTextField extends StatelessWidget {
         onEditingComplete: onEditingComplete ?? () {},
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           hintText: hintText ?? '',
           fillColor: fillColor ?? Colors.white,
           hintStyle: TextStyle(

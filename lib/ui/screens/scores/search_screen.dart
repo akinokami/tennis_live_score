@@ -52,18 +52,20 @@ class SearchScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         CustomText(
-                                            text: (scoresController.scores.value
-                                                            .competitions ??
-                                                        [])
-                                                    .where((element) =>
-                                                        element.iD ==
-                                                        scoresController
-                                                            .gameFilterList[
-                                                                index]
-                                                            .compId)
-                                                    .isNotEmpty
-                                                ? "${(scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameFilterList[index].compId).first.name ?? ''} (${(scoresController.scores.value.countries ?? []).where((element) => element.iD == (scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameFilterList[index].compId).first.cID).first.name ?? ''})"
-                                                : ''),
+                                          text: (scoresController.scores.value
+                                                          .competitions ??
+                                                      [])
+                                                  .where((element) =>
+                                                      element.iD ==
+                                                      scoresController
+                                                          .gameFilterList[index]
+                                                          .compId)
+                                                  .isNotEmpty
+                                              ? "${(scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameFilterList[index].compId).first.name ?? ''} (${(scoresController.scores.value.countries ?? []).where((element) => element.iD == (scoresController.scores.value.competitions ?? []).where((element) => element.iD == scoresController.gameFilterList[index].compId).first.cID).first.name ?? ''})"
+                                              : '',
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                         Divider(
                                           thickness: 1.h,
                                           color: Colors.grey,
@@ -122,6 +124,7 @@ class SearchScreen extends StatelessWidget {
                                                             maxLines: 2,
                                                             textAlign:
                                                                 TextAlign.right,
+                                                            fontSize: 10.sp,
                                                           ),
                                                         ),
                                                         ClipRRect(
@@ -170,7 +173,7 @@ class SearchScreen extends StatelessWidget {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 45.h,
+                                                          height: 40.h,
                                                           width: 103.w,
                                                           child: scoresController
                                                                       .gameFilterList[
@@ -180,16 +183,26 @@ class SearchScreen extends StatelessWidget {
                                                                       .winner ==
                                                                   -1
                                                               ? Center(
-                                                                  child: CustomText(
-                                                                      text: subStringAfterSpace(scoresController
+                                                                  child:
+                                                                      CustomText(
+                                                                    text:
+                                                                        subStringAfterSpace(
+                                                                      scoresController
                                                                               .gameFilterList[index]
                                                                               .games?[index1]
                                                                               .sTime ??
-                                                                          '')),
+                                                                          '',
+                                                                    ),
+                                                                    fontSize:
+                                                                        10.sp,
+                                                                  ),
                                                                 )
                                                               : Column(
                                                                   crossAxisAlignment:
                                                                       CrossAxisAlignment
+                                                                          .center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
                                                                           .center,
                                                                   children: [
                                                                     Row(
@@ -205,12 +218,16 @@ class SearchScreen extends StatelessWidget {
                                                                           color: scoresController.gameFilterList[index].games?[index1].winner == 1
                                                                               ? secondaryColor
                                                                               : Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).isNotEmpty)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[0]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[0].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).isNotEmpty)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[0]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[0].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -222,12 +239,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 4)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[4]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[4].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 4)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[4]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[4].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -239,12 +260,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 6)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[6]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[6].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 6)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[6]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[6].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -256,12 +281,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 8)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[8]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[8].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 8)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[8]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[8].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -273,12 +302,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 10)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[10]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[10].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 10)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[10]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[10].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -290,12 +323,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 12)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[12]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[12].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 12)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[12]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[12].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -312,12 +349,16 @@ class SearchScreen extends StatelessWidget {
                                                                           color: scoresController.gameFilterList[index].games?[index1].winner == 2
                                                                               ? secondaryColor
                                                                               : Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 1)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[1]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[1].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 1)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[1]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[1].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -329,12 +370,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 5)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[5]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[5].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 5)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[5]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[5].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -346,12 +391,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 7)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[7]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[7].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 7)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[7]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[7].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -363,12 +412,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 9)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[9]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[9].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 9)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[9]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[9].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -380,12 +433,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 11)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[11]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[11].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 11)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[11]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[11].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                         Container(
                                                                           width:
@@ -397,12 +454,16 @@ class SearchScreen extends StatelessWidget {
                                                                               Alignment.center,
                                                                           color:
                                                                               Colors.grey,
-                                                                          child: CustomText(
-                                                                              text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 13)
-                                                                                  ? (scoresController.gameFilterList[index].games?[index1].scrs?[13]) != -1.0
-                                                                                      ? "${scoresController.gameFilterList[index].games?[index1].scrs?[13].toStringAsFixed(0)}"
-                                                                                      : '-'
-                                                                                  : '-'),
+                                                                          child:
+                                                                              CustomText(
+                                                                            text: ((scoresController.gameFilterList[index].games?[index1].scrs ?? []).length > 13)
+                                                                                ? (scoresController.gameFilterList[index].games?[index1].scrs?[13]) != -1.0
+                                                                                    ? "${scoresController.gameFilterList[index].games?[index1].scrs?[13].toStringAsFixed(0)}"
+                                                                                    : '-'
+                                                                                : '-',
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                          ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -467,6 +528,7 @@ class SearchScreen extends StatelessWidget {
                                                                         .name ??
                                                                     '')
                                                                 : '',
+                                                            fontSize: 10.sp,
                                                             maxLines: 2,
                                                           ),
                                                         ),

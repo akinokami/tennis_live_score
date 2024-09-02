@@ -193,7 +193,7 @@ class ScoresScreen extends StatelessWidget {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 45.h,
+                                                          height: 40.h,
                                                           width: 103.w,
                                                           child: scoresController
                                                                       .gameGroups[
@@ -220,6 +220,9 @@ class ScoresScreen extends StatelessWidget {
                                                               : Column(
                                                                   crossAxisAlignment:
                                                                       CrossAxisAlignment
+                                                                          .center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
                                                                           .center,
                                                                   children: [
                                                                     Row(
