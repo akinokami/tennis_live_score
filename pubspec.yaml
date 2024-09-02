@@ -45,6 +45,7 @@ dependencies:
   percent_indicator: ^4.2.3
   intl:
   fast_cached_network_image: ^1.2.0
+  webview_flutter: ^4.5.0
 
 dev_dependencies:
   flutter_test:

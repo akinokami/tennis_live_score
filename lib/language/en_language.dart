@@ -13,7 +13,7 @@ class EnLanguage {
     'accept': 'Accept',
     'search': 'Search',
     'general': 'General',
-    'following': 'Following',
+    'standing': 'Standing',
     'score': 'Score',
     'matches': 'Matches',
     'please_wait': 'Please wait',

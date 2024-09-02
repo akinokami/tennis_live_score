@@ -13,7 +13,7 @@ class HindiLanguage {
     'accept': 'स्वीकार करना',
     'search': 'खोज',
     'general': 'सामान्य',
-    'following': 'निम्नलिखित',
+    'standing': 'खड़े',
     'score': 'स्कोर',
     'matches': 'मैच',
     'please_wait': 'कृपया प्रतीक्षा करें',
