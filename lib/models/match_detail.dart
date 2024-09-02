@@ -122,11 +122,11 @@ class Games {
   bool? active;
   int? sTID;
   int? statusSequence;
-  int? gT;
-  int? preciseGT;
+  double? gT;
+  double? preciseGT;
   bool? autoProgressGT;
-  int? completion;
-  int? regularTimeCompletion;
+  double? completion;
+  double? regularTimeCompletion;
   String? gTD;
   String? sTime;
   String? eTime;
@@ -245,7 +245,7 @@ class Games {
         comps!.add(Comps.fromJson(v));
       });
     }
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'] != null ? json['Scrs'].cast<int>() : [];
     scoreboard = json['Scoreboard'] != null
         ? Scoreboard.fromJson(json['Scoreboard'])
         : null;
@@ -444,7 +444,7 @@ class Comps {
     textColor = json['TextColor'];
     mainComp = json['MainComp'];
     competitionHasTexture = json['CompetitionHasTexture'];
-    trend = json['Trend'].cast<int>();
+    trend = json['Trend'] != null ? json['Trend'].cast<int>() : [];
     if (json['LastMatches'] != null) {
       lastMatches = <LastMatches>[];
       json['LastMatches'].forEach((v) {
@@ -541,7 +541,7 @@ class LastMatches {
       });
     }
     sTID = json['STID'];
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'] != null ? json['Scrs'].cast<int>() : [];
     winner = json['Winner'];
     neutralVenue = json['NeutralVenue'];
     toQualify = json['ToQualify'];
@@ -646,9 +646,10 @@ class Columns {
     stageId = json['StageId'];
     name = json['Name'];
     sName = json['SName'];
-    scores = json['Scores'].cast<String>();
+    scores = json['Scores'] != null ? json['Scores'].cast<String>() : [];
     winner = json['Winner'];
-    extraScores = json['ExtraScores'].cast<int>();
+    extraScores =
+        json['ExtraScores'] != null ? json['ExtraScores'].cast<int>() : [];
     time = json['Time'];
     main = json['Main'];
   }
@@ -708,7 +709,7 @@ class Predictions {
     iD = json['ID'];
     lineTypeID = json['LineTypeID'];
     votingKey = json['VotingKey'];
-    votes = json['Votes'].cast<int>();
+    votes = json['Votes'] != null ? json['Votes'].cast<int>() : [];
     showVotesCount = json['ShowVotesCount'];
   }
 
@@ -754,8 +755,8 @@ class Statistics {
 
   Statistics.fromJson(Map<String, dynamic> json) {
     type = json['Type'];
-    vals = json['Vals'].cast<String>();
-    valsPct = json['ValsPct'].cast<double>();
+    vals = json['Vals'] != null ? json['Vals'].cast<String>() : [];
+    valsPct = json['ValsPct'] != null ? json['ValsPct'].cast<double>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -930,7 +931,7 @@ class Items {
     socialStats = json['SocialStats'] != null
         ? SocialStats.fromJson(json['SocialStats'])
         : null;
-    related = json['Related'].cast<int>();
+    related = json['Related'] != null ? json['Related'].cast<int>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -1154,7 +1155,7 @@ class BuzzItems {
     socialStats = json['SocialStats'] != null
         ? SocialStats.fromJson(json['SocialStats'])
         : null;
-    related = json['Related'].cast<int>();
+    related = json['Related'] != null ? json['Related'].cast<int>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -1327,7 +1328,7 @@ class LastMatchesNew {
       });
     }
     sTID = json['STID'];
-    scrs = json['Scrs'].cast<int>();
+    scrs = json['Scrs'] != null ? json['Scrs'].cast<int>() : [];
     winner = json['Winner'];
     neutralVenue = json['NeutralVenue'];
     toQualify = json['ToQualify'];
@@ -1360,7 +1361,7 @@ class LastMatchesNew {
 
 class StageTimes {
   int? stageID;
-  int? minutes;
+  double? minutes;
   String? time;
 
   StageTimes({this.stageID, this.minutes, this.time});
@@ -1388,7 +1389,7 @@ class ExtraScores {
 
   ExtraScores.fromJson(Map<String, dynamic> json) {
     stageID = json['StageID'];
-    scores = json['Scores'].cast<int>();
+    scores = json['Scores'] != null ? json['Scores'].cast<int>() : [];
   }
 
   Map<String, dynamic> toJson() {
@@ -1748,7 +1749,7 @@ class Groups {
     groupBy = json['GroupBy'];
     gamesCount = json['GamesCount'];
     liveCount = json['LiveCount'];
-    score = json['Score'].cast<int>();
+    score = json['Score'] != null ? json['Score'].cast<int>() : [];
     toQualify = json['ToQualify'];
     isFinal = json['IsFinal'];
     homeAwayTeamOrder = json['HomeAwayTeamOrder'];
