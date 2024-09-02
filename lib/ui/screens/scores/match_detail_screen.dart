@@ -41,11 +41,20 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
         backgroundColor: greyColor,
         centerTitle: true,
         iconTheme: IconThemeData(color: whiteColor),
-        title: CustomText(
-            text: "Competition Name",
-            color: whiteColor,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.bold),
+        title: Obx(
+          () => matchDetailController.isLoading.value
+              ? const CustomText(text: '')
+              : CustomText(
+                  text: (matchDetailController.matchDetail.value.games ?? [])
+                          .isNotEmpty
+                      ? (matchDetailController.matchDetail.value.games?[0]
+                              .competitionDisplayName ??
+                          '')
+                      : '',
+                  color: whiteColor,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: Obx(

@@ -77,7 +77,7 @@ class SearchScreen extends StatelessWidget {
                                             physics:
                                                 const NeverScrollableScrollPhysics(),
                                             itemBuilder: (context, index1) {
-                                              return GestureDetector(
+                                              return InkWell(
                                                 onTap: () {
                                                   Get.to(
                                                       () =>
@@ -170,7 +170,7 @@ class SearchScreen extends StatelessWidget {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 35.h,
+                                                          height: 45.h,
                                                           width: 103.w,
                                                           child: scoresController
                                                                       .gameFilterList[
