@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -133,6 +134,17 @@ class DetailWidget extends StatelessWidget {
                     itemCount: games?.statistics?.length,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
+                      int progressValue = int.parse(
+                          "${games?.statistics?[index].vals?[1] ?? 0}".replaceAll(RegExp(r'[^0-9]'), ''));
+                      int backgroundValue = int.parse(
+                          "${games?.statistics?[index].vals?[0] ?? 0}".replaceAll(RegExp(r'[^0-9]'), ''));
+
+
+// Calculate percentage
+                      double percentage = (backgroundValue + progressValue) != 0
+                          ? progressValue / (backgroundValue + progressValue)
+                          : 0.0;
+
                       return games?.statistics?[index].type != 23
                           ? Padding(
                               padding: EdgeInsets.only(bottom: 10.h),
@@ -193,19 +205,7 @@ class DetailWidget extends StatelessWidget {
                                     animation: true,
                                     animationDuration: 1200,
                                     lineWidth: 5.0,
-                                    percent: (games?.statistics?[index].vals ??
-                                                    [])
-                                                .isNotEmpty &&
-                                            (games?.statistics?[index].vals ??
-                                                        [])
-                                                    .length >
-                                                1
-                                        ? (int.parse(
-                                                    "${games?.statistics?[index].vals?[0] ?? 0}") +
-                                                int.parse(
-                                                    "${games?.statistics?[index].vals?[1] ?? 0}")) /
-                                            500
-                                        : 0.5,
+                                    percent: percentage,
                                     center: const CustomText(
                                       text: "Points Won",
                                     ),
@@ -232,11 +232,18 @@ class DetailWidget extends StatelessWidget {
                     color: secondaryColor,
                   ),
                   Center(
-                      child: GestureDetector(
+                      child: InkWell(
                           onTap: onTap,
-                          child: CustomText(
-                            text: "See All",
-                            fontSize: 10.sp,
+                          child: Container(
+                            //color: secondaryColor,
+                            width: 100.w,
+                            padding: EdgeInsets.all(5.w),
+                            child: Center(
+                              child: CustomText(
+                                text: "see_all".tr,
+                                fontSize: 10.sp,
+                              ),
+                            ),
                           )))
                 ],
               ),

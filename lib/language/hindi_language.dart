@@ -53,6 +53,7 @@ class HindiLanguage {
     'total_games_won': 'कुल जीते गए खेल',
     'atp_ranking': 'एटीपी रैंकिंग',
     'player': 'खिलाड़ी',
+    'see_all': 'सभी देखें',
 
   };
 }

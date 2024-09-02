@@ -53,5 +53,6 @@ class EnLanguage {
     'total_games_won': 'Total Games Won',
     'atp_ranking': 'ATP Ranking',
     'player': 'Player',
+    'see_all': 'See All',
   };
 }
