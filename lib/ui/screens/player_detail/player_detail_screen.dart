@@ -8,6 +8,7 @@ import 'package:tennis_live_score/ui/screens/player_detail/match_card_widget.dar
 import 'package:tennis_live_score/ui/screens/player_detail/player_rank_widget.dart';
 
 import '../../../constants/color_const.dart';
+import '../../../utils/function.dart';
 import '../../custom_widgets/custom_loading.dart';
 
 class PlayerDetailScreen extends StatefulWidget {
@@ -47,10 +48,38 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
           padding: EdgeInsets.all(10.w),
           child: Column(
             children: [
-              Icon(
-                Icons.person,
-                size: 30.sp,
-                color: Colors.white,
+              Obx(
+                () => Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100.r),
+                      child: Image.network(
+                        imageUrl(
+                            "Competitors:default${playerDetailController.playerMatch.value.header?.entity?.iD}.png",
+                            "Competitors",
+                            playerDetailController
+                                    .playerMatch.value.header?.entity?.iD ??
+                                0),
+                        fit: BoxFit.cover,
+                        width: 40.w,
+                        height: 40.w,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(100.r)),
+                          child: Icon(
+                            Icons.person,
+                            size: 40.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                    CustomText(
+                        text: playerDetailController
+                                .playerMatch.value.header?.entity?.name ??
+                            ''),
+                  ],
+                ),
               ),
               kSizedBoxH15,
               Container(

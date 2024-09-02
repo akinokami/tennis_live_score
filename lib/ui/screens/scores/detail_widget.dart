@@ -116,7 +116,7 @@ class DetailWidget extends StatelessWidget {
           ),
           kSizedBoxH20,
           Visibility(
-            visible: games?.winner != -1,
+            visible: games?.winner != -1 || games?.active != false,
             child: Container(
               padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
