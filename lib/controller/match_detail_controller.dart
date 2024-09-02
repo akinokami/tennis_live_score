@@ -13,6 +13,7 @@ class MatchDetailController extends GetxController {
   RxInt selectedIndex = 0.obs;
 
   RxInt selectedStatIndex = 0.obs;
+  RxInt selectedPBPIndex = 0.obs;
   Rx<MatchDetail> matchDetail = MatchDetail().obs;
   Rx<Stats> stats = Stats().obs;
   Rx<PointByPoint> pointByPoint = PointByPoint().obs;
@@ -22,13 +23,19 @@ class MatchDetailController extends GetxController {
   void onInit() {
     gameId.value = Get.arguments['gameId'];
     getMatchDetail();
+    getPointByPoint();
     super.onInit();
   }
 
   void changeIndex(int index) {
     selectedIndex.value = index;
+    // if(index==2){
+    //   getPointByPoint();
+    // }
   }
-
+void changePBPIndex(int index) {
+    selectedPBPIndex.value = index;
+  }
   void changeStatIndex(int index) {
     selectedStatIndex.value = index;
   }
