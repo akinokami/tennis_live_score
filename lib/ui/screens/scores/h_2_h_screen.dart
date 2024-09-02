@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
+import 'package:tennis_live_score/models/match_detail.dart';
 import 'package:tennis_live_score/ui/custom_widgets/custom_text.dart';
 
 class H2HScreen extends StatelessWidget {
-  const H2HScreen({super.key});
+  final List<LastMatches>? lastMatches;
+  const H2HScreen({super.key, this.lastMatches});
 
   @override
   Widget build(BuildContext context) {
