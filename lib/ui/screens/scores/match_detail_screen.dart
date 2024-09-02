@@ -218,117 +218,99 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         ),
                       ),
                       Expanded(
-                        // height: MediaQuery.of(context).size.height * 1.5,
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            return TabBarView(
-                                controller: tabController,
+                        child: TabBarView(controller: tabController, children: [
+                          Obx(() => Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Obx(() => Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          kSizedBoxH10,
-                                          Container(
-                                            width: constraints.maxWidth,
-                                            color: cardColor,
-                                            height: 35.h,
-                                            child: Center(
-                                              child: ListView.builder(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                itemBuilder: (context, index) {
-                                                  return Obx(
-                                                      () => GestureDetector(
-                                                            onTap: () {
-                                                              matchDetailController
-                                                                  .changeIndex(
-                                                                      index);
-                                                              if (index == 1) {
-                                                                matchDetailController
-                                                                    .getStats();
-                                                              }
-                                                            },
-                                                            child: Container(
-                                                                decoration: BoxDecoration(
-                                                                    border: Border.all(
-                                                                        color: matchDetailController.selectedIndex.value == index
-                                                                            ? secondaryColor
-                                                                            : primaryColor),
-                                                                    borderRadius: BorderRadius.circular(
-                                                                        50.r)),
-                                                                margin: EdgeInsets.symmetric(
-                                                                    horizontal:
-                                                                        15.w,
-                                                                    vertical:
-                                                                        5.h),
-                                                                padding: EdgeInsets.symmetric(
-                                                                    horizontal:
-                                                                        10.w,
-                                                                    vertical:
-                                                                        5.h),
-                                                                child:
-                                                                    Center(child: CustomText(text: matchDetailList[index]))),
-                                                          ));
-                                                },
-                                                itemCount:
-                                                    matchDetailList.length,
-                                                shrinkWrap: true,
-                                                physics:
-                                                    const NeverScrollableScrollPhysics(),
-                                              ),
-                                            ),
-                                          ),
-                                          kSizedBoxH10,
-
-                                          ///Detail
-                                          if (matchDetailController
-                                                  .selectedIndex.value ==
-                                              0)
-                                            DetailWidget(
-                                              games: matchDetailController
-                                                  .matchDetail.value.games?[0],
-                                              onTap: () {
-                                                matchDetailController
-                                                    .changeIndex(1);
-                                              },
-                                            ),
-
-                                          ///stats
-                                          if (matchDetailController
-                                                  .selectedIndex.value ==
-                                              1)
-                                            StatsWidget(
-                                                matchDetailController:
-                                                    matchDetailController,
-                                                stats: matchDetailController
-                                                    .stats.value),
-                                          if (matchDetailController
-                                                  .selectedIndex.value ==
-                                              2)
-                                            PointByPointWidget(
-                                              pointByPoint:
+                                  kSizedBoxH10,
+                                  Container(
+                                    color: cardColor,
+                                    height: 35.h,
+                                    child: Center(
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          return Obx(() => GestureDetector(
+                                                onTap: () {
                                                   matchDetailController
-                                                      .pointByPoint.value,
-                                            )
-                                        ],
-                                      )),
-                                  H2HScreen(
-                                    lastMatches: matchDetailController
-                                        .matchDetail
-                                        .value
-                                        .games?[0]
-                                        .lastMatches,
-                                    competitions: matchDetailController
-                                        .matchDetail.value.competitions,
-                                    countries: matchDetailController
-                                        .matchDetail.value.countries,
-                                  )
-                                ]);
-                          },
-                        ),
+                                                      .changeIndex(index);
+                                                  if (index == 1) {
+                                                    matchDetailController
+                                                        .getStats();
+                                                  }
+                                                },
+                                                child: Container(
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: matchDetailController
+                                                                        .selectedIndex
+                                                                        .value ==
+                                                                    index
+                                                                ? secondaryColor
+                                                                : primaryColor),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                50.r)),
+                                                    margin: EdgeInsets.symmetric(
+                                                        horizontal: 15.w,
+                                                        vertical: 5.h),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.w,
+                                                            vertical: 5.h),
+                                                    child:
+                                                        Center(child: CustomText(text: matchDetailList[index]))),
+                                              ));
+                                        },
+                                        itemCount: matchDetailList.length,
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                      ),
+                                    ),
+                                  ),
+                                  kSizedBoxH10,
+
+                                  ///Detail
+                                  if (matchDetailController
+                                          .selectedIndex.value ==
+                                      0)
+                                    DetailWidget(
+                                      games: matchDetailController
+                                          .matchDetail.value.games?[0],
+                                      onTap: () {
+                                        matchDetailController.changeIndex(1);
+                                      },
+                                    ),
+
+                                  ///stats
+                                  if (matchDetailController
+                                          .selectedIndex.value ==
+                                      1)
+                                    StatsWidget(
+                                        matchDetailController:
+                                            matchDetailController,
+                                        stats:
+                                            matchDetailController.stats.value),
+                                  if (matchDetailController
+                                          .selectedIndex.value ==
+                                      2)
+                                    PointByPointWidget(
+                                      pointByPoint: matchDetailController
+                                          .pointByPoint.value,
+                                    )
+                                ],
+                              )),
+                          H2HScreen(
+                            lastMatches: matchDetailController
+                                .matchDetail.value.games?[0].lastMatches,
+                            competitions: matchDetailController
+                                .matchDetail.value.competitions,
+                            countries: matchDetailController
+                                .matchDetail.value.countries,
+                          )
+                        ]),
                       )
                     ],
                   ),
