@@ -113,46 +113,65 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(100.r),
-                                          child: Image.network(
-                                            (matchDetailController
-                                                            .matchDetail
-                                                            .value
-                                                            .games?[0]
-                                                            .comps ??
-                                                        [])
-                                                    .isNotEmpty
-                                                ? imageUrl(
-                                                    "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[0].iD}.png",
-                                                    "Competitors",
-                                                    matchDetailController
-                                                            .matchDetail
-                                                            .value
-                                                            .games?[0]
-                                                            .comps?[0]
-                                                            .iD ??
-                                                        0)
-                                                : "",
-                                            fit: BoxFit.cover,
-                                            width: 25.w,
-                                            height: 25.w,
-                                            errorBuilder:
-                                                (context, error, stackTrace) =>
-                                                    Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100.r)),
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 25.sp,
-                                              ),
+                                        Container(
+                                            width: 40.w,
+                                            height: 40.w,
+                                            decoration: BoxDecoration(
+                                              color: whiteColor,
+                                              borderRadius: BorderRadius.circular(100.r),
                                             ),
-                                          ),
+                                            child:Center(
+                                              child: CustomText(text:(matchDetailController
+                                                  .matchDetail
+                                                  .value
+                                                  .games?[0]
+                                                  .comps?[0]
+                                                  .name ??
+                                                  '').split("")[0] ,fontSize: 16.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
+                                            )
+
                                         ),
+                                        kSizedBoxH10,
+                                        // ClipRRect(
+                                        //   borderRadius:
+                                        //       BorderRadius.circular(100.r),
+                                        //   child: Image.network(
+                                        //     (matchDetailController
+                                        //                     .matchDetail
+                                        //                     .value
+                                        //                     .games?[0]
+                                        //                     .comps ??
+                                        //                 [])
+                                        //             .isNotEmpty
+                                        //         ? imageUrl(
+                                        //             "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[0].iD}.png",
+                                        //             "Competitors",
+                                        //             matchDetailController
+                                        //                     .matchDetail
+                                        //                     .value
+                                        //                     .games?[0]
+                                        //                     .comps?[0]
+                                        //                     .iD ??
+                                        //                 0)
+                                        //         : "",
+                                        //     fit: BoxFit.cover,
+                                        //     width: 25.w,
+                                        //     height: 25.w,
+                                        //     errorBuilder:
+                                        //         (context, error, stackTrace) =>
+                                        //             Container(
+                                        //       decoration: BoxDecoration(
+                                        //           color: Colors.white,
+                                        //           borderRadius:
+                                        //               BorderRadius.circular(
+                                        //                   100.r)),
+                                        //       child: Icon(
+                                        //         Icons.person,
+                                        //         size: 25.sp,
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         CustomText(
                                           text: ((matchDetailController
                                                           .matchDetail
@@ -293,47 +312,66 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(100.r),
-                                          child: Image.network(
-                                            (matchDetailController
-                                                                .matchDetail
-                                                                .value
-                                                                .games?[0]
-                                                                .comps ??
-                                                            [])
-                                                        .length >
-                                                    1
-                                                ? imageUrl(
-                                                    "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[1].iD}.png",
-                                                    "Competitors",
-                                                    matchDetailController
-                                                            .matchDetail
-                                                            .value
-                                                            .games?[0]
-                                                            .comps?[1]
-                                                            .iD ??
-                                                        0)
-                                                : "",
-                                            fit: BoxFit.cover,
-                                            width: 25.w,
-                                            height: 25.w,
-                                            errorBuilder:
-                                                (context, error, stackTrace) =>
-                                                    Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100.r)),
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 25.sp,
-                                              ),
+                                        // ClipRRect(
+                                        //   borderRadius:
+                                        //       BorderRadius.circular(100.r),
+                                        //   child: Image.network(
+                                        //     (matchDetailController
+                                        //                         .matchDetail
+                                        //                         .value
+                                        //                         .games?[0]
+                                        //                         .comps ??
+                                        //                     [])
+                                        //                 .length >
+                                        //             1
+                                        //         ? imageUrl(
+                                        //             "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[1].iD}.png",
+                                        //             "Competitors",
+                                        //             matchDetailController
+                                        //                     .matchDetail
+                                        //                     .value
+                                        //                     .games?[0]
+                                        //                     .comps?[1]
+                                        //                     .iD ??
+                                        //                 0)
+                                        //         : "",
+                                        //     fit: BoxFit.cover,
+                                        //     width: 25.w,
+                                        //     height: 25.w,
+                                        //     errorBuilder:
+                                        //         (context, error, stackTrace) =>
+                                        //             Container(
+                                        //       decoration: BoxDecoration(
+                                        //           color: Colors.white,
+                                        //           borderRadius:
+                                        //               BorderRadius.circular(
+                                        //                   100.r)),
+                                        //       child: Icon(
+                                        //         Icons.person,
+                                        //         size: 25.sp,
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        Container(
+                                            width: 40.w,
+                                            height: 40.w,
+                                            decoration: BoxDecoration(
+                                              color: whiteColor,
+                                              borderRadius: BorderRadius.circular(100.r),
                                             ),
-                                          ),
+                                            child:Center(
+                                              child: CustomText(text:(matchDetailController
+                                                  .matchDetail
+                                                  .value
+                                                  .games?[0]
+                                                  .comps?[1]
+                                                  .name ??
+                                                  '').split("")[0] ,fontSize: 16.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
+                                            )
+
                                         ),
+                                        kSizedBoxH10,
                                         CustomText(
                                           text: ((matchDetailController
                                                               .matchDetail

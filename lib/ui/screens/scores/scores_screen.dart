@@ -147,51 +147,72 @@ class ScoresScreen extends StatelessWidget {
                                                             fontSize: 10.sp,
                                                           ),
                                                         ),
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      100.r),
-                                                          child: Image.network(
-                                                            (scoresController
-                                                                            .gameGroups[
-                                                                                index]
-                                                                            .games?[
-                                                                                index1]
-                                                                            .comps ??
-                                                                        [])
-                                                                    .isNotEmpty
-                                                                ? imageUrl(
-                                                                    "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[0].iD}.png",
-                                                                    "Competitors",
-                                                                    scoresController
-                                                                            .gameGroups[index]
-                                                                            .games?[index1]
-                                                                            .comps?[0]
-                                                                            .iD ??
-                                                                        0)
-                                                                : "",
-                                                            fit: BoxFit.cover,
-                                                            width: 17.w,
-                                                            height: 17.w,
-                                                            errorBuilder: (context,
-                                                                    error,
-                                                                    stackTrace) =>
-                                                                Container(
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100.r)),
-                                                              child: Icon(
-                                                                Icons.person,
-                                                                size: 15.sp,
-                                                              ),
+                                                        Container(
+                                                            width: 30.w,
+                                                            height: 30.w,
+                                                            decoration: BoxDecoration(
+                                                              color: whiteColor,
+                                                              borderRadius: BorderRadius.circular(100.r),
                                                             ),
-                                                          ),
+                                                            child:Center(
+                                                              child: CustomText(text:(scoresController
+                                                                  .gameGroups[
+                                                              index]
+                                                                  .games?[
+                                                              index1]
+                                                                  .comps?[
+                                                              0]
+                                                                  .name ??
+                                                                  '').split("")[0] ,fontSize: 12.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
+                                                            )
+
                                                         ),
+                                                        // ClipRRect(
+                                                        //   borderRadius:
+                                                        //       BorderRadius
+                                                        //           .circular(
+                                                        //               100.r),
+                                                        //   child: Image.network(
+                                                        //     (scoresController
+                                                        //                     .gameGroups[
+                                                        //                         index]
+                                                        //                     .games?[
+                                                        //                         index1]
+                                                        //                     .comps ??
+                                                        //                 [])
+                                                        //             .isNotEmpty
+                                                        //         ? imageUrl(
+                                                        //             "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[0].iD}.png",
+                                                        //             "Competitors",
+                                                        //             scoresController
+                                                        //                     .gameGroups[index]
+                                                        //                     .games?[index1]
+                                                        //                     .comps?[0]
+                                                        //                     .iD ??
+                                                        //                 0)
+                                                        //         : "",
+                                                        //     fit: BoxFit.cover,
+                                                        //     width: 17.w,
+                                                        //     height: 17.w,
+                                                        //     errorBuilder: (context,
+                                                        //             error,
+                                                        //             stackTrace) =>
+                                                        //         Container(
+                                                        //       decoration: BoxDecoration(
+                                                        //           color: Colors
+                                                        //               .white,
+                                                        //           borderRadius:
+                                                        //               BorderRadius
+                                                        //                   .circular(
+                                                        //                       100.r)),
+                                                        //       child: Icon(
+                                                        //         Icons.person,
+                                                        //         size: 15.sp,
+                                                        //       ),
+                                                        //     ),
+                                                        //   ),
+                                                        // ),
+                                                        kSizedBoxW2,
                                                         SizedBox(
                                                           height: 40.h,
                                                           width: 103.w,
@@ -497,46 +518,67 @@ class ScoresScreen extends StatelessWidget {
                                                                   ],
                                                                 ),
                                                         ),
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      100.r),
-                                                          child: Image.network(
-                                                            (scoresController.gameGroups[index].games?[index1].comps ??
-                                                                            [])
-                                                                        .length >
-                                                                    1
-                                                                ? imageUrl(
-                                                                    "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[1].iD}.png",
-                                                                    "Competitors",
-                                                                    scoresController
-                                                                            .gameGroups[index]
-                                                                            .games?[index1]
-                                                                            .comps?[1]
-                                                                            .iD ??
-                                                                        0)
-                                                                : "",
-                                                            fit: BoxFit.cover,
-                                                            width: 17.w,
-                                                            height: 17.w,
-                                                            errorBuilder: (context,
-                                                                    error,
-                                                                    stackTrace) =>
-                                                                Container(
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              100.r)),
-                                                              child: Icon(
-                                                                Icons.person,
-                                                                size: 15.sp,
-                                                              ),
+                                                        // ClipRRect(
+                                                        //   borderRadius:
+                                                        //       BorderRadius
+                                                        //           .circular(
+                                                        //               100.r),
+                                                        //   child: Image.network(
+                                                        //     (scoresController.gameGroups[index].games?[index1].comps ??
+                                                        //                     [])
+                                                        //                 .length >
+                                                        //             1
+                                                        //         ? imageUrl(
+                                                        //             "Competitors:default${scoresController.gameGroups[index].games?[index1].comps?[1].iD}.png",
+                                                        //             "Competitors",
+                                                        //             scoresController
+                                                        //                     .gameGroups[index]
+                                                        //                     .games?[index1]
+                                                        //                     .comps?[1]
+                                                        //                     .iD ??
+                                                        //                 0)
+                                                        //         : "",
+                                                        //     fit: BoxFit.cover,
+                                                        //     width: 17.w,
+                                                        //     height: 17.w,
+                                                        //     errorBuilder: (context,
+                                                        //             error,
+                                                        //             stackTrace) =>
+                                                        //         Container(
+                                                        //       decoration: BoxDecoration(
+                                                        //           color: Colors
+                                                        //               .white,
+                                                        //           borderRadius:
+                                                        //               BorderRadius
+                                                        //                   .circular(
+                                                        //                       100.r)),
+                                                        //       child: Icon(
+                                                        //         Icons.person,
+                                                        //         size: 15.sp,
+                                                        //       ),
+                                                        //     ),
+                                                        //   ),
+                                                        // ),
+                                                        kSizedBoxW2,
+                                                        Container(
+                                                            width: 30.w,
+                                                            height: 30.w,
+                                                            decoration: BoxDecoration(
+                                                              color: whiteColor,
+                                                              borderRadius: BorderRadius.circular(100.r),
                                                             ),
-                                                          ),
+                                                            child:Center(
+                                                              child: CustomText(text:(scoresController
+                                                                  .gameGroups[
+                                                              index]
+                                                                  .games?[
+                                                              index1]
+                                                                  .comps?[
+                                                              1]
+                                                                  .name ??
+                                                                  '').split("")[0] ,fontSize: 12.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
+                                                            )
+
                                                         ),
                                                         SizedBox(
                                                           width: 1.sh * 0.10,
