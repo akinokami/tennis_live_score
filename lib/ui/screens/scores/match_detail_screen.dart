@@ -61,286 +61,277 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                   fontWeight: FontWeight.bold),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Obx(
-          () => matchDetailController.isLoading.value
-              ? const Center(child: CustomCircleLoading())
-              : (matchDetailController.matchDetail.value.games ?? []).isEmpty
-                  ? const Center(child: CustomText(text: 'No data found.'))
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(color: greyColor),
-                          padding: EdgeInsets.symmetric(horizontal: 8.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: 1.sw * 0.25,
-                                    child: CustomText(
-                                      text: ((matchDetailController.matchDetail
-                                                      .value.games?[0].comps ??
-                                                  [])
-                                              .isNotEmpty)
-                                          ? (matchDetailController
-                                                  .matchDetail
-                                                  .value
-                                                  .games?[0]
-                                                  .comps?[0]
-                                                  .name ??
-                                              '')
-                                          : '',
-                                      maxLines: 2,
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      CustomText(
-                                        text: subStringBeforeSpace(
-                                            matchDetailController.matchDetail
-                                                    .value.games?[0].sTime ??
-                                                ''),
-                                      ),
-                                      matchDetailController.matchDetail.value
-                                                  .games?[0].winner ==
-                                              -1
-                                          ? CustomText(
-                                              text: subStringAfterSpace(
-                                                  matchDetailController
-                                                          .matchDetail
-                                                          .value
-                                                          .games?[0]
-                                                          .sTime ??
-                                                      ''))
-                                          : Row(
-                                              children: [
-                                                CustomText(
-                                                    text: ((matchDetailController
-                                                                    .matchDetail
-                                                                    .value
-                                                                    .games?[0]
-                                                                    .scrs ??
-                                                                [])
-                                                            .isNotEmpty)
-                                                        ? (matchDetailController
-                                                                    .matchDetail
-                                                                    .value
-                                                                    .games?[0]
-                                                                    .scrs?[0]) !=
-                                                                -1.0
-                                                            ? "${matchDetailController.matchDetail.value.games?[0].scrs?[0].toStringAsFixed(0)}"
-                                                            : '-'
-                                                        : '-'),
-                                                const CustomText(
-                                                  text: " - ",
-                                                ),
-                                                CustomText(
-                                                    text: ((matchDetailController
-                                                                        .matchDetail
-                                                                        .value
-                                                                        .games?[
-                                                                            0]
-                                                                        .scrs ??
-                                                                    [])
-                                                                .length >
-                                                            1)
-                                                        ? (matchDetailController
-                                                                    .matchDetail
-                                                                    .value
-                                                                    .games?[0]
-                                                                    .scrs?[1]) !=
-                                                                -1.0
-                                                            ? "${matchDetailController.matchDetail.value.games?[0].scrs?[1].toStringAsFixed(0)}"
-                                                            : '-'
-                                                        : '-'),
-                                              ],
-                                            ),
-                                      Visibility(
-                                        visible: matchDetailController
+      body: Obx(
+        () => matchDetailController.isLoading.value
+            ? const Center(child: CustomCircleLoading())
+            : (matchDetailController.matchDetail.value.games ?? []).isEmpty
+                ? const Center(child: CustomText(text: 'No data found.'))
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(color: greyColor),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 1.sw * 0.25,
+                                  child: CustomText(
+                                    text: ((matchDetailController.matchDetail
+                                                    .value.games?[0].comps ??
+                                                [])
+                                            .isNotEmpty)
+                                        ? (matchDetailController
                                                 .matchDetail
                                                 .value
                                                 .games?[0]
-                                                .winner !=
-                                            -1,
-                                        child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10.w, vertical: 1.h),
-                                          decoration: BoxDecoration(
-                                              color: secondaryColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(20.r)),
-                                          child: const CustomText(
-                                            text: "Ended",
+                                                .comps?[0]
+                                                .name ??
+                                            '')
+                                        : '',
+                                    maxLines: 2,
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    CustomText(
+                                      text: subStringBeforeSpace(
+                                          matchDetailController.matchDetail
+                                                  .value.games?[0].sTime ??
+                                              ''),
+                                    ),
+                                    matchDetailController.matchDetail.value
+                                                .games?[0].winner ==
+                                            -1
+                                        ? CustomText(
+                                            text: subStringAfterSpace(
+                                                matchDetailController
+                                                        .matchDetail
+                                                        .value
+                                                        .games?[0]
+                                                        .sTime ??
+                                                    ''))
+                                        : Row(
+                                            children: [
+                                              CustomText(
+                                                  text: ((matchDetailController
+                                                                  .matchDetail
+                                                                  .value
+                                                                  .games?[0]
+                                                                  .scrs ??
+                                                              [])
+                                                          .isNotEmpty)
+                                                      ? (matchDetailController
+                                                                  .matchDetail
+                                                                  .value
+                                                                  .games?[0]
+                                                                  .scrs?[0]) !=
+                                                              -1.0
+                                                          ? "${matchDetailController.matchDetail.value.games?[0].scrs?[0].toStringAsFixed(0)}"
+                                                          : '-'
+                                                      : '-'),
+                                              const CustomText(
+                                                text: " - ",
+                                              ),
+                                              CustomText(
+                                                  text: ((matchDetailController
+                                                                      .matchDetail
+                                                                      .value
+                                                                      .games?[0]
+                                                                      .scrs ??
+                                                                  [])
+                                                              .length >
+                                                          1)
+                                                      ? (matchDetailController
+                                                                  .matchDetail
+                                                                  .value
+                                                                  .games?[0]
+                                                                  .scrs?[1]) !=
+                                                              -1.0
+                                                          ? "${matchDetailController.matchDetail.value.games?[0].scrs?[1].toStringAsFixed(0)}"
+                                                          : '-'
+                                                      : '-'),
+                                            ],
                                           ),
+                                    Visibility(
+                                      visible: matchDetailController.matchDetail
+                                              .value.games?[0].winner !=
+                                          -1,
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10.w, vertical: 1.h),
+                                        decoration: BoxDecoration(
+                                            color: secondaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(20.r)),
+                                        child: const CustomText(
+                                          text: "Ended",
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 1.sw * 0.25,
-                                    child: CustomText(
-                                      text: ((matchDetailController
-                                                          .matchDetail
-                                                          .value
-                                                          .games?[0]
-                                                          .comps ??
-                                                      [])
-                                                  .length >
-                                              1)
-                                          ? (matchDetailController
-                                                  .matchDetail
-                                                  .value
-                                                  .games?[0]
-                                                  .comps?[1]
-                                                  .name ??
-                                              '')
-                                          : '',
-                                      maxLines: 2,
                                     ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 1.sw * 0.25,
+                                  child: CustomText(
+                                    text: ((matchDetailController
+                                                        .matchDetail
+                                                        .value
+                                                        .games?[0]
+                                                        .comps ??
+                                                    [])
+                                                .length >
+                                            1)
+                                        ? (matchDetailController
+                                                .matchDetail
+                                                .value
+                                                .games?[0]
+                                                .comps?[1]
+                                                .name ??
+                                            '')
+                                        : '',
+                                    maxLines: 2,
                                   ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 50.h,
-                                child: TabBar(
-                                    controller: tabController,
-                                    dividerColor: secondaryColor,
-                                    indicatorSize: TabBarIndicatorSize.tab,
-                                    unselectedLabelColor: whiteColor,
-                                    labelColor: secondaryColor,
-                                    indicatorColor: secondaryColor,
-                                    tabs: const [
-                                      Tab(text: "Match"),
-                                      Tab(text: "H2H"),
-                                    ]),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 1.5,
-                          child: LayoutBuilder(
-                            builder: (context, constraints) {
-                              return TabBarView(
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 50.h,
+                              child: TabBar(
                                   controller: tabController,
-                                  children: [
-                                    Obx(() => Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            kSizedBoxH10,
-                                            Container(
-                                              width: constraints.maxWidth,
-                                              color: cardColor,
-                                              height: 35.h,
-                                              child: Center(
-                                                child: ListView.builder(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    return Obx(() =>
-                                                        GestureDetector(
-                                                          onTap: () {
-                                                            matchDetailController
-                                                                .changeIndex(
-                                                                    index);
-                                                            if (index == 1) {
+                                  dividerColor: secondaryColor,
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  unselectedLabelColor: whiteColor,
+                                  labelColor: secondaryColor,
+                                  indicatorColor: secondaryColor,
+                                  tabs: const [
+                                    Tab(text: "Match"),
+                                    Tab(text: "H2H"),
+                                  ]),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        // height: MediaQuery.of(context).size.height * 1.5,
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return TabBarView(
+                                controller: tabController,
+                                children: [
+                                  Obx(() => Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          kSizedBoxH10,
+                                          Container(
+                                            width: constraints.maxWidth,
+                                            color: cardColor,
+                                            height: 35.h,
+                                            child: Center(
+                                              child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemBuilder: (context, index) {
+                                                  return Obx(
+                                                      () => GestureDetector(
+                                                            onTap: () {
                                                               matchDetailController
-                                                                  .getStats();
-                                                            }
-                                                          },
-                                                          child: Container(
-                                                              decoration: BoxDecoration(
-                                                                  border: Border.all(
-                                                                      color: matchDetailController.selectedIndex.value == index
-                                                                          ? secondaryColor
-                                                                          : primaryColor),
-                                                                  borderRadius:
-                                                                      BorderRadius.circular(50
-                                                                          .r)),
-                                                              margin:
-                                                                  EdgeInsets.symmetric(
-                                                                      horizontal:
-                                                                          15.w,
-                                                                      vertical:
-                                                                          5.h),
-                                                              padding: EdgeInsets.symmetric(
-                                                                  horizontal: 10.w,
-                                                                  vertical: 5.h),
-                                                              child: Center(child: CustomText(text: matchDetailList[index]))),
-                                                        ));
-                                                  },
-                                                  itemCount:
-                                                      matchDetailList.length,
-                                                  shrinkWrap: true,
-                                                  physics:
-                                                      const NeverScrollableScrollPhysics(),
-                                                ),
+                                                                  .changeIndex(
+                                                                      index);
+                                                              if (index == 1) {
+                                                                matchDetailController
+                                                                    .getStats();
+                                                              }
+                                                            },
+                                                            child: Container(
+                                                                decoration: BoxDecoration(
+                                                                    border: Border.all(
+                                                                        color: matchDetailController.selectedIndex.value == index
+                                                                            ? secondaryColor
+                                                                            : primaryColor),
+                                                                    borderRadius: BorderRadius.circular(
+                                                                        50.r)),
+                                                                margin: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        15.w,
+                                                                    vertical:
+                                                                        5.h),
+                                                                padding: EdgeInsets.symmetric(
+                                                                    horizontal:
+                                                                        10.w,
+                                                                    vertical:
+                                                                        5.h),
+                                                                child:
+                                                                    Center(child: CustomText(text: matchDetailList[index]))),
+                                                          ));
+                                                },
+                                                itemCount:
+                                                    matchDetailList.length,
+                                                shrinkWrap: true,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
                                               ),
                                             ),
-                                            kSizedBoxH10,
+                                          ),
+                                          kSizedBoxH10,
 
-                                            ///Detail
-                                            if (matchDetailController
-                                                    .selectedIndex.value ==
-                                                0)
-                                              DetailWidget(
-                                                games: matchDetailController
-                                                    .matchDetail
-                                                    .value
-                                                    .games?[0],
-                                                onTap: () {
+                                          ///Detail
+                                          if (matchDetailController
+                                                  .selectedIndex.value ==
+                                              0)
+                                            DetailWidget(
+                                              games: matchDetailController
+                                                  .matchDetail.value.games?[0],
+                                              onTap: () {
+                                                matchDetailController
+                                                    .changeIndex(1);
+                                              },
+                                            ),
+
+                                          ///stats
+                                          if (matchDetailController
+                                                  .selectedIndex.value ==
+                                              1)
+                                            StatsWidget(
+                                                matchDetailController:
+                                                    matchDetailController,
+                                                stats: matchDetailController
+                                                    .stats.value),
+                                          if (matchDetailController
+                                                  .selectedIndex.value ==
+                                              2)
+                                            PointByPointWidget(
+                                              pointByPoint:
                                                   matchDetailController
-                                                      .changeIndex(1);
-                                                },
-                                              ),
-
-                                            ///stats
-                                            if (matchDetailController
-                                                    .selectedIndex.value ==
-                                                1)
-                                              StatsWidget(
-                                                  matchDetailController:
-                                                      matchDetailController,
-                                                  stats: matchDetailController
-                                                      .stats.value),
-                                            if (matchDetailController
-                                                    .selectedIndex.value ==
-                                                2)
-                                              PointByPointWidget(
-                                                pointByPoint:
-                                                    matchDetailController
-                                                        .pointByPoint.value,
-                                              )
-                                          ],
-                                        )),
-                                    H2HScreen(
-                                      lastMatches: matchDetailController
-                                          .matchDetail
-                                          .value
-                                          .games?[0]
-                                          .lastMatches,
-                                      competitions: matchDetailController
-                                          .matchDetail.value.competitions,
-                                      countries: matchDetailController
-                                          .matchDetail.value.countries,
-                                    )
-                                  ]);
-                            },
-                          ),
-                        )
-                      ],
-                    ),
-        ),
+                                                      .pointByPoint.value,
+                                            )
+                                        ],
+                                      )),
+                                  H2HScreen(
+                                    lastMatches: matchDetailController
+                                        .matchDetail
+                                        .value
+                                        .games?[0]
+                                        .lastMatches,
+                                    competitions: matchDetailController
+                                        .matchDetail.value.competitions,
+                                    countries: matchDetailController
+                                        .matchDetail.value.countries,
+                                  )
+                                ]);
+                          },
+                        ),
+                      )
+                    ],
+                  ),
       ),
     );
   }
