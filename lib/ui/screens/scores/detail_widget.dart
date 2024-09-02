@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../constants/color_const.dart';
@@ -116,7 +117,7 @@ class DetailWidget extends StatelessWidget {
           ),
           kSizedBoxH20,
           Visibility(
-            visible: games?.winner != -1,
+            visible: games?.winner != -1 || games?.active != false,
             child: Container(
               padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
@@ -192,7 +193,19 @@ class DetailWidget extends StatelessWidget {
                                     animation: true,
                                     animationDuration: 1200,
                                     lineWidth: 5.0,
-                                    percent: 0.4,
+                                    percent: (games?.statistics?[index].vals ??
+                                                    [])
+                                                .isNotEmpty &&
+                                            (games?.statistics?[index].vals ??
+                                                        [])
+                                                    .length >
+                                                1
+                                        ? (int.parse(
+                                                    "${games?.statistics?[index].vals?[0] ?? 0}") +
+                                                int.parse(
+                                                    "${games?.statistics?[index].vals?[1] ?? 0}")) /
+                                            500
+                                        : 0.5,
                                     center: const CustomText(
                                       text: "Points Won",
                                     ),

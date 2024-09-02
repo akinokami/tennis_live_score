@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
+import 'package:tennis_live_score/ui/screens/player_detail/player_detail_screen.dart';
 import 'package:tennis_live_score/ui/screens/scores/detail_widget.dart';
 import 'package:tennis_live_score/ui/screens/scores/h_2_h_widget.dart';
 import 'package:tennis_live_score/ui/screens/scores/point_by_point_widget.dart';
@@ -65,7 +66,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
         () => matchDetailController.isLoading.value
             ? const Center(child: CustomCircleLoading())
             : (matchDetailController.matchDetail.value.games ?? []).isEmpty
-                ?  Center(child: CustomText(text: 'no_data'.tr))
+                ? Center(child: CustomText(text: 'no_data'.tr))
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -73,28 +74,106 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                         decoration: BoxDecoration(color: greyColor),
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  width: 1.sw * 0.25,
-                                  child: CustomText(
-                                    text: ((matchDetailController.matchDetail
-                                                    .value.games?[0].comps ??
-                                                [])
-                                            .isNotEmpty)
-                                        ? (matchDetailController
-                                                .matchDetail
-                                                .value
-                                                .games?[0]
-                                                .comps?[0]
-                                                .name ??
-                                            '')
-                                        : '',
-                                    maxLines: 2,
-                                    textAlign: TextAlign.right,
+                                InkWell(
+                                  onTap: () {
+                                    if ((matchDetailController.matchDetail.value
+                                                .games?[0].comps ??
+                                            [])
+                                        .isNotEmpty) {
+                                      Get.to(() => const PlayerDetailScreen(),
+                                          arguments: {
+                                            'mainCompId': matchDetailController
+                                                    .matchDetail
+                                                    .value
+                                                    .games?[0]
+                                                    .comps?[0]
+                                                    .mainComp ??
+                                                0,
+                                            'competitorId':
+                                                matchDetailController
+                                                        .matchDetail
+                                                        .value
+                                                        .games?[0]
+                                                        .comps?[0]
+                                                        .iD ??
+                                                    0
+                                          });
+                                    }
+                                  },
+                                  child: SizedBox(
+                                    width: 1.sw * 0.25,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100.r),
+                                          child: Image.network(
+                                            (matchDetailController
+                                                            .matchDetail
+                                                            .value
+                                                            .games?[0]
+                                                            .comps ??
+                                                        [])
+                                                    .isNotEmpty
+                                                ? imageUrl(
+                                                    "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[0].iD}.png",
+                                                    "Competitors",
+                                                    matchDetailController
+                                                            .matchDetail
+                                                            .value
+                                                            .games?[0]
+                                                            .comps?[0]
+                                                            .iD ??
+                                                        0)
+                                                : "",
+                                            fit: BoxFit.cover,
+                                            width: 25.w,
+                                            height: 25.w,
+                                            errorBuilder:
+                                                (context, error, stackTrace) =>
+                                                    Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100.r)),
+                                              child: Icon(
+                                                Icons.person,
+                                                size: 25.sp,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        CustomText(
+                                          text: ((matchDetailController
+                                                          .matchDetail
+                                                          .value
+                                                          .games?[0]
+                                                          .comps ??
+                                                      [])
+                                                  .isNotEmpty)
+                                              ? (matchDetailController
+                                                      .matchDetail
+                                                      .value
+                                                      .games?[0]
+                                                      .comps?[0]
+                                                      .name ??
+                                                  '')
+                                              : '',
+                                          maxLines: 2,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Column(
@@ -106,8 +185,11 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                               ''),
                                     ),
                                     matchDetailController.matchDetail.value
-                                                .games?[0].winner ==
-                                            -1
+                                                    .games?[0].winner ==
+                                                -1 &&
+                                            matchDetailController.matchDetail
+                                                    .value.games?[0].active ==
+                                                false
                                         ? CustomText(
                                             text: subStringAfterSpace(
                                                 matchDetailController
@@ -176,26 +258,104 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  width: 1.sw * 0.25,
-                                  child: CustomText(
-                                    text: ((matchDetailController
+                                InkWell(
+                                  onTap: () {
+                                    if ((matchDetailController.matchDetail.value
+                                                    .games?[0].comps ??
+                                                [])
+                                            .length >
+                                        1) {
+                                      Get.to(() => const PlayerDetailScreen(),
+                                          arguments: {
+                                            'mainCompId': matchDetailController
+                                                    .matchDetail
+                                                    .value
+                                                    .games?[0]
+                                                    .comps?[1]
+                                                    .mainComp ??
+                                                0,
+                                            'competitorId':
+                                                matchDetailController
                                                         .matchDetail
                                                         .value
                                                         .games?[0]
-                                                        .comps ??
-                                                    [])
-                                                .length >
-                                            1)
-                                        ? (matchDetailController
-                                                .matchDetail
-                                                .value
-                                                .games?[0]
-                                                .comps?[1]
-                                                .name ??
-                                            '')
-                                        : '',
-                                    maxLines: 2,
+                                                        .comps?[1]
+                                                        .iD ??
+                                                    0
+                                          });
+                                    }
+                                  },
+                                  child: SizedBox(
+                                    width: 1.sw * 0.25,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100.r),
+                                          child: Image.network(
+                                            (matchDetailController
+                                                                .matchDetail
+                                                                .value
+                                                                .games?[0]
+                                                                .comps ??
+                                                            [])
+                                                        .length >
+                                                    1
+                                                ? imageUrl(
+                                                    "Competitors:default${matchDetailController.matchDetail.value.games?[0].comps?[1].iD}.png",
+                                                    "Competitors",
+                                                    matchDetailController
+                                                            .matchDetail
+                                                            .value
+                                                            .games?[0]
+                                                            .comps?[1]
+                                                            .iD ??
+                                                        0)
+                                                : "",
+                                            fit: BoxFit.cover,
+                                            width: 25.w,
+                                            height: 25.w,
+                                            errorBuilder:
+                                                (context, error, stackTrace) =>
+                                                    Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100.r)),
+                                              child: Icon(
+                                                Icons.person,
+                                                size: 25.sp,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        CustomText(
+                                          text: ((matchDetailController
+                                                              .matchDetail
+                                                              .value
+                                                              .games?[0]
+                                                              .comps ??
+                                                          [])
+                                                      .length >
+                                                  1)
+                                              ? (matchDetailController
+                                                      .matchDetail
+                                                      .value
+                                                      .games?[0]
+                                                      .comps?[1]
+                                                      .name ??
+                                                  '')
+                                              : '',
+                                          maxLines: 2,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -209,10 +369,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen>
                                   unselectedLabelColor: whiteColor,
                                   labelColor: secondaryColor,
                                   indicatorColor: secondaryColor,
-                                  tabs:  [
+                                  tabs: [
                                     Tab(text: "match".tr),
-                                    Tab(text: "h2h".tr
-                                    ),
+                                    Tab(text: "h2h".tr),
                                   ]),
                             ),
                           ],
