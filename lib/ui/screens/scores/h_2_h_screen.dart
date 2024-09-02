@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tennis_live_score/constants/color_const.dart';
 import 'package:tennis_live_score/constants/dimen_const.dart';
 import 'package:tennis_live_score/models/match_detail.dart';
@@ -25,7 +26,7 @@ class H2HScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: "Head to Head",
+                  text: "h2h".tr,
                   fontWeight: FontWeight.bold,
                 ),
                 kSizedBoxH10,
