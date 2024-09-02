@@ -51,5 +51,7 @@ class EnLanguage {
     'max_games_in_a_row': 'Max Games in a Row',
     'return_games_won': 'Return Games Won',
     'total_games_won': 'Total Games Won',
+    'atp_ranking': 'ATP Ranking',
+    'player': 'Player',
   };
 }

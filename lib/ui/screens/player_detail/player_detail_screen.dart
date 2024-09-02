@@ -51,29 +51,42 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
               Obx(
                 () => Column(
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(100.r),
-                      child: Image.network(
-                        imageUrl(
-                            "Competitors:default${playerDetailController.playerMatch.value.header?.entity?.iD}.png",
-                            "Competitors",
-                            playerDetailController
-                                    .playerMatch.value.header?.entity?.iD ??
-                                0),
-                        fit: BoxFit.cover,
-                        width: 40.w,
-                        height: 40.w,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(100.r)),
-                          child: Icon(
-                            Icons.person,
-                            size: 40.sp,
-                          ),
-                        ),
+                  if((playerDetailController
+                      .playerMatch.value.header?.entity?.name??"").isNotEmpty)  Container(
+                      width: 40.w,
+                      height: 40.w,
+                      decoration: BoxDecoration(
+                        color: whiteColor,
+                        borderRadius: BorderRadius.circular(100.r),
                       ),
+                      child:Center(
+                        child: CustomText(text:"${(playerDetailController
+                            .playerMatch.value.header?.entity?.name ??
+                            '').split("")[0]}" ,fontSize: 14.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
+                      )
+
                     ),
+                    // child: Image.network(
+                    //   imageUrl(
+                    //       "Competitors:default${playerDetailController.playerMatch.value.header?.entity?.iD}.png",
+                    //       "Competitors",
+                    //       playerDetailController
+                    //               .playerMatch.value.header?.entity?.iD ??
+                    //           0),
+                    //   fit: BoxFit.cover,
+                    //   width: 40.w,
+                    //   height: 40.w,
+                    //   errorBuilder: (context, error, stackTrace) => Container(
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.white,
+                    //         borderRadius: BorderRadius.circular(100.r)),
+                    //     child: Icon(
+                    //       Icons.person,
+                    //       size: 40.sp,
+                    //     ),
+                    //   ),
+                    // ),
+                    kSizedBoxH10,
                     CustomText(
                         text: playerDetailController
                                 .playerMatch.value.header?.entity?.name ??
@@ -121,7 +134,7 @@ class _PlayerDetailScreenState extends State<PlayerDetailScreen>
                       text: 'matches'.tr,
                     ),
                     Tab(
-                      text: 'apt_ranking'.tr,
+                      text: 'atp_ranking'.tr,
                     ),
                   ],
                 ),

@@ -51,6 +51,8 @@ class HindiLanguage {
     'max_games_in_a_row': 'पंक्ति में अधिकतम खेल',
     'return_games_won': 'जीते हुए खेल वापस करें',
     'total_games_won': 'कुल जीते गए खेल',
+    'atp_ranking': 'एटीपी रैंकिंग',
+    'player': 'खिलाड़ी',
 
   };
 }

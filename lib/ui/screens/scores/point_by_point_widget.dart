@@ -15,11 +15,15 @@ class PointByPointWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<MatchDetailController>();
     return Expanded(
-      child: (pointByPoint.sets ?? []).isEmpty
+      child: ((pointByPoint.sets ?? []).isEmpty)
           ? Center(
               child: CustomText(text: 'no_data'.tr),
             )
-          : ListView(
+          :(pointByPoint.sets?[0].name==null)?
+       Center(
+        child: CustomText(text: 'no_data'.tr),
+      ):
+      ListView(
               children: [
                 Container(
                   padding: EdgeInsets.all(10.w),
