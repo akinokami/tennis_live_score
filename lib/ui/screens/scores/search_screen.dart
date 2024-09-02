@@ -37,8 +37,7 @@ class SearchScreen extends StatelessWidget {
                       kSizedBoxH10,
                       Expanded(
                         child: scoresController.gameFilterList.isEmpty
-                            ?  Center(
-                                child: CustomText(text: 'no_data'.tr))
+                            ? Center(child: CustomText(text: 'no_data'.tr))
                             : ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
