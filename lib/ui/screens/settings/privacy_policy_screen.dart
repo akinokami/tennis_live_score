@@ -25,7 +25,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           child: Column(
             children:  [
               Text(
-                Global.language == 'en' ? Global.policyEnNormal : Global.policyIndiaNormal,
+                Global.language == 'en' ? Global.policyEnNormal : Global.language == 'vi' ? Global.policyVnNormal :Global.policyIndiaNormal,
                 style: TextStyle(fontSize: 16.sp, color: whiteColor),
               ),
             ],
