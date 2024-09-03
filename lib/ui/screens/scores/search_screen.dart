@@ -120,10 +120,10 @@ class SearchScreen extends StatelessWidget {
                                                                         .name ??
                                                                     '')
                                                                 : '',
-                                                            maxLines: 2,
+                                                            maxLines: 4,
                                                             textAlign:
                                                                 TextAlign.right,
-                                                            fontSize: 10.sp,
+                                                            fontSize: 8.sp,
                                                           ),
                                                         ),
                                                         // ClipRRect(
@@ -574,8 +574,8 @@ class SearchScreen extends StatelessWidget {
                                                                         .name ??
                                                                     '')
                                                                 : '',
-                                                            fontSize: 10.sp,
-                                                            maxLines: 2,
+                                                            fontSize: 8.sp,
+                                                            maxLines: 4,
                                                           ),
                                                         ),
                                                       ],
