@@ -58,8 +58,7 @@ class ScoresScreen extends StatelessWidget {
                       kSizedBoxH10,
                       Expanded(
                         child: scoresController.gameGroups.isEmpty
-                            ?  Center(
-                                child: CustomText(text: 'no_data'.tr))
+                            ? Center(child: CustomText(text: 'no_data'.tr))
                             : ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: scoresController.gameGroups.length,
@@ -148,25 +147,37 @@ class ScoresScreen extends StatelessWidget {
                                                           ),
                                                         ),
                                                         Container(
-                                                            width: 30.w,
-                                                            height: 30.w,
-                                                            decoration: BoxDecoration(
+                                                            width: 25.w,
+                                                            height: 25.w,
+                                                            decoration:
+                                                                BoxDecoration(
                                                               color: whiteColor,
-                                                              borderRadius: BorderRadius.circular(100.r),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          100.r),
                                                             ),
-                                                            child:Center(
-                                                              child: CustomText(text:(scoresController
-                                                                  .gameGroups[
-                                                              index]
-                                                                  .games?[
-                                                              index1]
-                                                                  .comps?[
-                                                              0]
-                                                                  .name ??
-                                                                  '').split("")[0] ,fontSize: 12.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
-                                                            )
-
-                                                        ),
+                                                            child: Center(
+                                                              child: CustomText(
+                                                                text: (scoresController
+                                                                            .gameGroups[
+                                                                                index]
+                                                                            .games?[
+                                                                                index1]
+                                                                            .comps?[
+                                                                                0]
+                                                                            .name ??
+                                                                        '')
+                                                                    .split(
+                                                                        "")[0],
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color:
+                                                                    secondaryColor,
+                                                              ),
+                                                            )),
                                                         // ClipRRect(
                                                         //   borderRadius:
                                                         //       BorderRadius
@@ -561,25 +572,37 @@ class ScoresScreen extends StatelessWidget {
                                                         // ),
                                                         kSizedBoxW2,
                                                         Container(
-                                                            width: 30.w,
-                                                            height: 30.w,
-                                                            decoration: BoxDecoration(
+                                                            width: 25.w,
+                                                            height: 25.w,
+                                                            decoration:
+                                                                BoxDecoration(
                                                               color: whiteColor,
-                                                              borderRadius: BorderRadius.circular(100.r),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          100.r),
                                                             ),
-                                                            child:Center(
-                                                              child: CustomText(text:(scoresController
-                                                                  .gameGroups[
-                                                              index]
-                                                                  .games?[
-                                                              index1]
-                                                                  .comps?[
-                                                              1]
-                                                                  .name ??
-                                                                  '').split("")[0] ,fontSize: 12.sp,fontWeight: FontWeight.bold,color: secondaryColor,),
-                                                            )
-
-                                                        ),
+                                                            child: Center(
+                                                              child: CustomText(
+                                                                text: (scoresController
+                                                                            .gameGroups[
+                                                                                index]
+                                                                            .games?[
+                                                                                index1]
+                                                                            .comps?[
+                                                                                1]
+                                                                            .name ??
+                                                                        '')
+                                                                    .split(
+                                                                        "")[0],
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color:
+                                                                    secondaryColor,
+                                                              ),
+                                                            )),
                                                         SizedBox(
                                                           width: 1.sh * 0.10,
                                                           child: CustomText(

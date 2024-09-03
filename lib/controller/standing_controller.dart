@@ -4,6 +4,7 @@ import 'package:tennis_live_score/models/standing.dart';
 
 import '../services/api_repo.dart';
 import '../utils/constants.dart';
+import '../utils/function.dart';
 
 class StandingController extends GetxController {
   final isLoading = false.obs;
@@ -11,16 +12,25 @@ class StandingController extends GetxController {
   Rx<Standing> standing = Standing().obs;
   RxList<Countries> countries = <Countries>[].obs;
 
+  var selectedDate = DateTime.now().obs;
+  final formattedDate = ''.obs;
+
   @override
   void onInit() {
-    getStanding();
+    startStanding();
+
     super.onInit();
   }
 
-  Future<void> getStanding() async {
+  void startStanding() {
+    formattedDate.value = formatDate(DateTime.now());
+    getStanding(formattedDate.value);
+  }
+
+  Future<void> getStanding(date) async {
     isLoading.value = true;
     try {
-      final result = await ApiRepo().getStanding("30/08/2024", 3);
+      final result = await ApiRepo().getStanding(date, 3);
       standing.value = result;
       countries.value = standing.value.countries!
           .where((element) => element.gamesCount != 0)

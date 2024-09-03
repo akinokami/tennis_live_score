@@ -27,7 +27,7 @@ class LanguageController extends GetxController {
     box.write('language', languageCode);
     Future.delayed(const Duration(seconds: 2), () {
       scoreController.startScore();
-      standingController.getStanding();
+      standingController.startStanding();
       isLoading.value = false;
     });
   }
