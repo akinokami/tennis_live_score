@@ -25,20 +25,22 @@ class H2HScreen extends StatelessWidget {
             ),
             padding: EdgeInsets.all(10.w),
             margin: EdgeInsets.all(10.w),
-            child: Column(
+            child:
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
+               if((lastMatches??[]).isNotEmpty) CustomText(
                   text: "h2h".tr,
                   fontWeight: FontWeight.bold,
                 ),
                 kSizedBoxH10,
-                ListView.builder(
+                ((lastMatches??[]).isEmpty)?
+                Center(child: CustomText(text: "no_data".tr,fontWeight: FontWeight.bold,)): ListView.builder(
                     itemCount: lastMatches!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Row(
+                      return  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomText(

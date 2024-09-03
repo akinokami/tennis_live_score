@@ -78,7 +78,7 @@ class StatsWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomText(text: "Stats"),
+                       CustomText(text: "stats".tr),
                       kSizedBoxH15,
                       Obx(
                         () => ListView.builder(
@@ -143,38 +143,68 @@ class StatsWidget extends StatelessWidget {
                                     )
                                   : Padding(
                                       padding: EdgeInsets.only(bottom: 10.h),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          CustomText(
-                                            text: (matchDetailController
-                                                            .selectedStatics
-                                                            .value
-                                                            ?.statistics?[index]
-                                                            .vals ??
-                                                        [])
-                                                    .isNotEmpty
-                                                ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}"
-                                                : "0",
-                                            color: secondaryColor,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18.sp,
-                                          ),
-                                          CircularPercentIndicator(
-                                            radius: 50.0,
-                                            animation: true,
-                                            animationDuration: 1200,
-                                            lineWidth: 5.0,
-                                            percent: (matchDetailController
+                                          kSizedBoxH20,
+                                          CustomText(text: "stats".tr),
+                                          kSizedBoxH15,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              CustomText(
+                                                text: (matchDetailController
                                                                 .selectedStatics
                                                                 .value
-                                                                ?.statistics?[
-                                                                    index]
+                                                                ?.statistics?[index]
                                                                 .vals ??
                                                             [])
-                                                        .isNotEmpty &&
-                                                    (matchDetailController
+                                                        .isNotEmpty
+                                                    ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}"
+                                                    : "0",
+                                                color: secondaryColor,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18.sp,
+                                              ),
+                                              CircularPercentIndicator(
+                                                radius: 50.0,
+                                                animation: true,
+                                                animationDuration: 1200,
+                                                lineWidth: 5.0,
+                                                percent: (matchDetailController
+                                                                    .selectedStatics
+                                                                    .value
+                                                                    ?.statistics?[
+                                                                        index]
+                                                                    .vals ??
+                                                                [])
+                                                            .isNotEmpty &&
+                                                        (matchDetailController
+                                                                        .selectedStatics
+                                                                        .value
+                                                                        ?.statistics?[
+                                                                            index]
+                                                                        .vals ??
+                                                                    [])
+                                                                .length >
+                                                            1
+                                                    ? (int.parse(
+                                                                "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}") +
+                                                            int.parse(
+                                                                "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}")) /
+                                                        500
+                                                    : 0.5,
+                                                center:  CustomText(
+                                                  text: "points_won".tr,
+                                                ),
+                                                circularStrokeCap:
+                                                    CircularStrokeCap.butt,
+                                                backgroundColor: secondaryColor,
+                                                progressColor: Colors.green,
+                                              ),
+                                              CustomText(
+                                                text: (matchDetailController
                                                                     .selectedStatics
                                                                     .value
                                                                     ?.statistics?[
@@ -183,36 +213,14 @@ class StatsWidget extends StatelessWidget {
                                                                 [])
                                                             .length >
                                                         1
-                                                ? (int.parse(
-                                                            "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[0] ?? 0}") +
-                                                        int.parse(
-                                                            "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}")) /
-                                                    500
-                                                : 0.5,
-                                            center: const CustomText(
-                                              text: "Points Won",
-                                            ),
-                                            circularStrokeCap:
-                                                CircularStrokeCap.butt,
-                                            backgroundColor: secondaryColor,
-                                            progressColor: Colors.green,
+                                                    ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}"
+                                                    : "0",
+                                                color: Colors.green,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18.sp,
+                                              )
+                                            ],
                                           ),
-                                          CustomText(
-                                            text: (matchDetailController
-                                                                .selectedStatics
-                                                                .value
-                                                                ?.statistics?[
-                                                                    index]
-                                                                .vals ??
-                                                            [])
-                                                        .length >
-                                                    1
-                                                ? "${matchDetailController.selectedStatics.value?.statistics?[index].vals?[1] ?? 0}"
-                                                : "0",
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18.sp,
-                                          )
                                         ],
                                       ),
                                     );

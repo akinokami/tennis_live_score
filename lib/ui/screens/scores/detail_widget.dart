@@ -31,7 +31,7 @@ class DetailWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomText(text: "Scoreboard"),
+                 CustomText(text: "scoreboard".tr),
                 SizedBox(
                   height: 70.h,
                   child: Row(
@@ -126,7 +126,7 @@ class DetailWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomText(text: "Stats"),
+                   CustomText(text: "stats".tr),
                   kSizedBoxH15,
                   ListView.builder(
                     shrinkWrap: true,
@@ -206,8 +206,8 @@ class DetailWidget extends StatelessWidget {
                                     animationDuration: 1200,
                                     lineWidth: 5.0,
                                     percent: percentage,
-                                    center: const CustomText(
-                                      text: "Points Won",
+                                    center:  CustomText(
+                                      text: "points_won".tr,
                                     ),
                                     circularStrokeCap: CircularStrokeCap.butt,
                                     backgroundColor: secondaryColor,
