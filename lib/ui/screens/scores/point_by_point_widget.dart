@@ -103,11 +103,12 @@ class PointByPointWidget extends StatelessWidget {
                                   List<Points>? normalData;
                                   List<Points>? firstData;
                                   List<Points>? secondData;
-                                  if ((pbpData?[pbpData.length - (index + 1)]
-                                              .points
-                                              ?.length ??
-                                          0) >
-                                      6) {
+                                  List<Points>? thirdData;
+                                  if (
+                                  ((pbpData?[pbpData.length - (index + 1)].points?.length ??0) >6)
+                                      && ((pbpData?[pbpData.length - (index + 1)].points?.length ??0) <=12)
+                                  )
+                                  {
                                     firstData =
                                         pbpData?[pbpData.length - (index + 1)]
                                             .points
@@ -119,243 +120,448 @@ class PointByPointWidget extends StatelessWidget {
                                             .points
                                             ?.skip(6)
                                             .toList();
-                                  } else {
+                                    print("Here is second Data ${secondData?.length}");
+                                  }
+                                  else if((pbpData?[pbpData.length - (index + 1)]
+                                      .points
+                                      ?.length ??
+                                      0) >
+                                      12){
+                                    firstData =
+                                        pbpData?[pbpData.length - (index + 1)]
+                                            .points
+                                            ?.take(6)
+                                            .toList();
+                                    print("zzzzzzx ${firstData?.length}");
+                                    secondData =
+                                        pbpData?[pbpData.length - (index + 1)]
+                                            .points
+                                            ?.skip(6)
+                                            .take(6)
+                                            .toList();
+                                    thirdData = pbpData?[pbpData.length - (index + 1)]
+                                        .points
+                                        ?.skip(12)
+                                        .toList();
+                                    print("Here is third Data ${thirdData?.length}");
+                                  }
+                                  else if((pbpData?[pbpData.length - (index + 1)]
+                                      .points
+                                      ?.length ??
+                                      0) <= 6){
+
+
                                     normalData =
                                         pbpData?[pbpData.length - (index + 1)]
                                             .points;
+                                    print("Here is normal Data ${normalData?.length}");
                                   }
-                                  return Container(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 80.w,
-                                              child: CustomText(
-                                                  maxLines: 2,
-                                                  fontSize: 8.sp,
-                                                  text: controller
-                                                          .matchDetail
-                                                          .value
-                                                          .games?[0]
-                                                          .comps?[0]
-                                                          .name ??
-                                                      ''),
-                                            ),
-                                            kSizedBoxW10,
-                                            CustomText(
+                                  return Column(
+                                    children: [
+                                      ///Player 1
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            width: 80.w,
+                                            child: CustomText(
+                                                maxLines: 2,
                                                 fontSize: 8.sp,
-                                                text: pbpData?[pbpData.length -
-                                                            (index + 1)]
-                                                        .score?[0]
-                                                        .toString() ??
-                                                    ""),
-                                            kSizedBoxW30,
-                                            if ((normalData?.length ?? 0) > 0)
-                                              SizedBox(
-                                                  height: 15.h,
-                                                  child: ListView.builder(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      shrinkWrap: true,
-                                                      itemCount:
-                                                          normalData?.length ??
-                                                              0,
-                                                      itemBuilder:
-                                                          (context, index1) {
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  right: 8.w),
-                                                          child: SizedBox(
-                                                            width: 20.w,
-                                                            child: CustomText(
-                                                                fontSize: 10.sp,
-                                                                text:
-                                                                    "${normalData?[index1].score?[0] ?? ""}"),
-                                                          ),
-                                                        );
-                                                      })),
-                                            if ((firstData?.length ?? 0) > 0)
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(
-                                                      height: 15.h,
-                                                      child: ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          shrinkWrap: true,
-                                                          itemCount: firstData
-                                                                  ?.length ??
-                                                              0,
-                                                          itemBuilder: (context,
-                                                              index2) {
-                                                            return Padding(
-                                                              padding: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          8.w),
-                                                              child: SizedBox(
-                                                                width: 20.w,
-                                                                child: CustomText(
-                                                                    fontSize:
-                                                                        10.sp,
-                                                                    text:
-                                                                        "${firstData?[index2].score?[0] ?? ""}"),
-                                                              ),
-                                                            );
-                                                          })),
-                                                  SizedBox(
-                                                      height: 15.h,
-                                                      child: ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          shrinkWrap: true,
-                                                          itemCount: secondData
-                                                                  ?.length ??
-                                                              0,
-                                                          itemBuilder: (context,
-                                                              index3) {
-                                                            return Padding(
-                                                              padding: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          8.w),
-                                                              child: SizedBox(
-                                                                width: 20.w,
-                                                                child: CustomText(
-                                                                    fontSize:
-                                                                        10.sp,
-                                                                    text:
-                                                                        "${secondData?[index3].score?[0] ?? ""}"),
-                                                              ),
-                                                            );
-                                                          }))
-                                                ],
-                                              )
-                                          ],
-                                        ),
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
+                                                text: controller
+                                                        .matchDetail
+                                                        .value
+                                                        .games?[0]
+                                                        .comps?[0]
+                                                        .name ??
+                                                    ''),
+                                          ),
+                                          kSizedBoxW10,
+                                          CustomText(
+                                              fontSize: 8.sp,
+                                              text: pbpData?[pbpData.length -
+                                                          (index + 1)]
+                                                      .score?[0]
+                                                      .toString() ??
+                                                  ""),
+                                          kSizedBoxW30,
+                                          if ((normalData?.length ?? 0) > 0)
                                             SizedBox(
-                                              width: 80.w,
-                                              child: CustomText(
-                                                  maxLines: 2,
-                                                  fontSize: 8.sp,
-                                                  text: controller
-                                                          .matchDetail
-                                                          .value
-                                                          .games?[0]
-                                                          .comps?[1]
-                                                          .name ??
-                                                      ''),
+                                                height: 15.h,
+                                                child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount:
+                                                        normalData?.length ??
+                                                            0,
+                                                    itemBuilder:
+                                                        (context, index1) {
+                                                      return Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                right: 8.w),
+                                                        child: SizedBox(
+                                                          width: 20.w,
+                                                          child: CustomText(
+                                                              fontSize: 10.sp,
+                                                              text:
+                                                                  "${normalData?[index1].score?[0] ?? ""}"),
+                                                        ),
+                                                      );
+                                                    })),
+                                          if ((thirdData?.length ?? 0) <= 0)
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: firstData
+                                                                ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index2) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                    right:
+                                                                        8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  text:
+                                                                      "${firstData?[index2].score?[0] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: secondData
+                                                                ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index3) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                    right:
+                                                                        8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  text:
+                                                                      "${secondData?[index3].score?[0] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        }))
+                                              ],
                                             ),
-                                            kSizedBoxW10,
-                                            CustomText(
+                                          if (((firstData?.length ?? 0) > 0) && ((secondData?.length ?? 0) > 0) && ((thirdData?.length ?? 0) > 0))
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: firstData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index2) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${firstData?[index2].score?[0] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: secondData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index3) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${secondData?[index3].score?[0] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: thirdData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index3) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${thirdData?[index3].score?[0] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        }))
+                                              ],
+                                            )
+                                        ],
+                                      ),
+                                      ///Player 2
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            width: 80.w,
+                                            child: CustomText(
+                                                maxLines: 2,
                                                 fontSize: 8.sp,
-                                                text: pbpData?[pbpData.length -
-                                                            (index + 1)]
-                                                        .score?[1]
-                                                        .toString() ??
-                                                    ""),
-                                            kSizedBoxW30,
-                                            if ((normalData?.length ?? 0) > 0)
-                                              SizedBox(
-                                                  height: 15.h,
-                                                  child: ListView.builder(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      shrinkWrap: true,
-                                                      itemCount:
-                                                          normalData?.length ??
-                                                              0,
-                                                      itemBuilder:
-                                                          (context, index1) {
-                                                        return Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  right: 8.w),
-                                                          child: SizedBox(
-                                                            width: 20.w,
-                                                            child: CustomText(
-                                                                fontSize: 10.sp,
-                                                                text:
-                                                                    "${normalData?[index1].score?[1] ?? ""}"),
-                                                          ),
-                                                        );
-                                                      })),
-                                            if ((firstData?.length ?? 0) > 0)
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(
-                                                      height: 15.h,
-                                                      child: ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          shrinkWrap: true,
-                                                          itemCount: firstData
-                                                                  ?.length ??
-                                                              0,
-                                                          itemBuilder: (context,
-                                                              index2) {
-                                                            return Padding(
-                                                              padding: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          8.w),
-                                                              child: SizedBox(
-                                                                width: 20.w,
-                                                                child: CustomText(
-                                                                    fontSize:
-                                                                        10.sp,
-                                                                    text:
-                                                                        "${firstData?[index2].score?[1] ?? ""}"),
-                                                              ),
-                                                            );
-                                                          })),
-                                                  SizedBox(
-                                                      height: 15.h,
-                                                      child: ListView.builder(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          shrinkWrap: true,
-                                                          itemCount: secondData
-                                                                  ?.length ??
-                                                              0,
-                                                          itemBuilder: (context,
-                                                              index3) {
-                                                            return Padding(
-                                                              padding: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          8.w),
-                                                              child: SizedBox(
-                                                                width: 20.w,
-                                                                child: CustomText(
-                                                                    fontSize:
-                                                                        10.sp,
-                                                                    text:
-                                                                        "${secondData?[index3].score?[1] ?? ""}"),
-                                                              ),
-                                                            );
-                                                          }))
-                                                ],
-                                              )
-                                          ],
-                                        ),
-                                        kSizedBoxH10,
-                                      ],
-                                    ),
+                                                text: controller
+                                                        .matchDetail
+                                                        .value
+                                                        .games?[0]
+                                                        .comps?[1]
+                                                        .name ??
+                                                    ''),
+                                          ),
+                                          kSizedBoxW10,
+                                          CustomText(
+                                              fontSize: 8.sp,
+                                              text: pbpData?[pbpData.length -
+                                                          (index + 1)]
+                                                      .score?[1]
+                                                      .toString() ??
+                                                  ""),
+                                          kSizedBoxW30,
+                                          if ((normalData?.length ?? 0) > 0)
+                                            SizedBox(
+                                                height: 15.h,
+                                                child: ListView.builder(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount:
+                                                        normalData?.length ??
+                                                            0,
+                                                    itemBuilder:
+                                                        (context, index1) {
+                                                      return Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                right: 8.w),
+                                                        child: SizedBox(
+                                                          width: 20.w,
+                                                          child: CustomText(
+                                                              fontSize: 10.sp,
+                                                              text:
+                                                                  "${normalData?[index1].score?[1] ?? ""}"),
+                                                        ),
+                                                      );
+                                                    })),
+                                          if ((thirdData?.length ?? 0) <= 0)
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: firstData
+                                                                ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index2) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                    right:
+                                                                        8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  text:
+                                                                      "${firstData?[index2].score?[1] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: secondData
+                                                                ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index3) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                    right:
+                                                                        8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  text:
+                                                                      "${secondData?[index3].score?[1] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        }))
+                                              ],
+                                            ),
+                                          if ((thirdData?.length ?? 0) > 0)
+                                            Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: firstData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index2) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${firstData?[index2].score?[1] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: secondData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index3) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${secondData?[index3].score?[1] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        })),
+                                                SizedBox(
+                                                    height: 15.h,
+                                                    child: ListView.builder(
+                                                        scrollDirection:
+                                                        Axis.horizontal,
+                                                        shrinkWrap: true,
+                                                        itemCount: thirdData
+                                                            ?.length ??
+                                                            0,
+                                                        itemBuilder: (context,
+                                                            index4) {
+                                                          return Padding(
+                                                            padding: EdgeInsets
+                                                                .only(
+                                                                right:
+                                                                8.w),
+                                                            child: SizedBox(
+                                                              width: 20.w,
+                                                              child: CustomText(
+                                                                  fontSize:
+                                                                  10.sp,
+                                                                  text:
+                                                                  "${thirdData?[index4].score?[1] ?? ""}"),
+                                                            ),
+                                                          );
+                                                        }))
+                                              ],
+                                            )
+                                        ],
+                                      ),
+                                      Divider(
+                                        color: secondaryColor,
+                                        thickness: 1,)
+                                    ],
                                   );
                                 }),
                           ),
