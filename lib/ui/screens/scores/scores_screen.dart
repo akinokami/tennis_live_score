@@ -140,10 +140,10 @@ class ScoresScreen extends StatelessWidget {
                                                                         .name ??
                                                                     '')
                                                                 : '',
-                                                            maxLines: 2,
+                                                            maxLines: 4,
                                                             textAlign:
                                                                 TextAlign.right,
-                                                            fontSize: 10.sp,
+                                                            fontSize: 8.sp,
                                                           ),
                                                         ),
                                                         Container(
@@ -620,8 +620,8 @@ class ScoresScreen extends StatelessWidget {
                                                                         .name ??
                                                                     '')
                                                                 : '',
-                                                            maxLines: 2,
-                                                            fontSize: 10.sp,
+                                                            maxLines: 4,
+                                                            fontSize: 8.sp,
                                                           ),
                                                         ),
                                                       ],
