@@ -58,35 +58,35 @@ class ChangeLanguageScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Obx(
-                //       () => GestureDetector(
-                //     onTap: () {
-                //       languageController.changeLanguage("zh", "CN");
-                //     },
-                //     child: Card(
-                //       color: cardColor,
-                //       child: ListTile(
-                //         leading: Image.asset(
-                //           "assets/images/china.webp",
-                //           width: 20.w,
-                //           height: 20.h,
-                //         ),
-                //         title: CustomText(
-                //           text: "中国人",
-                //           //color: lightWhiteColor,
-                //         ),
-                //         trailing: Icon(
-                //           languageController.language.value == "zh"
-                //               ? Icons.check_circle
-                //               : Icons.check_circle_outline,
-                //           color: languageController.language.value == "zh"
-                //               ? secondaryColor
-                //               : greyColor,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Obx(
+                      () => GestureDetector(
+                    onTap: () {
+                      languageController.changeLanguage("vi", "VN");
+                    },
+                    child: Card(
+                      color: cardColor,
+                      child: ListTile(
+                        leading: Image.asset(
+                          "assets/images/vietnam.webp",
+                          width: 20.w,
+                          height: 20.h,
+                        ),
+                        title: CustomText(
+                          text: "vietnam".tr,
+                          //color: lightWhiteColor,
+                        ),
+                        trailing: Icon(
+                          languageController.language.value == "vi"
+                              ? Icons.check_circle
+                              : Icons.check_circle_outline,
+                          color: languageController.language.value == "vi"
+                              ? secondaryColor
+                              : greyColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Obx(
                       () => GestureDetector(
                     onTap: () {

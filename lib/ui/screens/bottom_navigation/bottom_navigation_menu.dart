@@ -54,7 +54,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                                   width: double.infinity,
                                   child: WebViewWidget(
                                       controller: WebViewController()
-                                        ..loadHtmlString(Global.language!="hi"?Global.policyEn:Global.policyIndia))),
+                                        ..loadHtmlString(Global.language=="hi"?Global.policyIndia:Global.language=="vi"?Global.policyVn:Global.policyEn))),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
