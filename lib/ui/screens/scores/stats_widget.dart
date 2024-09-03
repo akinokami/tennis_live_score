@@ -108,19 +108,21 @@ class StatsWidget extends StatelessWidget {
                                                 : "0",
                                             fontSize: 10.sp,
                                           ))),
-                                          Expanded(
-                                              child: Center(
-                                                  child: CustomText(
+                                          SizedBox(
+                                            width: 100.w,
+                                              child: CustomText(
+                                                textAlign: TextAlign.center,
+                                            maxLines: 3,
                                             text: findStatsType(
                                               matchDetailController
-                                                      .selectedStatics
-                                                      .value
-                                                      ?.statistics?[index]
-                                                      .type ??
-                                                  0,
+                                                  .selectedStatics
+                                                  .value
+                                                  ?.statistics?[index]
+                                                   .type ??
+                                              0,
                                             ),
                                             fontSize: 10.sp,
-                                          ))),
+                                          )),
                                           Expanded(
                                               child: Center(
                                             child: CustomText(

@@ -162,13 +162,16 @@ class DetailWidget extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Expanded(
-                                      child: Center(
-                                          child: CustomText(
-                                    text: findStatsType(
-                                        games?.statistics?[index].type ?? 0),
-                                    fontSize: 10.sp,
-                                  ))),
+                                  SizedBox(
+                                    width: 100.w,
+                                    child: CustomText(
+                                      textAlign: TextAlign.center,
+                                      text: findStatsType(
+                                      games?.statistics?[index].type ?? 0),
+                                      fontSize: 10.sp,
+                                      maxLines: 3,
+                                    ),
+                                  ),
                                   Expanded(
                                     child: Center(
                                       child: CustomText(
