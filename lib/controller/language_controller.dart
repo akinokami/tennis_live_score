@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tennis_live_score/controller/scores_controller.dart';
+import 'package:tennis_live_score/controller/splash_screen_controller.dart';
 import 'package:tennis_live_score/controller/standing_controller.dart';
 
 import '../utils/global.dart';
@@ -9,6 +10,7 @@ import '../utils/global.dart';
 class LanguageController extends GetxController {
   final language = ''.obs;
   final isLoading = false.obs;
+  final splashController = Get.put(SplashScreenController());
   final scoreController = Get.put(ScoresController());
   final standingController = Get.put(StandingController());
 
@@ -26,6 +28,7 @@ class LanguageController extends GetxController {
     final box = GetStorage();
     box.write('language', languageCode);
     Future.delayed(const Duration(seconds: 2), () {
+      splashController.getAppSetting();
       scoreController.startScore();
       standingController.startStanding();
       isLoading.value = false;
