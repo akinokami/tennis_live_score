@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final box = GetStorage();
-    Global.language = box.read('language') ?? "hi";
+    Global.language = box.read('language') ?? "zh";
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
@@ -33,10 +33,14 @@ class MyApp extends StatelessWidget {
             primaryColor: secondaryColor,
           ),
           translations: Languages(),
-          locale: Global.language == 'hi'
-              ? const Locale('hi', 'IN')
-              :Global.language == 'vi'?const Locale('vi', 'VN'): const Locale('en', 'US'),
-          fallbackLocale: const Locale('hi', 'IN'),
+          locale: Global.language == 'zh'
+              ? const Locale('zh', 'CN')
+              : Global.language == 'hi'
+                  ? const Locale('hi', 'IN')
+                  : Global.language == 'vi'
+                      ? const Locale('vi', 'VN')
+                      : const Locale('en', 'US'),
+          fallbackLocale: const Locale('zh', 'CN'),
           home: const SplashScreen(),
         );
       },

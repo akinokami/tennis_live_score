@@ -1,9 +1,6 @@
 class VietnamLanguage {
   Map<String, String> vnLanguage = {
-    'vietnam': 'Tiếng Việt',
-    'english': 'English',
-    'chinese': '中文',
-    'india': 'हिन्दी',
+    'lang': 'Tiếng Việt',
     'language': 'Ngôn ngữ',
     'change_language': 'Thay đổi ngôn ngữ',
     'policy': 'Chính sách bảo mật',
@@ -18,7 +15,7 @@ class VietnamLanguage {
     'matches': 'Trận đấu',
     'please_wait': 'Vui lòng đợi',
     'no_data': 'Không tìm thấy dữ liệu',
-    'h2h': 'Đối đầu trực tiếp',
+    'h2h': 'H2H',
     'match': 'Trận đấu',
     'details': 'Chi tiết',
     'stats': 'Thống kê số liệu',

@@ -14,7 +14,7 @@ class ChangeLanguageScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
-         iconTheme: IconThemeData(color: lightWhiteColor),
+          iconTheme: IconThemeData(color: lightWhiteColor),
           centerTitle: true,
           backgroundColor: primaryColor,
           title: CustomText(
@@ -30,7 +30,7 @@ class ChangeLanguageScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Obx(
-                      () => GestureDetector(
+                  () => GestureDetector(
                     onTap: () {
                       languageController.changeLanguage("en", "US");
                     },
@@ -59,7 +59,36 @@ class ChangeLanguageScreen extends StatelessWidget {
                   ),
                 ),
                 Obx(
-                      () => GestureDetector(
+                  () => GestureDetector(
+                    onTap: () {
+                      languageController.changeLanguage("zh", "CN");
+                    },
+                    child: Card(
+                      color: cardColor,
+                      child: ListTile(
+                        leading: Image.asset(
+                          "assets/images/china.webp",
+                          width: 20.w,
+                          height: 20.h,
+                        ),
+                        title: const CustomText(
+                          text: "中國人",
+                          //color: lightWhiteColor,
+                        ),
+                        trailing: Icon(
+                          languageController.language.value == "zh"
+                              ? Icons.check_circle
+                              : Icons.check_circle_outline,
+                          color: languageController.language.value == "zh"
+                              ? secondaryColor
+                              : greyColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => GestureDetector(
                     onTap: () {
                       languageController.changeLanguage("vi", "VN");
                     },
@@ -71,8 +100,8 @@ class ChangeLanguageScreen extends StatelessWidget {
                           width: 20.w,
                           height: 20.h,
                         ),
-                        title: CustomText(
-                          text: "vietnam".tr,
+                        title: const CustomText(
+                          text: 'Tiếng Việt',
                           //color: lightWhiteColor,
                         ),
                         trailing: Icon(
@@ -88,7 +117,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                   ),
                 ),
                 Obx(
-                      () => GestureDetector(
+                  () => GestureDetector(
                     onTap: () {
                       languageController.changeLanguage("hi", "IN");
                     },

@@ -20,7 +20,6 @@ class BottomNavigationMenu extends StatefulWidget {
 }
 
 class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
-
   bool isAccepted = false;
   bool isChecked = false;
   String first = '';
@@ -54,7 +53,13 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                                   width: double.infinity,
                                   child: WebViewWidget(
                                       controller: WebViewController()
-                                        ..loadHtmlString(Global.language=="hi"?Global.policyIndia:Global.language=="vi"?Global.policyVn:Global.policyEn))),
+                                        ..loadHtmlString(Global.language == "zh"
+                                            ? Global.policyZh
+                                            : Global.language == "hi"
+                                                ? Global.policyIndia
+                                                : Global.language == "vi"
+                                                    ? Global.policyVn
+                                                    : Global.policyEn))),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +70,9 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                                   activeColor: secondaryColor,
                                   side: BorderSide(
                                     width: 1.5,
-                                    color: isChecked ? secondaryColor : Colors.black,
+                                    color: isChecked
+                                        ? secondaryColor
+                                        : Colors.black,
                                   ),
                                   value: isChecked,
                                   onChanged: (bool? value) {
@@ -79,17 +86,19 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                                     });
                                   },
                                 ),
-                                 CustomText(
+                                CustomText(
                                   text: 'agree'.tr,
-                                   color: secondaryColor,
+                                  color: secondaryColor,
                                 ),
                               ],
                             ),
                             ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor:
-                                  MaterialStateColor.resolveWith((states) =>
-                                  isAccepted ? secondaryColor : greyColor)),
+                                      MaterialStateColor.resolveWith((states) =>
+                                          isAccepted
+                                              ? secondaryColor
+                                              : greyColor)),
                               // ignore: sort_child_properties_last
                               child: CustomText(
                                 text: "accept".tr,
@@ -97,10 +106,10 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                               ),
                               onPressed: isAccepted
                                   ? () async {
-                                final box = GetStorage();
-                                box.write('first', 'notfirst');
-                                Navigator.pop(context);
-                              }
+                                      final box = GetStorage();
+                                      box.write('first', 'notfirst');
+                                      Navigator.pop(context);
+                                    }
                                   : null,
                             ),
                           ],
@@ -118,6 +127,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       }
     });
   }
+
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,

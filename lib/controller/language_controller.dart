@@ -37,6 +37,6 @@ class LanguageController extends GetxController {
 
   void getLanguage() {
     final box = GetStorage();
-    language.value = box.read('language') ?? 'hi';
+    language.value = box.read('language') ?? 'zh';
   }
 }

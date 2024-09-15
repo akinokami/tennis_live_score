@@ -1,8 +1,7 @@
 import 'package:tennis_live_score/models/app_setting.dart';
 
 class Global {
-  static String policyEn =
-  '''
+  static String policyEn = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +33,67 @@ The app does use third-party services that may collect information used to ident
 </html>
 
 ''';
-  static String policyIndia =
-  '''
+
+  static String policyZh = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flutter InAppWebView</title>
+</head>
+<body>
+
+<h3>隱私權政策</h3>
+<div class="tyJCtd mGzaTb Depvyb baZpAe">
+    <p dir="ltr" class="zfr3Q CDt4Ke " style="">
+        <span class="C9DxTc " style="">如果有人決定使用我的服務，此頁面用於告知訪客我的個人資訊收集、使用和揭露政策。如果您選擇使用我的服務，您同意收集和使用與本政策相關的資訊。我收集的個人資訊用於提供和改進服務。除本隱私權政策中所述之外，我不會與任何人使用或分享您的資訊。</span>
+    </p>
+
+    <p dir="ltr" class="zfr3Q CDt4Ke " style="">
+<span class="C9DxTc " style="">除非本隱私權政策另有定義，但本隱私權政策中使用的術語與我們的條款和條件具有相同的含義，這些條款和條件可在 MKSports Live 上存取。
+資訊收集和使用為了獲得更好的體驗，在使用我們的服務時，我可能會要求您向我們提供某些個人識別資訊。我請求的資訊將保留在您的裝置上，我不會以任何方式收集。
+該應用程式確實使用第三方服務，這些服務可能會收集用於識別您身份的資訊。</span>
+    </p>
+    <p dir="ltr" class="zfr3Q CDt4Ke " style="">
+        <span class="C9DxTc " style="">應用程式使用的第三方服務提供者的隱私權政策鏈接</span>
+    </p>
+    <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;">  </span></span><span class="C9DxTc " style="">谷歌播放服務</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;">  </span></span><span class="C9DxTc " style="">Facebook</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;">  </span></span><span class="C9DxTc " style="">調整</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">記錄數據</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style="">
+     <span class="C9DxTc " style="">我想通知您，每當您使用我的服務時，如果應用程式出現錯誤，我會在您的手機上收集資料和資訊（透過第三方產品），稱為日誌資料。此日誌資料可能包括您的裝置網際網路通訊協定（「IP」）位址、裝置名稱、作業系統版本、使用我的服務時應用程式的設定、您使用服務的時間和日期以及其他統計資料等資訊。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">餅乾</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style="">
+     <span class="C9DxTc " style="">Cookie 是包含少量資料的文件，通常用作匿名唯一識別碼。這些資訊將從您造訪的網站發送到您的瀏覽器，並儲存在您裝置的記憶體中。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">本服務不明確使用這些「cookies」。但是，該應用程式可能會使用使用「cookie」的第三方程式碼和程式庫來收集資訊並改善其服務。您可以選擇接受或拒絕這些 cookie，並了解 cookie 何時傳送到您的裝置。如果您選擇拒絕我們的 cookie，您可能無法使用本服務的某些部分。</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style="">
+     <span class="C9DxTc " style="">服務提供者</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">由於以下原因，我可能會僱用第三方公司和個人：</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style="">
+     <span class="C9DxTc " style="">•</span><span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"></span></span>
+     <span class="C9DxTc " style=""><span class="Apple-tab-span " style="white-space: pre;"> </span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">方便我們的服務；</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"> </span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">代表我們提供服務；</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"> </span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">執行與服務相關的服務；或者</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">•</span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"> </span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">
+     <span class="Apple-tab-span " style="white-space: pre;"></span></span><span class="C9DxTc " style="">幫助我們分析我們的服務的使用。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">我想告知本服務的用戶，這些第三方可以存取他們的個人資訊。原因是代表我們執行分配給他們的任務。但是，他們有義務不披露這些資訊或將這些資訊用於任何其他目的。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">安全</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">我重視您對向我們提供您的個人資訊的信任，因此我們正在努力使用商業上可接受的方式來保護它。但請記住，沒有一種網路傳輸方法或電子儲存方法是 100% 安全可靠的，我不能保證其絕對安全。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">其他網站的連結</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">本服務可能包含其他網站的連結。如果您點擊第三方鏈接，您將被定向到該網站。請注意，這些外部網站不是由我經營的。因此，我強烈建議您查看這些網站的隱私權政策。我無法控制任何第三方網站或服務的內容、隱私權政策或做法，也不承擔任何責任。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">兒童隱私</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">這些服務不針對 18 歲以下的任何人。如果我發現 18 歲以下的兒童向我提供了個人信息，我會立即從我們的伺服器中刪除該資訊。如果您是父母或監護人，並且您知道您的孩子向我們提供了個人訊息，請與我聯繫，以便我能夠採取必要的行動。</span></p>
+     <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">本隱私權政策的變更</span></p><p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">我可能會不時更新我們的隱私權政策。因此，建議您定期查看此頁面是否有任何變更。我將透過在此頁面上發布新的隱私權政策來通知您任何變更。</span></p></div>
+
+
+</body>
+</html>
+""";
+
+  static String policyIndia = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,8 +181,7 @@ The app does use third-party services that may collect information used to ident
 </html>
 
 ''';
-  static String policyIndiaNormal =
-  '''\t\t\t
+  static String policyIndiaNormal = '''\t\t\t
 \t\t\tइस गोपनीयता नीति में प्रयुक्त शब्दों का अर्थ हमारे नियमों और शर्तों के समान ही है, जो एमकेस्पोर्ट्स लाइव पर उपलब्ध हैं, जब तक कि इस गोपनीयता नीति में अन्यथा परिभाषित न किया गया हो।
 सूचना संग्रह और उपयोग बेहतर अनुभव के लिए, हमारी सेवा का उपयोग करते समय, मुझे आपसे कुछ व्यक्तिगत पहचान योग्य जानकारी प्रदान करने की आवश्यकता हो सकती है। मेरे द्वारा अनुरोधित जानकारी आपके डिवाइस पर रखी जाएगी और किसी भी तरह से मेरे द्वारा एकत्र नहीं की जाएगी।
 ऐप तृतीय-पक्ष सेवाओं का उपयोग करता है जो आपकी पहचान करने के लिए उपयोग की जाने वाली जानकारी एकत्र कर सकती हैं।
@@ -221,7 +278,7 @@ Cookies 是包含少量数据的文件，通常用作匿名唯一标识符。这
 我可能会不时更新我们的隐私政策。因此，建议您定期查看此页面是否有任何更改。我将通过在此页面上发布新的隐私政策来通知您任何更改。
 ''';
   static String policyEnNormal =
-  '''\t\t\tThis page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service. If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+      '''\t\t\tThis page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service. If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
 \t\t\tThe terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at MKSports Live unless otherwise defined in this Privacy Policy.
 Information Collection and Use For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
 The app does use third-party services that may collect information used to identify you.
@@ -252,7 +309,7 @@ Changes to This Privacy Policy
 I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
 ''';
 
-  static String policyVn="""
+  static String policyVn = """
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -22,11 +22,13 @@ class ApiRepo {
           .get(url: "${ApiConstant.baseUrl}Data/Init/", queryParameters: {
         "category": "MOBILE_APP",
         "SupportWebp": true,
-        "lang": Global.language == 'hi'
-            ? 216
-            : Global.language == 'vi'
-                ? 210
-                : 1,
+        "lang": Global.language == 'zh'
+            ? 141
+            : Global.language == 'hi'
+                ? 216
+                : Global.language == 'vi'
+                    ? 210
+                    : 1,
         "AppType": 2,
         "AppVersion": 1365,
         "uc": 0,
@@ -58,11 +60,13 @@ class ApiRepo {
         "ShowNAOdds": true,
         "FavoriteCompetitions": "7,572",
         "OddsFormat": 1,
-        "lang": Global.language == 'hi'
-            ? 216
-            : Global.language == 'vi'
-                ? 210
-                : 1,
+        "lang": Global.language == 'zh'
+            ? 141
+            : Global.language == 'hi'
+                ? 216
+                : Global.language == 'vi'
+                    ? 210
+                    : 1,
         "AppType": 2,
         "AppVersion": 1365,
         "uc": 0,
@@ -95,11 +99,13 @@ class ApiRepo {
         "ShowNAOdds": true,
         "FavoriteCompetitions": "7,572",
         "OddsFormat": 1,
-        "lang": Global.language == 'hi'
-            ? 216
-            : Global.language == 'vi'
-                ? 210
-                : 1,
+        "lang": Global.language == 'zh'
+            ? 141
+            : Global.language == 'hi'
+                ? 216
+                : Global.language == 'vi'
+                    ? 210
+                    : 1,
         "AppType": 2,
         "AppVersion": 1365,
         "uc": 0,
@@ -137,11 +143,13 @@ class ApiRepo {
             "FilterSourcesOut": true,
             "IsTablet": false,
             "OddsFormat": 1,
-            "lang": Global.language == 'hi'
-                ? 216
-                : Global.language == 'vi'
-                    ? 210
-                    : 1,
+            "lang": Global.language == 'zh'
+                ? 141
+                : Global.language == 'hi'
+                    ? 216
+                    : Global.language == 'vi'
+                        ? 210
+                        : 1,
             "AppType": 2,
             "AppVersion": 1365,
             "uc": 0,
@@ -168,11 +176,13 @@ class ApiRepo {
             "stage": 1,
             "withExpanded": true,
             "IsTablet": false,
-            "lang": Global.language == 'hi'
-                ? 216
-                : Global.language == 'vi'
-                    ? 210
-                    : 1,
+            "lang": Global.language == 'zh'
+                ? 141
+                : Global.language == 'hi'
+                    ? 216
+                    : Global.language == 'vi'
+                        ? 210
+                        : 1,
             "AppType": 2,
             "AppVersion": 1365,
             "uc": 0,
@@ -202,11 +212,13 @@ class ApiRepo {
             "withexpandedstats": true,
             "OddsFormat": 1,
             "withstats": false,
-            "lang": Global.language == 'hi'
-                ? 216
-                : Global.language == 'vi'
-                    ? 210
-                    : 1,
+            "lang": Global.language == 'zh'
+                ? 141
+                : Global.language == 'hi'
+                    ? 216
+                    : Global.language == 'vi'
+                        ? 210
+                        : 1,
             "AppType": 2,
             "AppVersion": 1365,
             "uc": 0,
@@ -233,11 +245,13 @@ class ApiRepo {
             "tz": 41,
             "StoreVersion": 1365,
             "theme": "dark",
-            "lang": Global.language == 'hi'
-                ? 216
-                : Global.language == 'vi'
-                    ? 210
-                    : 1,
+            "lang": Global.language == 'zh'
+                ? 141
+                : Global.language == 'hi'
+                    ? 216
+                    : Global.language == 'vi'
+                        ? 210
+                        : 1,
             "athletesSupported": true,
             "AppType": 2,
             "uc": 0
@@ -255,11 +269,13 @@ class ApiRepo {
           url: "${ApiConstant.baseUrl}Data/Games/GameCenter/PointByPoint",
           queryParameters: {
             "GameID": gameId,
-            "lang": Global.language == 'hi'
-                ? 216
-                : Global.language == 'vi'
-                    ? 210
-                    : 1,
+            "lang": Global.language == 'zh'
+                ? 141
+                : Global.language == 'hi'
+                    ? 216
+                    : Global.language == 'vi'
+                        ? 210
+                        : 1,
             "AppType": 2,
             "AppVersion": 1365,
             "uc": 0,

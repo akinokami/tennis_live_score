@@ -17,21 +17,29 @@ class PrivacyPolicyScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         iconTheme: IconThemeData(color: lightWhiteColor),
         centerTitle: true,
-        title:  CustomText(text:'policy'.tr,fontSize: 16.sp,),
+        title: CustomText(
+          text: 'policy'.tr,
+          fontSize: 16.sp,
+        ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children:  [
-              Text(
-                Global.language == 'en' ? Global.policyEnNormal : Global.language == 'vi' ? Global.policyVnNormal :Global.policyIndiaNormal,
-                style: TextStyle(fontSize: 16.sp, color: whiteColor),
-              ),
-            ],
-          ),
-        )
-      ),
+          child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            Text(
+              Global.language == 'zh'
+                  ? Global.policyCn
+                  : Global.language == 'en'
+                      ? Global.policyEnNormal
+                      : Global.language == 'vi'
+                          ? Global.policyVnNormal
+                          : Global.policyIndiaNormal,
+              style: TextStyle(fontSize: 16.sp, color: whiteColor),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

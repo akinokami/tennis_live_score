@@ -1,9 +1,6 @@
 class HindiLanguage {
   Map<String, String> hindiLanguage = {
-    'vietnam': 'Tiếng Việt',
-    'english': 'English',
-    'chinese': '中文',
-    'india': 'हिन्दी',
+    'lang': 'हिन्दी',
     'language': 'भाषा',
     'change_language': 'भाषा बदलें',
     'policy': 'गोपनीयता नीति',
@@ -18,7 +15,7 @@ class HindiLanguage {
     'matches': 'मैच',
     'please_wait': 'कृपया प्रतीक्षा करें',
     'no_data': 'कोई डेटा उपलब्ध नहीं है',
-    'h2h': 'हेड टू हेड',
+    'h2h': 'H2H',
     'match': 'मैच',
     'details': 'विवरण',
     'stats': 'आँकड़े',
@@ -54,6 +51,5 @@ class HindiLanguage {
     'atp_ranking': 'एटीपी रैंकिंग',
     'player': 'खिलाड़ी',
     'see_all': 'सभी देखें',
-
   };
 }
